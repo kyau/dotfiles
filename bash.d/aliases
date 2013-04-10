@@ -2,13 +2,62 @@
 #
 # Author:  kyau
 # Version: 0.1
-# Date:    2013-04-09T23:27:18-0700
+# Date:    2013-04-10T05:37:40-0700
 
 
+# Security ---------------------------------------------------------------------
+
+# Add confirmations
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I --preserve-root'
+alias ln='ln -i'
+
+# Disallow changing permissions on '/'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+
+# Program Defaults -------------------------------------------------------------
+
+# Start calculator with math support
+alias bc='bc -l'
+
+# Human readable output
+alias df='df -h'
+alias du='du -ch'
+
+# Vim is default editor
+alias edit='vim'
+alias vi='vim'
+
+# Parent directories on demand
+alias mkdir='mkdir -pv'
+
+# Enable wget resume by default
+alias wget='wget -c'
+
+
+# Misc -------------------------------------------------------------------------
+
+# Enable color when possible
+alias diff='colordiff'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+
+# Listing directories made easy
 alias ls='ls --color=auto --file-type --group-directories-first'
-alias lsa='ls -A --color=auto --file-type --group-directories-first'
-alias ll='ls -l --color=auto --file-type --group-directories-first --human-readable'
-alias lla='ls -Al --color=auto --file-type --group-directories-first --human-readable'
-alias ld='ls -At1 --color=auto --file-type --group-directories-first'
+alias lsa='ls -A'
+alias ll='ls -l --human-readable'
+alias lla='ll -A'
+alias ld='ls -At1'
+
+# Less painful directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cd..='cd ..'
 
 # vim:ft=sh
