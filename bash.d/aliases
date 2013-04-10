@@ -1,0 +1,14 @@
+# ~/.bash.d/aliases: bash alias definitions
+#
+# Author:  kyau
+# Version: 0.1
+# Date:    2013-04-09T23:27:18-0700
+
+
+alias ls='ls --color=auto --file-type --group-directories-first'
+alias lsa='ls -A --color=auto --file-type --group-directories-first'
+alias ll='ls -l --color=auto --file-type --group-directories-first --human-readable'
+alias lla='ls -Al --color=auto --file-type --group-directories-first --human-readable'
+alias ld='ls -At1 --color=auto --file-type --group-directories-first'
+
+# vim:ft=sh

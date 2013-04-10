@@ -1,0 +1,73 @@
+! ~/.Xresources: xorg theme resources
+!
+! Author:  kyau
+! Version: 0.1
+! Date:    2013-04-10T04:00:59-0700
+
+
+! Xft font resources -----------------------------------------------------------
+Xft.antialias:  true
+Xft.autohint:   false
+Xft.dpi:        90
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+*font:             	xft:Terminus:style=regular:pixelsize=14:antialias=true:hinting=true
+*boldfont:         	xft:Terminus:style=bold:pixelsize=14:antialias=true:hinting=true
+
+
+! URxvt settings ---------------------------------------------------------------
+URxvt.allow_bold:			true
+URxvt.boldMode:				true
+URxvt.termName:         	rxvt-256color
+URxvt.depth:            	32
+URxvt.scrollBar:        	false
+URxvt.scrollBar_right:  	false
+URxvt.borderLess:       	false
+URxvt.saveLines:       		2048
+URxvt.internalBorder:   	6
+URxvt.geometry:			    86x56
+URxvt.urlLauncher:		    google-chrome
+URxvt.mathcer.button:		1SirP
+URxvt.perl-ext-common:		default,matcher
+URxvt.perl-ext:         	selection
+URxvt.cursorBlink:      	true
+URxvt.loginShell:       	true
+URxvt.buffered:         	true
+!URxvt.letterSpace:		    -1
+URxvt.iconFile:			    /usr/share/icons/elementary/apps/16/utilities-terminal.svg
+
+
+! Euphrasia color scheme -------------------------------------------------------
+URxvt*background:  [90]#090C19
+URxvt*foreground:  #E6E6E6
+URxvt*cursorColor: #1AAA13
+*background: #D0CECB
+*foreground: #090C19
+! black
+*color0:  #222946
+*color8:  #8C8B89
+! red
+*color1:  #BE1919
+*color9:  #DC2F32 
+! green
+*color2:  #1AAA13
+*color10: #5DCE33
+! yellow
+*color3:  #FFAA3E
+*color11: #FADD2D
+! blue
+*color4:  #3A57D7
+*color12: #507CFF
+! magenta
+*color5:  #BE007F
+*color13: #E671D3
+! cyan
+*color6:  #258F8F
+*color14: #4DC5DC
+! white
+*color7:  #AEAEAE
+*color15: #DBDDE4
+
+! vim:ft=xdefaults
