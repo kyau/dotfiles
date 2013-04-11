@@ -2,7 +2,7 @@
 #
 # Author:  kyau
 # Version: 0.1
-# Date:    2013-04-10T15:58:54-0700
+# Date:    2013-04-11T13:48:55-0700
 
 
 # Security ---------------------------------------------------------------------
@@ -92,9 +92,9 @@ alias myip="curl ifconfig.me"
 
 # Enable color when possible
 alias diff="colordiff"
-alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exlude-dir=\.hg"
-alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exlude-     dir=\.hg"
-alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exlude-     dir=\.hg"
+alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
+alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
+alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 
 # Listing directories made easy
 alias ls="ls --color=auto --file-type --group-directories-first"
