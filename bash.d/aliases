@@ -18,6 +18,9 @@ alias chown="chown --preserve-root"
 alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 
+# Password generation
+alias passwd-gen="head -c 16 /dev/random | uuencode -m -"
+
 
 # Program Defaults -------------------------------------------------------------
 
@@ -25,7 +28,7 @@ alias chgrp="chgrp --preserve-root"
 alias bc="bc -l"
 
 # Human readable output
-alias df="df -h"
+alias df="df -Th --total"
 alias du="du -ch"
 
 # Vim is default editor
@@ -91,7 +94,7 @@ alias myip="curl ifconfig.me"
 # Misc -------------------------------------------------------------------------
 
 # Enable color when possible
-alias diff="colordiff"
+alias diff="colordiff -u"
 alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
@@ -112,6 +115,7 @@ alias cd..="cd .."
 # Short-hand
 alias c="clear"
 alias g="grep"
+alias h="history"
 alias k="kill"
 alias k9="kill -9"
 
