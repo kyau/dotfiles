@@ -51,10 +51,10 @@ alias gitlog="git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - 
 alias gits="git status"
 
 # Display all files to add, don't actually add them (dry run)
-alias gitad="git -A -n ."
+alias gitad="git add -A -n ."
 
 # Add all untracked files to repository
-alias gitadd="git -A ."
+alias gitadd="git add -A ."
 
 # Automatically stage files that have been modified and deleted, will not
 # add new files
