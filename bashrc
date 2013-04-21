@@ -2,7 +2,7 @@
 #
 # Author:  kyau
 # Version: 0.1
-# Date:    2013-04-10T04:59:36-0700
+# Date:    2013-04-21T13:53:58-0700
 
 
 # If not running interactively, don't do anything
@@ -23,6 +23,7 @@ export PATH="$HOME/bin:$PATH"
 # Basic user variables
 export EDITOR="vim"
 export EMAIL="kyau@kyau.org"
+export HOSTNAME=`hostname`
 export IRCNAME="http://kyau.net/"
 export IRCNICK="kyau"
 export VISUAL="$EDITOR"
@@ -64,6 +65,7 @@ if [ "$TERM" = 'linux' ]; then
         echo -n "]P$idx$col"
     done
 fi
+
 
 # Scripts ----------------------------------------------------------------------
 

@@ -34,6 +34,9 @@ xset r rate 250 60
 # Swap <caps> with <esc>
 setxkbmap -option caps:swapescape
 
+# NVIDIA settings
+nvidia-settings -a InitialPixmapPlacement=2
+
 # Launch the window manager supplied by the command line arguments or
 # optionally default to openbox
 case $1 in
