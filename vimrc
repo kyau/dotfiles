@@ -2,7 +2,7 @@
 "
 " Author:  kyau
 " Version: 0.2
-" Date:    2013-04-24T16:25:03-0700
+" Date:    2013-04-24T16:30:44-0700
 "
 " Attribution:
 " - https://github.com/nvie/vimrc
@@ -11,33 +11,33 @@
 
 " General {{{
 " ------------------------------------------------------------------------------
-set nocompatible								" Use Vim settings, rather than Vi settings
-filetype indent on							" Enable filetype-specific indenting
-filetype plugin on							" Enable filetype-specific plugins
-set autoread										" Auto read when changed from the outside
+set nocompatible				    " Use Vim settings, rather than Vi settings
+filetype indent on					" Enable filetype-specific indenting
+filetype plugin on					" Enable filetype-specific plugins
+set autoread						" Auto read when changed from the outside
 " }}}
 
 
 " Colors & Fonts {{{
-syntax enable										" Enable syntax highlighting
-try															" Load theme if exists
+syntax enable						" Enable syntax highlighting
+try									" Load theme if exists
 	colorscheme euphrasia
 catch
 endtry
-set background=dark							" Set background to dark color scheme
-set encoding=utf8							" Set utf-8 as standard encoding
+set background=dark					" Set background to dark color scheme
+set encoding=utf8					" Set utf-8 as standard encoding
 "set termencoding=utf8
 set fileformats=unix,dos,mac		" Use Unix as the standard file type
-set formatoptions+=qrn1					" When wrapping paragraphs, don't end lines
-																" 	with 1-letter words
-set t_Co=256										" Always use 256-color mode
+set formatoptions+=qrn1				" When wrapping paragraphs, don't end lines
+									" 	with 1-letter words
+set t_Co=256						" Always use 256-color mode
 " }}}
 
 
 " Status Line {{{
 " ------------------------------------------------------------------------------
-set cmdheight=2									" Use a status bar taht is 2 rows high
-set laststatus=2								" Always show the status line
+set cmdheight=2						" Use a status bar taht is 2 rows high
+set laststatus=2					" Always show the status line
 hi User1 ctermfg=3 ctermbg=0 
 hi User2 ctermfg=1 ctermbg=0
 hi User3 ctermfg=14 ctermbg=0
@@ -48,55 +48,55 @@ hi User7 ctermfg=12 ctermbg=0
 hi User8 ctermfg=8 ctermbg=0
 hi User9 ctermfg=7 ctermbg=0
 set statusline=
-set statusline+=\ %1*\[%n\]     " Buffernumber
-set statusline+=\ %3*■%*\       " Symbol
+set statusline+=\ %1*\[%n\]         " Buffernumber
+set statusline+=\ %3*■%*\           " Symbol
 set statusline+=%4*%<%F%*	  		" Full filename & path
-set statusline+=%2*%m%*					" Modified flag
+set statusline+=%2*%m%*				" Modified flag
 set statusline+=%6*\ %{GitBranch()}%*
-																" Show git branch if applicable
-set statusline+=%=%8*						" Separation point between aligned items
-set statusline+=%9*%{&ff}%* " File format (dos/unix/mac)
+									" Show git branch if applicable
+set statusline+=%=%8*				" Separation point between aligned items
+set statusline+=%9*%{&ff}%*         " File format (dos/unix/mac)
 set statusline+=%7*/%*%9*%{''.(&fenc!=''?&fenc:&enc).''}
 set statusline+=%{(&bomb?\",BOM\":\"\")}
-																" File encoding
-set statusline+=\ %*%3*%y%*     " Filetype
+									" File encoding
+set statusline+=\ %*%3*%y%*         " Filetype
 set statusline+=%1*\ \ %l%*			" Current line
-set statusline+=%2*,%1*%c%*     " Column number
-set statusline+=%2*\ 0x%04B%*\  " Character under cursor
+set statusline+=%2*,%1*%c%*         " Column number
+set statusline+=%2*\ 0x%04B%*\      " Character under cursor
 " }}}
 
 
 " Vim User Interface {{{
 " ------------------------------------------------------------------------------
-set backspace=eol,start,indent	" Configure backspace to have normal behavior
-set colorcolumn=81							" Highlight the column after the 80th
-set cursorline									" Highlight the current line in all windows 
-																" 	and update on cursor movement
-set hidden											" Hide buffers when they are abandoned
-set hlsearch										" Highlight search results
-set ignorecase									" Case-insensitive search
+set backspace=eol,start,indent	    " Configure backspace to have normal behavior
+set colorcolumn=81					" Highlight the column after the 80th
+set cursorline						" Highlight the current line in all windows 
+									" 	and update on cursor movement
+set hidden							" Hide buffers when they are abandoned
+set hlsearch						" Highlight search results
+set ignorecase						" Case-insensitive search
 set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-																" Characters to display as invisible chars 
-																" 	when :list is enabled
-set lazyredraw									" Don't redraw while executing macros
-set magic												" For regular expressions, turn magic on
-set matchtime=2 								" x/10 seconds to show the matching brackets
-set number											" Turn on line numbering
-set ruler												" Always show current position
-set scrolloff=999								" Keep cursor line at center screen if possible
-set showcmd                     " Show keypresses on right of command line
-set showmatch										" Show matching bracket when highlighting one
-set showmode										" Always show current editing mode
-set smartcase										" When searching be smart about cases
-set noerrorbells								" Do not ring the bell for error messages
-set novisualbell								" Do not use visual bells
-set t_vb=												" Null the bell
-set timeoutlen=500							" Mapped key sequences timeout after (ms)
+									" Characters to display as invisible chars 
+									" 	when :list is enabled
+set lazyredraw						" Don't redraw while executing macros
+set magic							" For regular expressions, turn magic on
+set matchtime=2 					" x/10 seconds to show the matching brackets
+set number							" Turn on line numbering
+set ruler							" Always show current position
+set scrolloff=999					" Keep cursor line at center screen
+set showcmd                         " Show keypresses on right of command line
+set showmatch						" Show matching bracket when highlighting one
+set showmode						" Always show current editing mode
+set smartcase						" When searching be smart about cases
+set noerrorbells					" Do not ring the bell for error messages
+set novisualbell					" Do not use visual bells
+set t_vb=							" Null the bell
+set timeoutlen=500					" Mapped key sequences timeout after (ms)
 set whichwrap+=<,>,h,l,[,]			" Allow horizontal directional keys to wrap
-set wildmenu										" Turn on the WiLd menu
+set wildmenu						" Turn on the WiLd menu
 set wildignore=*.o,*~,*.pyc,*.class,*.bak,*.swp
-																" Ignore compiled and revision control stuff
-																" when using WiLd menu
+									" Ignore compiled and revision control stuff
+									" when using WiLd menu
 if has("win16") || has("win32")
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -107,24 +107,24 @@ endif
 
 " Folding Rules {{{
 " ------------------------------------------------------------------------------
-"set foldenable                  " enable folding
-set foldcolumn=1                " add a fold column
-"set foldmethod=marker           " detect triple-{ style fold markers
-"set foldlevelstart=99           " start out with everything folded
+"set foldenable                      " enable folding
+set foldcolumn=1                    " add a fold column
+"set foldmethod=marker               " detect triple-{ style fold markers
+"set foldlevelstart=99               " start out with everything folded
 "set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-                                " which commands trigger auto-unfold
+                                    " which commands trigger auto-unfold
 " }}}
 
 
 " Backups, History & Undo {{{
 " ------------------------------------------------------------------------------
-set nobackup										" Turn off file backup
-set nowritebackup								" Turn off backup on overwrite
-set history=1000								" Keep 1000 lines of command/search history
-set noswapfile									" Do not use a swapfile for buffers
-set undolevels=1000							" Keep 1000 levels of undo
+set nobackup						" Turn off file backup
+set nowritebackup					" Turn off backup on overwrite
+set history=1000					" Keep 1000 lines of command/search history
+set noswapfile						" Do not use a swapfile for buffers
+set undolevels=1000					" Keep 1000 levels of undo
 if v:version > 730
-	set undofile									" Keep a persistent undo backup file
+	set undofile					" Keep a persistent undo backup file
 	set undodir=~/.vim/.undo,~/tmp,/tmp
 endif
 " }}}
@@ -132,17 +132,17 @@ endif
 
 " Text, Tab & Indent Related {{{
 " ------------------------------------------------------------------------------
-set autoindent									" Auto indent
-set expandtab										" Use spaces instead of tabs
+set autoindent						" Auto indent
+set expandtab						" Use spaces instead of tabs
 au FileType Makefile set noexpandtab
-set smarttab										" Be smart when using tabs
-set shiftwidth=4								" Number of spaces to use for auto indenting
-set softtabstop=4								" Hitting <bs> removes spaces as if tabs
-set tabstop=4										" One tab is equal to four spaces
-set linebreak										" Wrap long lines
-set textwidth=79 								" Maximum width of text being inserted
-set smartindent									" Smart indenting when starting a newline
-set wrap												" Wrap lines
+set smarttab						" Be smart when using tabs
+set shiftwidth=4					" Number of spaces to use for auto indenting
+set softtabstop=4					" Hitting <bs> removes spaces as if tabs
+set tabstop=4						" One tab is equal to four spaces
+set linebreak						" Wrap long lines
+set textwidth=79 					" Maximum width of text being inserted
+set smartindent						" Smart indenting when starting a newline
+set wrap							" Wrap lines
 " }}}
 
 
@@ -189,8 +189,8 @@ vnoremap <silent> # :call VisualSelection('b', '')<cr>
 
 " Leader Keybindings {{{
 " ------------------------------------------------------------------------------
-let mapleader = ","							" Map <leader> key to ,
-let g:mapleader = ","						" Allow functions to access <leader> key
+let mapleader = ","					" Map <leader> key to ,
+let g:mapleader = ","				" Allow functions to access <leader> key
 
 " Fast saving
 map <leader>w :w!<cr>
@@ -375,5 +375,3 @@ func! GitBranch()
 	return ''
 endfunc
 " }}}
-
-" vim:ft=vim:ts=2:sw=2
