@@ -2,7 +2,11 @@
 "
 " Author:  kyau
 " Version: 0.2
-" Date:    2013-04-24T16:21:31-0700
+" Date:    2013-04-24T16:25:03-0700
+"
+" Attribution:
+" - https://github.com/nvie/vimrc
+" - http://amix.dk/vim/vimrc.html
 
 
 " General {{{
