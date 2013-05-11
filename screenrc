@@ -44,7 +44,7 @@ nethack on
 startup_message off
 
 # Set $TERM
-term screen
+term screen-256color
 
 # Terminal capabilities
 termcapinfo xterm*|rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
@@ -62,7 +62,7 @@ backtick 2 300  300     true
 
 # Caption / hardstatus
 caption always
-caption string '%{= kw} %{K}%-w%{-}%{Bk} [%n] %{-}%{K}%+w%{-} %= %?%{y}%2`%{-} %{C}|%? %{W}%Y-%m-%d%{c}T%{-}%0c:%s '
+caption string '%{= kw} %?%{K}%-w%{-}%?%{Bk} [%n] %{-}%?%{K}%+w%{-}%? %= %?%{y}%2`%{-} %{C}|%? %{W}%Y-%m-%d%{c}T%{-}%0c:%s %{-}'
 hardstatus string "%1`@%H:%h%? [%1n]%?"
 
 

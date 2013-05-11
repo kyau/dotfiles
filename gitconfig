@@ -1,0 +1,17 @@
+# ~/.gitconfig: global git configuration
+#
+# Author:  kyau
+# Version: 0.1
+# Date:    2013-05-10T12:54:46-0700
+
+
+[core]
+    editor = vim
+
+[user]
+    email = kyau@kyau.org
+    name = kyau
+
+[alias]
+    ls = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)' --graph
+    ll = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)%n%b%C(reset)' --graph --numstat

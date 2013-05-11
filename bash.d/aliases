@@ -45,7 +45,7 @@ alias wget="wget -c"
 # Git --------------------------------------------------------------------------
 
 # Pretty git log
-alias gitlog="git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''''              %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit"
+alias gitlog="git log --graph --all --format=format:'%C(bold red)%h%C(reset) %C(white)-%C(reset) %C(reset)%s %C(bold green)(%ar)%C(reset) %C(bold cyan)[%an]%C(reset)%C(bold yellow)%d%C(reset)%n''''    %C(white)%b%C(reset)' --no-abbrev-commit"
 
 # Git status
 alias gits="git status"
@@ -104,7 +104,7 @@ alias ls="ls --color=auto --file-type --group-directories-first"
 alias lsa="ls -A"
 alias ll="ls -l --human-readable"
 alias lla="ll -A"
-alias ld="ls -At1"
+alias lld="ls -At1"
 
 # Less painful directory navigation
 alias ..="cd .."
