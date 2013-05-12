@@ -11,7 +11,7 @@
 # General ----------------------------------------------------------------------
 
 # Should an ssh-agent be auto-started
-SSH_AGENT_START=false
+# SSH_AGENT_START=true
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
