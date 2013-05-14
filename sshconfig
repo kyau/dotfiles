@@ -1,0 +1,27 @@
+# ~/.ssh/config : personal ssh config
+#
+# Author:  kyau
+# Version: 0.1
+# Date:    2013-05-14T11:36:48-0700
+
+
+Host rescue
+    HostName kyau.net
+    User root
+
+Host kyaunet
+    ForwardAgent yes
+    HostName kyau.net
+
+Host kyauorg
+    ForwardAgent yes
+    HostName kyau.org
+
+Host *
+    User kyau
+    ForwardAgent no
+    StrictHostKeyChecking no
+    ServerAliveInterval 120
+    Compression yes
+
+# vim:ft=sshconfig
