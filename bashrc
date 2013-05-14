@@ -1,14 +1,17 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 #
 # Author:  kyau
-# Version: 0.1
-# Date:    2013-04-21T13:53:58-0700
+# Version: 0.2
+# Date:    2013-05-11T19:57:55-0400
 
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # General ----------------------------------------------------------------------
+
+# Should an ssh-agent be auto-started
+# SSH_AGENT_START=true
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

@@ -1,8 +1,8 @@
 # ~/.bash.d/ssh-agent: automatic ssh-agent
 # 
 # Author:  kyau
-# Version: 0.2
-# Date:    2013-04-10T05:00:39-0700
+# Version: 0.3
+# Date:    2013-05-11T19:56:45-0400
 
 
 SSH_ENV="$HOME/.ssh/environment"
@@ -15,15 +15,16 @@ function start_agent {
     clear
 }
 
-# Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+# Start SSH agent, if applicable
+if [ $SSH_AGENT_START ]; then
+    if [ -f "${SSH_ENV}" ]; then
+        . "${SSH_ENV}" > /dev/null
+        ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+            start_agent;
+        }
+    else
         start_agent;
-    }
-else
-    start_agent;
+    fi
 fi
 
 # vim:ft=sh
