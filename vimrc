@@ -135,6 +135,14 @@ endif
 set autoindent						" Auto indent
 set expandtab						" Use spaces instead of tabs
 au FileType Makefile set noexpandtab
+au FileType asm set noexpandtab
+au FileType crontab set noexpandtab
+au FileType bindzone set noexpandtab
+au FileType named set noexpandtab
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 set smarttab						" Be smart when using tabs
 set shiftwidth=4					" Number of spaces to use for auto indenting
 set softtabstop=4					" Hitting <bs> removes spaces as if tabs
