@@ -9,8 +9,8 @@
     editor = vim
 
 [user]
-    email = kyau@kyau.org
-    name = kyau
+    email = kyau@kyau.net
+    name = Sean Bruen
 
 [alias]
     ls = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)' --graph
