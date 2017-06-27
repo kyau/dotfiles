@@ -6,21 +6,16 @@
 
 
 Host rescue
-    HostName kyau.net
+    HostName dark.kyau.net
     User root
 
 Host kyaunet
     ForwardAgent yes
-    HostName kyau.net
-
-Host kyauorg
-    ForwardAgent yes
-    HostName kyau.org
+    HostName dark.kyau.net
 
 Host *
     User kyau
     ForwardAgent no
-    StrictHostKeyChecking no
     ServerAliveInterval 120
     Compression yes
 

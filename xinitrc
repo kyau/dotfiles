@@ -32,17 +32,18 @@ xset m 1/5 1
 xset r rate 250 60
 
 # Swap <caps> with <esc>
-setxkbmap -option caps:swapescape
+#setxkbmap -option caps:swapescape
 
 # NVIDIA settings
-nvidia-settings -a InitialPixmapPlacement=2
+#nvidia-settings -a InitialPixmapPlacement=2
 
 # Launch the window manager supplied by the command line arguments or
 # optionally default to openbox
 case $1 in
     xmonad) exec xmonad;;
-    openbox);;
-    *) exec openbox-session;;
+    openbox) exec openbox-session;;
+    i3);;
+    *) exec i3 -V >> ~/.i3/i3-$(date +'%F-%k-%M-%S').log 2>&1;;
 esac
 
 # vim:ft=sh
