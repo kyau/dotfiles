@@ -8,43 +8,46 @@
 ! Xft font resources -----------------------------------------------------------
 Xft.antialias:  true
 Xft.autohint:   false
-Xft.dpi:        90
+Xft.dpi:        96
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
-*font:             	xft:Hack:style=regular:pixelsize=14:antialias=true:hinting=true
-*boldfont:         	xft:Hack:style=bold:pixelsize=14:antialias=true:hinting=true
 
 
 ! URxvt settings ---------------------------------------------------------------
-URxvt.allow_bold:			true
-URxvt.boldMode:				true
-URxvt.termName:         	rxvt-256color
-URxvt.depth:            	32
-URxvt.scrollBar:        	false
-URxvt.scrollBar_right:  	false
-URxvt.borderLess:       	false
-URxvt.saveLines:       		2048
-URxvt.internalBorder:   	6
-URxvt.geometry:			    86x56
-URxvt.urlLauncher:		    google-chrome
-URxvt.mathcer.button:		1SirP
-URxvt.perl-ext-common:		default,matcher
-URxvt.perl-ext:         	selection
-URxvt.cursorBlink:      	true
-URxvt.loginShell:       	true
-URxvt.buffered:         	true
-URxvt.letterSpace:		    -1
-URxvt.iconFile:			    /usr/share/icons/elementary/apps/16/utilities-terminal.svg
+urxvt*font:                 xft:Knack Nerd Font:style=regular:pixelsize=14:antialias=true:hinting=true
+urxvt*boldfont:             xft:Knack Nerd Font:style=bold:pixelsize=14:antialias=true:hinting=true
+URxvt.allow_bold:           true
+URxvt.boldMode:             true
+URxvt.termName:             rxvt-256color
+URxvt.depth:                32
+URxvt.scrollBar:            false
+URxvt.scrollBar_right:      false
+URxvt.borderLess:           false
+URxvt.saveLines:            2048
+URxvt.internalBorder:       6
+URxvt.geometry:             86x56
+URxvt.urlLauncher:          google-chrome-unstable
+URxvt.mathcer.button:       1SirP
+URxvt.perl-ext-common:      default,matcher
+URxvt.perl-ext:             selection
+URxvt.clipboard.autocopy:   true
+URxvt.keysym.C-C:           perl:clipboard:copy
+URxvt.keysym.C-V:           perl:clipboard:paste
+URxvt.cursorBlink:          true
+URxvt.loginShell:           true
+URxvt.buffered:             true
+URxvt.letterSpace:          -1
+URxvt.iconFile:             /usr/share/icons/elementary/apps/16/utilities-terminal.svg
 
 
 ! ROFI settings ----------------------------------------------------------------
 rofi.color-enabled:         true
-rofi.color-normal:          #ffffff,#525d76,#f5f5f5,#5294e2,#ffffff
-rofi.color-urgent:          #ffffff,#dc322f,#f5f5f5,#5294e2,#dc322f
-rofi.color-active:          #ffffff,#c2cad0,#f5f5f5,#5294e2,#c2cad0
-rofi.color-window:          #ffffff,#f5f5f5
+rofi.color-window:          #393939, #393939, #268bd2
+rofi.color-normal:          #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active:          #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent:          #393939, #f3843d, #393939, #268bd2, #ffc39c
 rofi.separator-style:       solid
 
 

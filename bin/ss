@@ -1,0 +1,2 @@
+#!/bin/bash
+pipes -t 0 -r 2500

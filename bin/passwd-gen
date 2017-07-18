@@ -1,0 +1,3 @@
+#!/bin/bash
+OUTPUT="$(dd if=/dev/urandom count=1 2> /dev/null | uuencode -m - | sed -ne 2p | cut -c-16)"
+echo -e "\uf023 \e[90m${OUTPUT}==\e[0m"

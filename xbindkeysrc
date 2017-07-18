@@ -1,0 +1,5 @@
+"/usr/bin/xvkbd -text "\[Shift_L]\[Left]""
+b:5
+
+"/usr/bin/xvkbd -text "\[Shift_L]\[Right]""
+b:4

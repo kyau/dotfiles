@@ -1,0 +1,212 @@
+# i3-gaps config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+## variables
+set $mod Mod4
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10:"
+
+## general options
+# Font for window titles.
+font pango:M+ 2c Medium 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Focus no longer follows mouse
+focus_follows_mouse no
+
+# borders
+hide_edge_borders vertical
+new_window pixel 2
+new_float pixel 2
+
+# gaps
+gaps inner 8
+gaps outer 0
+#smart_borders on
+#smart_gaps on
+
+## colors
+# class                 border  backgr. text    indicator child_border 
+client.focused          #258f8f #090c19 #e6e6e6 #258f8f   #258f8f
+client.focused_inactive #434343 #d0cecd #090c19 #141021   #434343
+client.unfocused        #222222 #d0cecd #090c19 #141021   #222222
+client.urgent           #be1919 #d0cecd #090c19 #141021   #be1919
+client.placeholder      #312842 #000000 #090c19 #000000   #d0cecd
+client.background       #090c19
+
+## keybindings
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id exec rofi -show run -font "Hack 10" -lines 6 -i -separator-style solid -opacity "90"
+
+# alt-tab functionality from rofi
+bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "Hack 10" -lines 6 -i -separator-style solid -opacity "90"
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# keyboard media keys
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+#bindsym XF86AudioPlayPause exec mpc toggle
+#bindsym XF86AudioStop exec mpc stop
+#bindsym XF86AudioNext exec mpc next
+#bindsym XF86AudioPrev exec mpc prev
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad
+
+# applications start on specific workspaces
+assign [class="Subl3"] $workspace2
+assign [class="Google-chrome"] $workspace3
+for_window [class="^.*"] border pixel 2
+for_window [class="ckb"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Nitrogen"] floating enable
+for_window [class="Nvidia-settings"] floating enable
+for_window [class="Qrazercfg"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Xfd"] floating enable
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize shrink height 1 px or 1 ppt
+        bindsym Up resize grow height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+## startup applications
+# i3 lock screen
+bindsym $mod+shift+x exec i3lock -i ~/.i3/safe_lock_50.png -b -c 000000
+
+# corsair keyboard
+exec --no-startup-id ckb -bc &
+
+# pulseaudio
+exec --no-startup-id pulseaudio --start &
+
+# set background wallpaper
+exec --no-startup-id nitrogen --restore
+
+# enable compositing
+exec --no-startup-id compton -bc &
+
+# turn numlock on
+exec --no-startup-id numlockx on &
+
+# hide mouse after 2 seconds of no use
+exec --no-startup-id unclutter --fork --timeout 2 --jitter 5 --ignore-scrolling &
+
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh

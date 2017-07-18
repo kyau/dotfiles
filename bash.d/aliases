@@ -19,7 +19,7 @@ alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 
 # Password generation
-alias passwd-gen="head -c 16 /dev/random | uuencode -m -"
+#alias passwd-gen="head -c 16 /dev/random | uuencode -m - | sed -ne 2p"
 
 
 # Program Defaults -------------------------------------------------------------
@@ -98,6 +98,7 @@ alias diff="colordiff -u"
 alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
+alias yaourt="yaourt --color"
 
 # Listing directories made easy
 alias ls="ls --color=auto --file-type --group-directories-first"

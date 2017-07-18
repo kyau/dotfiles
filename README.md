@@ -19,6 +19,7 @@
 * Optimized for use with Arch Linux, but will likely work with any distro.
 * Optimized for Euphrasia color scheme.
 * All files are thoroughly commented for all your customization needs.
+* The first period has been removed from every filename for easy of storage and readability for editing.
 * Contains configs for Bash, Screen, Vim, and much more...
 
 ### Attribution / Credits
