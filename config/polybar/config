@@ -26,7 +26,7 @@ font-1 = "FontAwesome:pixelsize=10:antialias=true;3"
 
 [bar/top]
 inherit = bar/master
-modules-left = wlan wm
+modules-left = wifi wm
 modules-center = menu title
 modules-right = backlight battery cpuclock coretemps volume time
 offset-y = -2
@@ -92,7 +92,7 @@ exec = ~/.config/polybar/tempcores.sh
 
 [module/network]
 type = internal/network
-interface = wlan0
+interface = wired0
 ping-interval = 3
 accumlate-stats = true
 ;format-padding = 2
@@ -109,9 +109,9 @@ animation-packetloss-1 = ！
 animation-packetloss-1-foreground = #000000
 animation-packetloss-framerate = 500
 
-[module/wlan]
+[module/wifi]
 type = internal/network
-interface = wlan0
+interface = wifi0
 interval = 3.0
 ;format-connected-padding = 1
 ;format-disconnected-padding = 1

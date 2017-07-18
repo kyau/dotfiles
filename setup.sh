@@ -89,7 +89,7 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/config/neofetch/archlinux.png $HOME/.config/neofetch/archlinux.png
     ln -s $HOME/dotfiles/config/polybar/config $HOME/.config/polybar/config
     ln -s $HOME/dotfiles/config/polybar/launch.sh $HOME/.config/polybar/launch.sh
-    ln -s $HOME/dotfiles/config/polybar/cpucores.sh $HOME/.config/polybar/cpucores.sh
+    ln -s $HOME/dotfiles/config/polybar/cpuclock.sh $HOME/.config/polybar/cpuclock.sh
     ln -s $HOME/dotfiles/config/polybar/tempcores.sh $HOME/.config/polybar/tempcores.sh
     ln -s $HOME/dotfiles/config/ranger/rc.conf $HOME/.config/ranger/rc.conf
     ln -s $HOME/dotfiles/config/ranger/colorschemes/kyau $HOME/.config/ranger/colorschemes/kyau
