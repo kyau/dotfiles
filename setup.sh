@@ -45,6 +45,9 @@ clean_homedir() {
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p ~/.config/i3/
     fi
+    if [ ! -d "$HOME/.config/mpd" ]; then
+        mkdir -p ~/.config/mpd
+    fi
     if [ ! -d "$HOME/.config/mpv" ]; then
         mkdir -p ~/.config/mpv
     fi
@@ -73,18 +76,19 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/sshconfig $HOME/.ssh/config
     ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
     ln -s $HOME/dotfiles/screenrc $HOME/.screenrc
-    ln -s $HOME/dotfiles/vim $HOME/.vim
-    ln -s $HOME/dotfiles/vimrc $HOME/.vimrc
+    ln -s $HOME/dotfiles/config/vim $HOME/.vim
+    ln -s $HOME/dotfiles/config/vim/vimrc $HOME/.vimrc
     ln -s $HOME/dotfiles/xinitrc $HOME/.xinitrc
     ln -s $HOME/dotfiles/Xresources $HOME/.Xresources
     ln -s $HOME/dotfiles/config/ckb/ckb.conf $HOME/.config/ckb/ckb.conf
     ln -s $HOME/dotfiles/config/compton.conf $HOME/.config/compton.conf
     ln -s $HOME/dotfiles/config/htop/htoprc $HOME/.config/htop/htoprc
     ln -s $HOME/dotfiles/config/i3/config $HOME/.config/i3/config
+    ln -s $HOME/dotfiles/config/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
     ln -s $HOME/dotfiles/config/mpv/input.conf $HOME/.config/mpv/input.conf
     ln -s $HOME/dotfiles/config/mpv/motioninterpolation.py $HOME/.config/mpv/motioninterpolation.py
     ln -s $HOME/dotfiles/config/mpv/mpv.conf $HOME/.config/mpv/mpv.conf
-    ln -s $HOME/dotfiles/ncmpcpp/config $HOME/.ncmpcpp/config
+    ln -s $HOME/dotfiles/config/ncmpcpp/config $HOME/.ncmpcpp/config
     ln -s $HOME/dotfiles/config/neofetch/config $HOME/.config/neofetch/config
     ln -s $HOME/dotfiles/config/neofetch/archlinux.png $HOME/.config/neofetch/archlinux.png
     ln -s $HOME/dotfiles/config/polybar/config $HOME/.config/polybar/config
