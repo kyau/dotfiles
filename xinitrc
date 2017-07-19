@@ -18,6 +18,7 @@ xset -b
 xset +fp /usr/share/fonts/local
 xset +fp ~/.fonts
 xset fp rehash
+export FT2_SUBPIXEL_HINTING=1
 
 
 # Keyboard/Mouse ---------------------------------------------------------------
