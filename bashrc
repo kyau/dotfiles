@@ -145,4 +145,12 @@ for i in $HOME/.bash.d/*;
     do . $i;
 done
 
+# Auto-Start Xorg --------------------------------------------------------------
+SYSTEMD_TARGET=`systemctl list-units --type target | g graphical | sed 's/    / /' | cut -d " " -f3`
+if [ "$SYSTEMD_TARGET" = "active" ]; then
+    if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+        exec startx
+    fi
+fi
+
 # vim:ft=sh

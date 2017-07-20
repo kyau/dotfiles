@@ -7,7 +7,7 @@
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
-    info title
+    prin "$(color 6)Lenovo ThinkPad X220"
     info underline
 
     info "OS" distro
@@ -23,15 +23,16 @@ print_info() {
     #info "Theme" theme
     #info "Icons" icons
     #info "Terminal" term
-    info "Terminal Font" term_font
+    #info "Terminal Font" term_font
     #info "Font" font
     info "CPU" cpu
-    info "GPU" gpu
+    #info "GPU" gpu
+    prin "$(color 6)GPU: Intel HD 3000 Graphics"
     info "Memory" memory
 
     # info "CPU Usage" cpu_usage
     # info "Disk" disk
-    # info "Battery" battery
+    info "Battery" battery
     # info "Song" song
     # info "Local IP" local_ip
     # info "Public IP" public_ip
@@ -485,8 +486,8 @@ block_height=1
 # Example:
 # neofetch --bar_char 'elapsed' 'total'
 # neofetch --bar_char '-' '='
-bar_char_elapsed="-"
-bar_char_total="="
+bar_char_elapsed="="
+bar_char_total="-"
 
 # Toggle Bar border
 #
@@ -513,7 +514,7 @@ bar_length=15
 # Example:
 # neofetch --bar_colors 3 4
 # neofetch --bar_colors distro 5
-bar_color_elapsed="distro"
+bar_color_elapsed="14"
 bar_color_total="distro"
 
 
@@ -534,7 +535,7 @@ bar_color_total="distro"
 # off:     'info'
 cpu_display="off"
 memory_display="off"
-battery_display="off"
+battery_display="infobar"
 disk_display="off"
 
 
