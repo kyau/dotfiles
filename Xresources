@@ -28,7 +28,7 @@ URxvt.borderLess:           false
 URxvt.saveLines:            2048
 URxvt.internalBorder:       6
 URxvt.geometry:             86x56
-URxvt.urlLauncher:          google-chrome-unstable
+URxvt.urlLauncher:          google-chrome-stable
 URxvt.mathcer.button:       1SirP
 URxvt.perl-ext-common:      default,matcher
 URxvt.perl-ext:             selection

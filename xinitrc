@@ -30,7 +30,7 @@ xsetroot -cursor_name left_ptr &
 xset m 1/5 1
 
 # Set a typematic delay of 250ms with a repeating rate of 60Hz
-#xset r rate 250 60
+xset r rate 250 60
 
 # Swap <caps> with <esc>
 #setxkbmap -option caps:swapescape

@@ -80,6 +80,7 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/config/vim/vimrc $HOME/.vimrc
     ln -s $HOME/dotfiles/xinitrc $HOME/.xinitrc
     ln -s $HOME/dotfiles/Xresources $HOME/.Xresources
+    ln -s $HOME/dotfiles/Xmodmap $HOME/.Xmodmap
     ln -s $HOME/dotfiles/config/ckb/ckb.conf $HOME/.config/ckb/ckb.conf
     ln -s $HOME/dotfiles/config/compton.conf $HOME/.config/compton.conf
     ln -s $HOME/dotfiles/config/htop/htoprc $HOME/.config/htop/htoprc

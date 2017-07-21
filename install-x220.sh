@@ -1,6 +1,6 @@
 yaourt -Syy
 # misc
-sudo pacman -S bc cifs-utils gptfdisk imagemagick mediainfo ntp openssh perl-image-exiftool reflector sharutils sshfs unrar unzip youtube-dl
+sudo pacman -S bc bind-tools cifs-utils colordiff gptfdisk imagemagick mediainfo ntp openssh perl-image-exiftool reflector sharutils sshfs unrar unzip youtube-dl
 # hardware
 sudo pacman -S alsa-utils i7z libva-intel-driver libvdpau-va-gl ntfs-3g ntp pulseaudio-alsa wireless_tools
 # cli-apps
