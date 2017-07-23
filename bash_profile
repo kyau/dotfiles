@@ -11,4 +11,4 @@
 uname -mrsv
 uptime
 echo
-mail
+mail -e

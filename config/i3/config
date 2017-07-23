@@ -33,8 +33,8 @@ new_float pixel 2
 # gaps
 gaps inner 8
 gaps outer 0
-#smart_borders on
-#smart_gaps on
+smart_borders on
+smart_gaps on
 
 ## colors
 # class                 border  backgr. text    indicator child_border 
