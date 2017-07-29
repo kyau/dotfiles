@@ -36,9 +36,6 @@ clean_homedir() {
     if [ ! -d "$HOME/.ncmpcpp" ]; then
         mkdir -p $HOME/.ncmpcpp/
     fi
-    if [ ! -d "$HOME/.config/ckb" ]; then
-        mkdir -p ~/.config/ckb/
-    fi
     if [ ! -d "$HOME/.config/htop" ]; then
         mkdir -p ~/.config/htop/
     fi
@@ -81,7 +78,6 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/xinitrc $HOME/.xinitrc
     ln -s $HOME/dotfiles/Xresources $HOME/.Xresources
     ln -s $HOME/dotfiles/Xmodmap $HOME/.Xmodmap
-    ln -s $HOME/dotfiles/config/ckb/ckb.conf $HOME/.config/ckb/ckb.conf
     ln -s $HOME/dotfiles/config/compton.conf $HOME/.config/compton.conf
     ln -s $HOME/dotfiles/config/htop/htoprc $HOME/.config/htop/htoprc
     ln -s $HOME/dotfiles/config/i3/config $HOME/.config/i3/config
@@ -92,7 +88,6 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/config/ncmpcpp/config $HOME/.ncmpcpp/config
     ln -s $HOME/dotfiles/config/neofetch/config $HOME/.config/neofetch/config
     ln -s $HOME/dotfiles/config/neofetch/archlinux.png $HOME/.config/neofetch/archlinux.png
-    ln -s $HOME/dotfiles/config/polybar/config $HOME/.config/polybar/config
     ln -s $HOME/dotfiles/config/polybar/launch.sh $HOME/.config/polybar/launch.sh
     ln -s $HOME/dotfiles/config/polybar/cpuclock.sh $HOME/.config/polybar/cpuclock.sh
     ln -s $HOME/dotfiles/config/polybar/tempcores.sh $HOME/.config/polybar/tempcores.sh
@@ -100,11 +95,27 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/config/ranger/colorschemes/kyau $HOME/.config/ranger/colorschemes/kyau
     ln -s $HOME/dotfiles/config/vis/config $HOME/.config/vis/config
     ln -s $HOME/dotfiles/config/vis/colors/kyau $HOME/.config/vis/colors/kyau
+    ln -s $HOME/dotfiles/bin $HOME/bin
 }
 
-main() {
+if [[ -z $1 ]]; then
+    echo "Invalid argument: please specify which system (chloe/x220)"
+    exit 1
+fi
+if [ "$1" == "chloe" ]; then
+    echo -n "Setting up chloe..."
     cd $HOME
-    clean_homedir
-    setup_symlinks
-}
-main
+    if [ ! -d "$HOME/.config/ckb" ]; then
+        mkdir -p ~/.config/ckb/
+    fi
+    ln -s $HOME/dotfiles/config/ckb/ckb.conf $HOME/.config/ckb/ckb.conf
+    ln -s $HOME/dotfiles/config/polybar/config-chloe $HOME/.config/polybar/config
+fi
+if [ "$1" == "x220" ]; then
+    cd $HOME
+    echo -n "Setting up x220..."
+    ln -s $HOME/dotfiles/config/polybar/config $HOME/.config/polybar/config
+fi
+clean_homedir
+setup_symlinks
+echo "done!"

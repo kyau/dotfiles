@@ -9,9 +9,13 @@ Host rescue
     HostName dark.kyau.net
     User root
 
-Host kyaunet
+Host dark
     ForwardAgent yes
     HostName dark.kyau.net
+
+Host chaos
+    ForwardAgent yes
+    HostName chaos.kyau.net
 
 Host *
     User kyau

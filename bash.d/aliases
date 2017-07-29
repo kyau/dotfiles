@@ -90,6 +90,9 @@ alias gitk='gitk --all &'
 # Display external IP address
 alias myip="curl ifconfig.me"
 
+# SSH without saving the hostkey
+alias sshno="ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
+
 
 # Misc -------------------------------------------------------------------------
 
@@ -98,7 +101,7 @@ alias diff="colordiff -u"
 alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
-alias yaourt="yaourt --color"
+alias pacaur="pacaur --color=always"
 
 # Listing directories made easy
 alias ls="ls --color=auto --file-type --group-directories-first"
