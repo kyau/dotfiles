@@ -1,0 +1,36 @@
+# General (Both)
+general() {
+    pacaur -Syy
+    # misc
+    sudo pacman -S bc bind-tools cifs-utils colordiff gptfdisk iotop imagemagick mediainfo ntp openssh perl-image-exiftool reflector sharutils sshfs unrar unzip youtube-dl
+    # hardware
+    sudo pacman -S alsa-utils i7z intel-ucode ntfs-3g ntp pulseaudio-alsa wireless_tools
+    # cli-apps
+    pacaur -S irssi mpc mpd playerctl vim
+    pacaur -S cli-visualizer htop-solarized ncmpcpp-git neofetch ranger-git
+    # xorg-apps
+    pacaur -S autocutsel gimp gvfs lxappearance mirage nitrogen rofi rxvt-unicode rxvt-unicode-terminfo screenkey slop thunar thunar-volman tumbler vapoursynth vapoursynth-plugin-mvtools w3m xorg-xfd
+    pacaur -S compton-git google-chrome i3-gaps mpv-vapoursynth nerd-fonts-git numlockx polybar-git obs-studio sublime-text-dev unclutter-xfixes-git
+    # themes
+    pacaur -S arc-gtk-theme arc-icon-theme ttf-font-awesome ttf-dejavu ttf-mplus
+}
+
+# Laptop
+x220() {
+    pacaur -S libva-intel-driver libvdpau-va-gl 
+}
+
+# Desktop
+chloe() {
+    pacaur -S cpupower linux-headers nvidia nvidia-settings vdpauinfo
+    pacaur -S ckb-next-git openrazer-meta polychromatic
+}
+
+if [[ -z $1 ]]; then
+    echo "Invalid argument: please specify which system (chloe/x220)"
+    exit 1
+fi
+if [ "$1" == "chloe" ]; then
+fi
+if [ "$1" == "x220" ]; then
+fi
