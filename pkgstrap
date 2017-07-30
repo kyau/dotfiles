@@ -2,7 +2,6 @@
 
 # General (Both)
 general() {
-    pacaur -Syy
     # misc
     pacaur -S cifs-utils gptfdisk imagemagick mediainfo perl-image-exiftool youtube-dl
     # hardware
@@ -13,6 +12,7 @@ general() {
 }
 
 utils() {
+    pacaur -Syy
     pacaur -S bc bind-tools colordiff iotop ntp openssh reflector sharutils sshfs unrar unzip
     pacaur -S fish tmux vim
 }
@@ -56,8 +56,8 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 if [ "$1" == "chloe" ]; then
-    general
     utils
+    general
     xorg
     chloe
     fonts
@@ -67,8 +67,8 @@ if [ "$1" == "neutron" ]; then
     neutron
 fi
 if [ "$1" == "x220" ]; then
-    general
     utils
+    general
     xorg
     x220
     fonts
