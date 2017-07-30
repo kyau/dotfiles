@@ -4,7 +4,7 @@
 general() {
     pacaur -Syy
     # misc
-    pacaur -S cifs-utils gptfdisk
+    pacaur -S cifs-utils gptfdisk imagemagick mediainfo perl-image-exiftool youtube-dl
     # hardware
     pacaur -S alsa-utils i7z intel-ucode ntfs-3g ntp pulseaudio-alsa wireless_tools
     # cli-apps
@@ -13,7 +13,7 @@ general() {
 }
 
 utils() {
-    pacaur -S bc bind-tools colordiff iotop imagemagick mediainfo ntp openssh perl-image-exiftool reflector sharutils sshfs unrar unzip youtube-dl
+    pacaur -S bc bind-tools colordiff iotop ntp openssh reflector sharutils sshfs unrar unzip
     pacaur -S fish tmux vim
 }
 
