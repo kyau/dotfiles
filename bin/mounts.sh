@@ -5,7 +5,7 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 if [ "$1" == "chloe" ]; then
-    sudo mount /dev/sdb2 /mnt/archive
+    sudo mount /dev/sdb2 /mnt/archive -o uid=1000,gid=10,fmask=0177,dmask=0077
     #sshfs cloud9@dark:/home/cloud9/public_html /home/kyau/public_html
 fi
 if [ "$1" == "x220" ]; then

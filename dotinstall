@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Cleans up current home directory before install
-clean_homedir() {
+clean() {
+    # Backup current files
     if [ -f "$HOME/.bash_profile" ]; then
         mv ~/.bash_profile ~/.bash_profile.backup
     fi
@@ -23,21 +24,30 @@ clean_homedir() {
     if [ -f "$HOME/.vimrc" ]; then
         mv ~/.vimrc ~/.vimrc.backup
     fi
+    # Create directories
+    if [ ! -d "$HOME/.ssh" ]; then
+        mkdir -p $HOME/.ssh/
+    fi
+    if [ ! -d "$HOME/.config/htop" ]; then
+        mkdir -p ~/.config/htop/
+    fi
+    if [ ! -d "$HOME/.config/ranger/colorschemes" ]; then
+        mkdir -p ~/.config/ranger/colorschemes
+    fi
+
+}
+
+clean_xorg() {
+    # Backup current files
     if [ -f "$HOME/.xinitrc" ]; then
         mv ~/.xinitrc ~/.xinitrc.backup
     fi
     if [ -f "$HOME/.Xresources" ]; then
         mv ~/.Xresources ~/.Xresources.backup
     fi
-    # Make sure all directories already exist
-    if [ ! -d "$HOME/.ssh" ]; then
-        mkdir -p $HOME/.ssh/
-    fi
+    # Create directories    
     if [ ! -d "$HOME/.ncmpcpp" ]; then
         mkdir -p $HOME/.ncmpcpp/
-    fi
-    if [ ! -d "$HOME/.config/htop" ]; then
-        mkdir -p ~/.config/htop/
     fi
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p ~/.config/i3/
@@ -54,9 +64,6 @@ clean_homedir() {
     if [ ! -d "$HOME/.config/polybar" ]; then
         mkdir -p ~/.config/polybar/
     fi
-    if [ ! -d "$HOME/.config/ranger/colorschemes" ]; then
-        mkdir -p ~/.config/ranger/colorschemes
-    fi
     if [ ! -d "$HOME/.config/vis/colors" ]; then
         mkdir -p ~/.config/vis/colors
     fi
@@ -66,7 +73,7 @@ clean_homedir() {
 }
 
 # Setup all the symbolic links properly
-setup_symlinks() {
+symlinks() {
     ln -s $HOME/dotfiles/bash.d $HOME/.bash.d
     ln -s $HOME/dotfiles/bashrc $HOME/.bashrc
     ln -s $HOME/dotfiles/bash_profile $HOME/.bash_profile
@@ -75,11 +82,17 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/screenrc $HOME/.screenrc
     ln -s $HOME/dotfiles/config/vim $HOME/.vim
     ln -s $HOME/dotfiles/config/vim/vimrc $HOME/.vimrc
+    ln -s $HOME/dotfiles/config/htop/htoprc $HOME/.config/htop/htoprc
+    ln -s $HOME/dotfiles/config/ranger/rc.conf $HOME/.config/ranger/rc.conf
+    ln -s $HOME/dotfiles/config/ranger/colorschemes/kyau $HOME/.config/ranger/colorschemes/kyau
+    ln -s $HOME/dotfiles/bin $HOME/bin
+}
+
+symlinks_xorg() {
     ln -s $HOME/dotfiles/xinitrc $HOME/.xinitrc
     ln -s $HOME/dotfiles/Xresources $HOME/.Xresources
     ln -s $HOME/dotfiles/Xmodmap $HOME/.Xmodmap
     ln -s $HOME/dotfiles/config/compton.conf $HOME/.config/compton.conf
-    ln -s $HOME/dotfiles/config/htop/htoprc $HOME/.config/htop/htoprc
     ln -s $HOME/dotfiles/config/i3/config $HOME/.config/i3/config
     ln -s $HOME/dotfiles/config/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
     ln -s $HOME/dotfiles/config/mpv/input.conf $HOME/.config/mpv/input.conf
@@ -91,19 +104,18 @@ setup_symlinks() {
     ln -s $HOME/dotfiles/config/polybar/launch.sh $HOME/.config/polybar/launch.sh
     ln -s $HOME/dotfiles/config/polybar/cpuclock.sh $HOME/.config/polybar/cpuclock.sh
     ln -s $HOME/dotfiles/config/polybar/tempcores.sh $HOME/.config/polybar/tempcores.sh
-    ln -s $HOME/dotfiles/config/ranger/rc.conf $HOME/.config/ranger/rc.conf
-    ln -s $HOME/dotfiles/config/ranger/colorschemes/kyau $HOME/.config/ranger/colorschemes/kyau
     ln -s $HOME/dotfiles/config/vis/config $HOME/.config/vis/config
     ln -s $HOME/dotfiles/config/vis/colors/kyau $HOME/.config/vis/colors/kyau
-    ln -s $HOME/dotfiles/bin $HOME/bin
 }
 
 if [[ -z $1 ]]; then
-    echo "Invalid argument: please specify which system (chloe/x220)"
+    echo "Invalid argument: please specify which system (chloe/neutron/x220)"
     exit 1
 fi
+clean
 if [ "$1" == "chloe" ]; then
     echo -n "Setting up chloe..."
+    clean_xorg
     cd $HOME
     if [ ! -d "$HOME/.config/ckb" ]; then
         mkdir -p ~/.config/ckb/
@@ -112,10 +124,14 @@ if [ "$1" == "chloe" ]; then
     ln -s $HOME/dotfiles/config/polybar/config-chloe $HOME/.config/polybar/config
 fi
 if [ "$1" == "x220" ]; then
-    cd $HOME
     echo -n "Setting up x220..."
+    clean_xorg
+    cd $HOME
     ln -s $HOME/dotfiles/config/polybar/config $HOME/.config/polybar/config
 fi
-clean_homedir
-setup_symlinks
+if [ "$1" == "neutron" ]; then
+    echo -n "Setting up neutron..."
+    cd $HOME
+fi
+symlinks
 echo "done!"
