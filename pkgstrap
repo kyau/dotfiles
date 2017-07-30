@@ -38,6 +38,7 @@ chloe() {
 
 # Server
 neutron() {
+    echo "Nothing here yet!"
     #pacaur -S 
 }
 
