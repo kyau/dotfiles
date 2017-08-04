@@ -20,7 +20,7 @@ for file in $HOME/.config/fish/scripts/*.fish
 end
 
 # Xorg login if applicable
-if status --is-login
+if status --is-interactive
 	set SYSTEMD_TARGET (systemctl list-units --type target | grep graphical | sed 's/		 / /' | cut -d " " -f3)
 	if [ "active" = "$SYSTEMD_TARGET" ]
 		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
