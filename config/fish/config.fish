@@ -20,15 +20,14 @@ for file in $HOME/.config/fish/scripts/*.fish
 end
 
 # Xorg login if applicable
-if status --is-interactive
+if status --is-login
 	set SYSTEMD_TARGET (systemctl list-units --type target | grep graphical | sed 's/		 / /' | cut -d " " -f3)
 	if [ "active" = "$SYSTEMD_TARGET" ]
 		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
 			echo "Start Xorg"
-		else
-			eval $HOME/bin/motd
 		end
 	end
+	eval $HOME/bin/motd
 end
 
 # vim: ts=2 sw=2 noet :
