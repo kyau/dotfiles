@@ -26,7 +26,7 @@ catch
 endtry
 set background=dark					" Set background to dark color scheme
 set encoding=utf8					" Set utf-8 as standard encoding
-"set termencoding=utf8
+set termencoding=utf8
 set fileformats=unix,dos,mac		" Use Unix as the standard file type
 set formatoptions+=qrn1				" When wrapping paragraphs, don't end lines
 									" 	with 1-letter words
@@ -52,7 +52,7 @@ set statusline+=\ %1*\[%n\]         " Buffernumber
 set statusline+=\ %3*■%*\           " Symbol
 set statusline+=%4*%<%F%*	  		" Full filename & path
 set statusline+=%2*%m%*				" Modified flag
-set statusline+=%6*\ %{GitBranch()}%*
+"set statusline+=%6*\ %{GitBranch()}%*
 									" Show git branch if applicable
 set statusline+=%=%8*				" Separation point between aligned items
 set statusline+=%9*%{&ff}%*         " File format (dos/unix/mac)
@@ -68,12 +68,14 @@ set statusline+=%2*\ 0x%04B%*\      " Character under cursor
 
 " Vim User Interface {{{
 " ------------------------------------------------------------------------------
-set backspace=eol,start,indent	    " Configure backspace to have normal behavior
+set backspace=indent,eol,start      " allow backspacing over everything in insert mode
+set clipboard=unnamed               " normal OS clipboard interaction
 set colorcolumn=81					" Highlight the column after the 80th
 set cursorline						" Highlight the current line in all windows 
 									" 	and update on cursor movement
 set hidden							" Hide buffers when they are abandoned
 set hlsearch						" Highlight search results
+set incsearch                       " show search matches as you type
 set ignorecase						" Case-insensitive search
 set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 									" Characters to display as invisible chars 
@@ -83,15 +85,21 @@ set magic							" For regular expressions, turn magic on
 set matchtime=2 					" x/10 seconds to show the matching brackets
 set number							" Turn on line numbering
 set ruler							" Always show current position
-set scrolloff=999					" Keep cursor line at center screen
+set scrolloff=4	                    " Keep cursor line at center screen
 set showcmd                         " Show keypresses on right of command line
 set showmatch						" Show matching bracket when highlighting one
 set showmode						" Always show current editing mode
 set smartcase						" When searching be smart about cases
 set noerrorbells					" Do not ring the bell for error messages
 set novisualbell					" Do not use visual bells
+set nowrap                          " don't wrap lines
+set formatoptions-=t                " don't wrap text when typing
+set pastetoggle=<F2>                " when in insert mode, press <F2> to go to
+                                    "    paste mode, where you can paste mass data
+                                    "    that won't be autoindented
 set t_vb=							" Null the bell
 set timeoutlen=500					" Mapped key sequences timeout after (ms)
+"set virtualedit=all                 " allow the cursor to go in to "invalid" places
 set whichwrap+=<,>,h,l,[,]			" Allow horizontal directional keys to wrap
 set wildmenu						" Turn on the WiLd menu
 set wildignore=*.o,*~,*.pyc,*.class,*.bak,*.swp
@@ -107,10 +115,10 @@ endif
 
 " Folding Rules {{{
 " ------------------------------------------------------------------------------
-"set foldenable                      " enable folding
+set foldenable                      " enable folding
 set foldcolumn=1                    " add a fold column
-"set foldmethod=marker               " detect triple-{ style fold markers
-"set foldlevelstart=99               " start out with everything folded
+set foldmethod=marker               " detect triple-{ style fold markers
+set foldlevelstart=99               " start out with everything folded
 "set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
                                     " which commands trigger auto-unfold
 " }}}
@@ -133,6 +141,7 @@ endif
 " Text, Tab & Indent Related {{{
 " ------------------------------------------------------------------------------
 set autoindent						" Auto indent
+set copyindent                      " copy the previous indentation on autoindenting
 set expandtab						" Use spaces instead of tabs
 au FileType Makefile set noexpandtab
 au FileType asm set noexpandtab
@@ -153,6 +162,15 @@ set smartindent						" Smart indenting when starting a newline
 set wrap							" Wrap lines
 " }}}
 
+" Switch to a more POSIX-compatible shell for vim {{{
+if &shell =~# 'fish$'
+    set shell=bash
+endif
+" }}}
+
+" Common abbreviations / misspellings {{{
+source ~/.vim/autocorrect.vim
+" }}}
 
 " Keybindings {{{
 " ------------------------------------------------------------------------------
@@ -322,6 +340,13 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" Fish Syntax Highlighting
+autocmd BufNewFile,BufRead *.fish set filetype=fish
+autocmd BufNewFile,BufRead,StdinReadPost *
+    \ if getline(1) =~ '^#!.*\Wfish\s*$' |
+    \   set ft=fish |
+    \ endif
 
 
 " Functions {{{

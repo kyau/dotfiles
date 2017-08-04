@@ -1,0 +1,22 @@
+# general
+bc
+bind-tools
+colordiff
+fish
+iotop
+openssh
+reflector
+tmux
+unrar
+unzip
+vim
+# hardware
+i7z
+intel-ucode
+# cli-apps
+htop-solarized
+# neutron
+#libvirt
+#qemu
+#qemu-arch-extra
+#vagrant

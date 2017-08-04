@@ -1,0 +1,35 @@
+#! /bin/sh
+
+# bars by xero <x@xero.nu>
+
+ANSI=$HOME/bin/$(hostname -s).ans
+
+warning() {
+  printf " \x1b[38;5;124mhere be dragons\x1b[0m\n"
+}
+
+function getdistro() {
+	tmp=$(cat /etc/*release | grep "PRETTY_NAME")
+	text=$(echo ${tmp} | sed -r 's/^PRETTY_NAME="(.*)"/\1/')
+	case $text in
+		'Arch Linux')
+			distro="\x1b[38;5;32m \uf300 \x1b[38;5;252march\x1b[38;5;32mlinux\e[0m"
+			;;
+		*)
+			distro="${text}"
+			;;
+	esac
+	kernel="\x1b[38;5;252m$(uname -r | sed -r 's/([0-9]+).([0-9]+).([0-9]+)-([0-9]+)-.*/\1.\2.\3-\4/')\x1b[0m"
+	printf " ${distro} ${kernel}\n"
+}
+
+
+warning
+cat ${ANSI}
+echo -e
+getdistro
+#echo -e "\t\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac" | lolcat -p 1.42 -S 6
+printf "    \e[38;5;244m$(hostname -f)\e[0m \e[38;5;240m($(ip -4 addr show eno1 | grep -oP "(?<=inet ).*(?=/)"))\n\n"
+
+
+# vim: ts=2 sw=2 noet :

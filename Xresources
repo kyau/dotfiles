@@ -41,6 +41,31 @@ URxvt.buffered:             true
 URxvt.letterSpace:          -1
 URxvt.iconFile:             /usr/share/icons/elementary/apps/16/utilities-terminal.svg
 
+! st settings ---------------------------------------------------------------
+st.termname:     st-256color
+! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
+st.shell:        /bin/fish
+
+! The following options options can be reloaded via USR1 signal.
+!st.font:         Knack Nerd Font:style=regular:size=11:antialias=true:hinting=true
+st.font:         PxPlus_IBM_VGA8 Nerd Font:style=Book:size=12:antialias=true:hinting=true
+st.borderpx:     8
+! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
+st.cursorshape:  3
+st.cursorthickness:  2
+st.cursorblinkstyle: 0
+st.cursorblinkontype: 0
+st.bold_font:    0
+st.xfps:         120
+st.actionfps:    30
+st.chscale:      1.0
+st.cwscale:      1.0
+st.blinktimeout: 800
+st.bellvolume:   100
+! this is a char that is exposed like so: `printf '\033[z'`
+st.prompt_char:  $
+st.opacity:      200
+
 
 ! ROFI settings ----------------------------------------------------------------
 rofi.color-enabled:         true
@@ -55,31 +80,55 @@ rofi.separator-style:       solid
 URxvt*background:  [90]#090C19
 URxvt*foreground:  #E6E6E6
 URxvt*cursorColor: #1AAA13
-*background: #D0CECB
-*foreground: #090C19
+!*background: #D0CECB
+!st.background: #090C19
+!*foreground: #090C19
 ! black
-*color0:  #222946
-*color8:  #8C8B89
+!*color0:  #222946
+!*color8:  #8C8B89
 ! red
-*color1:  #BE1919
-*color9:  #DC2F32 
+!*color1:  #BE1919
+!*color9:  #DC2F32 
 ! green
-*color2:  #1AAA13
-*color10: #5DCE33
+!*color2:  #1AAA13
+!*color10: #5DCE33
 ! yellow
-*color3:  #FFAA3E
-*color11: #FADD2D
+!*color3:  #FFAA3E
+!*color11: #FADD2D
 ! blue
-*color4:  #3A57D7
-*color12: #507CFF
+!*color4:  #3A57D7
+!*color12: #507CFF
 ! magenta
-*color5:  #BE007F
-*color13: #E671D3
+!*color5:  #BE007F
+!*color13: #E671D3
 ! cyan
-*color6:  #258F8F
-*color14: #4DC5DC
+!*color6:  #258F8F
+!*color14: #4DC5DC
 ! white
-*color7:  #AEAEAE
-*color15: #DBDDE4
+!*color7:  #AEAEAE
+!*color15: #DBDDE4
+
+st.background: #090C19
+*color0: #2E3436
+*color1: #CC0000
+*color2: #4E9A06
+*color3: #C4A000
+*color4: #3465A4
+*color5: #75507B
+*color6: #06989A
+*color7: #D3D7CF
+*color8: #555753
+*color9: #EF2929
+*color10: #8AE234
+*color11: #FCE94F
+*color12: #729FCF
+*color13: #AD7FA8
+*color14: #34E2E2
+*color15: #EEEEEC
+*color16: #C8C8C8
+*color17: #090c19
+*color18: #FFFFFF
+*color19: #00FFFF
+*color255: #34E2E2
 
 ! vim:ft=xdefaults
