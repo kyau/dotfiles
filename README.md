@@ -14,6 +14,6 @@ Usage: ./dotme <environment> [--test]
 ```
 
 ### attribution
-* [https://int10h.org/oldschool-pc-fonts/fontlist/](The Oldschool PC Font Resource) - Patcher from [https://github.com/ryanoasis/nerd-fonts](nerd-fonts) to modify these awesome oldschool fonts
+* [The Oldschool PC Font Resource](https://int10h.org/oldschool-pc-fonts/fontlist/) - Patcher from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) to modify these awesome oldschool fonts
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
 
