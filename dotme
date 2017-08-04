@@ -26,7 +26,7 @@ config_dir_xorg=( "ckb" "i3" "mpd" "mpv" "ncmpcpp" "polybar" "vis" )
 ## CONFIG DONE ~ DO NOT EDIT BELOW THIS LINE!
 DEBUG=0
 log=install.log
-destination=${HOME}/test
+destination=${HOME}
 pkglog=pkg.log
 testpass=1
 
