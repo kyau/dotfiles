@@ -5,7 +5,7 @@
 ANSI=$HOME/bin/$(hostname -s).ans
 
 warning() {
-  printf " \x1b[38;5;124mhere be dragons\u2026\x1b[0m\n"
+  printf " \x1b[38;5;124m\u2026here be dragons\x1b[0m\n"
 }
 
 function getdistro() {
