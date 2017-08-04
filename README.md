@@ -8,10 +8,9 @@ These are the dotfiles that I use while running Arch Linux on my desktop and lap
 
 ### usage
 ```bash
-# install my general packages
-./pkgstrap (chloe|x220)
-# sym-link the environment
-./dotinstall (chloe|x220)
+Usage: ./dotme <environment> [--test]
+  <environment>         environment to install (chloe, neutron, x220)
+  --test                run a test instead of actually installing
 ```
 
 ### attribution
