@@ -1,2 +1,5 @@
+config/fish/functions
+config/fish/completions/fisher.fish
+config/fish/fishd.*
 config/irssi/config
 vim/.netrwhist

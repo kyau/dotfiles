@@ -7,7 +7,7 @@ repo_folder=dot
 # package installer
 pkgman="pacaur"
 # configs in the root directory
-root_files=( "bash_profile" "bashrc" "gitconfig" "screenrc" "vimrc" )
+root_files=( "bash_profile" "bashrc" "gitconfig" "screenrc" "ssh/config" "vimrc" )
 # xorg configs in the root directory
 root_files_xorg=( "Xmodmap" "Xresources" "xbindkeysrc" "xinitrc" )
 # directories in the root directory
@@ -19,7 +19,7 @@ config_files=()
 # xorg configs inside ~/.config/
 config_files_xorg=( "compton.conf" )
 # directories inside ~/.config/
-config_dir=( "htop" "irssi" "neofetch" "ranger" )
+config_dir=( "fish" "htop" "irssi" "neofetch" "ranger" )
 # xorg directories inside ~/.config/
 config_dir_xorg=( "ckb" "i3" "mpd" "mpv" "ncmpcpp" "polybar" "vis" )
 

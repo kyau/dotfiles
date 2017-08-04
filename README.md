@@ -14,5 +14,6 @@ Usage: ./dotme <environment> [--test]
 ```
 
 ### attribution
-* [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Euphrasia color scheme (link broken)
+* [https://int10h.org/oldschool-pc-fonts/fontlist/](The Oldschool PC Font Resource) - Patcher from [https://github.com/ryanoasis/nerd-fonts](nerd-fonts) to modify these awesome oldschool fonts
+* [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
 
