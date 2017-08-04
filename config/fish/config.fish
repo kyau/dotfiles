@@ -16,15 +16,19 @@ set -gx PAGER less
 
 # extra user functions
 for file in $HOME/.config/fish/scripts/*.fish
-    source $file
+	source $file
 end
 
 # Xorg login if applicable
-set SYSTEMD_TARGET (systemctl list-units --type target | grep graphical | sed 's/    / /' | cut -d " " -f3)
-if [ "active" = "$SYSTEMD_TARGET" ]
-    if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
-        echo "Start Xorg"
-    else
-        eval $HOME/bin/motd
-    end
+function __fish_on_interactive
+	set SYSTEMD_TARGET (systemctl list-units --type target | grep graphical | sed 's/		 / /' | cut -d " " -f3)
+	if [ "active" = "$SYSTEMD_TARGET" ]
+		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
+			echo "Start Xorg"
+		else
+			eval $HOME/bin/motd
+		end
+	end
 end
+
+# vim: ts=2 sw=2 noet :
