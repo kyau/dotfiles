@@ -29,6 +29,7 @@ cat ${ANSI}
 echo -e
 getdistro
 nic=$(/bin/ls /sys/class/net | head -1)
+niclist=$(echo $nic | sed -e :a -e '$!N; s/\n/, /; ta')
 printf "    \e[38;5;244m$(hostname -f)\e[0m \e[38;5;240m($(ip -4 addr show ${nic} | grep -oP "(?<=inet ).*(?=/)"))\n\n"
 
 # vim: ts=2 sw=2 noet :
