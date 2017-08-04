@@ -30,6 +30,10 @@ destination=${HOME}/test
 pkglog=pkg.log
 testpass=1
 
+if [ ! -f ${destination}/${log} ]; then
+	touch ${destination}/${log}
+fi
+
 here_be_dragons() {
 	if [ -z $1 ]; then return 0; fi
 	if [ -z $2 ]; then local s=; else local s=$2; fi
