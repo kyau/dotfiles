@@ -24,12 +24,14 @@ config/fish/functions/pwd_is_home.fish
 config/fish/completions/fisher.fish
 config/fish/fishd.*
 ## irssi
-config/irssi/config
+irssi/config
 ## mpd
 config/mpd/database
 config/mpd/log
 config/mpd/pid
 config/mpd/state
+## ncmpcpp
+ncmpcpp/error.log
 ## polybar
 config/polybar/config
 ## vis

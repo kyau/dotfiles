@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # location of dotfiles repository
-repo=https://github.com/kyau/dotfiles.git
+repo=git@github.com:kyau/dotfiles.git
 # folder the repo will be stored in (~/$repofolder)
 repo_folder=dot
 # package installer
@@ -309,7 +309,7 @@ function install() {
 }
 
 function fish() {
-	echo -e "\nTo finish installing \e[0;36mfish\e[0m:\n\t* chsh -s /usr/bin/fish\n\t* relog into fish\n\t* curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher\n\t* fisher"
+	echo -e "  Finish installing \e[0;36mfish\e[0m:\n    * chsh -s /usr/bin/fish\n    * type \e[0;36mfish\e[0m\n    * curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher\n    * fisher update\n"
 }
 
 # start
