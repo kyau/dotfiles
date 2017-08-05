@@ -31,13 +31,15 @@ function environ
 	set -l shel (echo "$SHELL" | sed -r 's/.*\/(.*)/\1/')
 	set -l page (echo "$PAGER" | sed -r 's/.*\/(.*)/\1/')
 	set -l ter (echo "$TERM" | sed -r 's/(.*)-.*/\1/')
+	set -l grp (groups | sed -r 's/ /,/g')
+	printf "    \e[38;5;244m\$user\e[0m\e[38;5;240m/$USER\e[0m   \e[38;5;244m\$groups\e[0m\e[38;5;240m/$grp\n"
 	printf "    \e[38;5;244m\$editor\e[0m\e[38;5;240m/$edit\e[0m  \e[38;5;244m\$pager\e[0m\e[38;5;240m/$page  \e[38;5;244m\$shell\e[0m\e[38;5;240m/$shel\e[0m  \e[38;5;244m\$term\e[0m\e[38;5;240m/$ter\e[0m\n"
 end
 
 
 warning
 cat $ANSI
-#echo -e
+echo -e
 getdistro
 network
 environ
