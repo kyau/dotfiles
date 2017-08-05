@@ -3,7 +3,7 @@
 set ANSI $HOME/bin/(hostname -s).ans
 
 function warning
-	printf " \x1b[38;5;124m\u2026here be dragons\x1b[0m\n"
+	printf " \x1b[38;5;124m\u2026 here be dragons\x1b[0m\n"
 end
 
 function getdistro
@@ -30,16 +30,16 @@ function environ
 	set -l edit (echo "$EDITOR" | sed -r 's/.*\/(.*)/\1/')
 	set -l shel (echo "$SHELL" | sed -r 's/.*\/(.*)/\1/')
 	set -l page (echo "$PAGER" | sed -r 's/.*\/(.*)/\1/')
-	printf "    \e[38;5;244m\$editor\e[0m\e[38;5;240m/$edit\e[0m  \e[38;5;244m\$pager\e[0m\e[38;5;240m/$page  \e[38;5;244m\$shell\e[0m\e[38;5;240m/$shel\e[0m\n"
+	set -l ter (echo "$TERM" | sed -r 's/(.*)-.*/\1/')
+	printf "    \e[38;5;244m\$editor\e[0m\e[38;5;240m/$edit\e[0m  \e[38;5;244m\$pager\e[0m\e[38;5;240m/$page  \e[38;5;244m\$shell\e[0m\e[38;5;240m/$shel\e[0m  \e[38;5;244m\$term\e[0m\e[38;5;240m/$ter\e[0m\n"
 end
 
 
 warning
 cat $ANSI
-echo -e
+#echo -e
 getdistro
 network
 environ
-echo -e
 
 # vim: ts=2 sw=2 noet :

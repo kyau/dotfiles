@@ -22,7 +22,7 @@ normal = "\033[38;5;%sm"
 bold = "\033[1;38;5;%sm"
 reset = "\033[0m"
 
-for (i, color) in enumerate(colored_palette + grayscale_palette, 16):
+for (i, color) in enumerate(colored_palette + grayscale_palette, 0):
 	index = (bold + "%4s" + reset) % (i, str(i) + ':')
 	hex   = (normal + "%s" + reset) % (i, color)
 	newline = '\n' if i % 6 == 3 else ''

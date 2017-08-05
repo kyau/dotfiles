@@ -19,11 +19,6 @@ if status --is-interactive
 	set -gx PAGER less
 
 	abbr -a -- - 'cd -'
-
-	# extra user functions
-	for file in $HOME/.config/fish/scripts/*.fish
-		source $file
-	end
 end
 
 # is this a login shell?
