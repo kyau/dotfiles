@@ -19,6 +19,8 @@ if status --is-interactive
 	set -gx PAGER less
 
 	abbr -a -- - 'cd -'
+
+	source $HOME/.config/fish/motd.fish
 end
 
 # is this a login shell?
