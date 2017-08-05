@@ -16,12 +16,12 @@ end
 
 function warning
   set -l cols (tput cols)
-	set -l left " . here be dragons"
+	set -l left "  . here be dragons"
 	set -l lastlogin (last -2 -R  $USER | head -2 | cut -c 20- | sed -n 2p | sed -r 's/(.*) -.*/\1/')
   set -l tty (tty | sed -r 's/\/dev\/(.*)/\1/' | sed -r 's/\///')
   set -l right ".tty/$tty"
   set -l padding (get_padding (math $cols - (echo "$left$right" | string length)))
-	printf "\x1b[38;5;124m \u2026 here be dragons\x1b[0m$padding\x1b[38;5;244m\$tty\x1b[0m\x1b[38;5;240m/$tty\n"
+	printf " \x1b[38;5;124m \u2026 here be dragons\x1b[0m$padding\x1b[38;5;244m\$tty\x1b[0m\x1b[38;5;240m/$tty\n"
 end
 
 function getdistro
@@ -61,5 +61,6 @@ echo -e
 getdistro
 network
 #environ
+echo -e
 
 # vim: ts=2 sw=2 noet :
