@@ -3,4 +3,9 @@ config/fish/functions
 config/fish/completions/fisher.fish
 config/fish/fishd.*
 config/irssi/config
+config/mpd/database
+config/mpd/log
+config/mpd/pid
+config/mpd/state
+config/vis/vis.log
 vim/.netrwhist

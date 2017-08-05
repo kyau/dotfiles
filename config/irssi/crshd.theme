@@ -261,6 +261,7 @@ formats = {
     new_topic = "        %ctopic %N= %|%B'$2' %non %b$1%n%N[set by {nick \012%y$0}]";
 
     endofnames = "%Y!%N!      names %Y!%m Total: {hilight $2} ops, {hilight $3} halfops, {hilight $4} voices, {hilight $5} normal%n";
+    timestamp = "{timestamp %%I:%%M }";
   };
   "fe-common/irc" = {
     chanmode_change = "%Y!%N!       mode %y!%n {channick $1}";
