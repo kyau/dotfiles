@@ -11,17 +11,17 @@ root_files=( "bash_profile" "bashrc" "gitconfig" "screenrc" "ssh/config" "vimrc"
 # xorg configs in the root directory
 root_files_xorg=( "Xmodmap" "Xresources" "xbindkeysrc" "xinitrc" )
 # directories in the root directory
-root_dir=( "bash.d" "vim" )
+root_dir=( "bash.d" "irssi" "vim" )
 # xorg directories in the root directory
-root_dir_xorg=()
+root_dir_xorg=( "ncmpcpp" )
 # configs inside ~/.config/
 config_files=()
 # xorg configs inside ~/.config/
 config_files_xorg=( "compton.conf" )
 # directories inside ~/.config/
-config_dir=( "fish" "htop" "irssi" "neofetch" "ranger" )
+config_dir=( "fish" "htop" "neofetch" "ranger" )
 # xorg directories inside ~/.config/
-config_dir_xorg=( "ckb" "i3" "mpd" "mpv" "ncmpcpp" "polybar" "vis" )
+config_dir_xorg=( "ckb" "i3" "mpd" "mpv" "polybar" "vis" )
 
 ## CONFIG DONE ~ DO NOT EDIT BELOW THIS LINE!
 DEBUG=0
@@ -43,14 +43,14 @@ function here_be_dragons() {
 		else
 			if [ -h "${destination}${s}/${dot}${1}" ]; then
 				if [ "$DEBUG" == "1" ]; then
-					echo -en "\n	\e[31m\uf057\e[0m ~${s}/${dot}${1} \e[1;30m(current sym-link will be deleted)\e[0m" 
+					echo -en "\n	\e[31m \uf057 \e[0m ~${s}/${dot}${1} \e[1;30m(current sym-link will be deleted)\e[0m" 
 				else
 					echo -e "symlink: delete: ${destination}${s}/${dot}${1}" >> ${destination}/${log}
 					rm ${destination}${s}/${dot}${1}
 				fi
 			else
 				if [ "$DEBUG" == "1" ]; then
-					echo -en "\n	\e[1;34m\ue706\e[0m ~${s}/${dot}${1} \e[1;30m(backup: ~${s}/${1}.ibk)\e[0m"
+					echo -en "\n	\e[1;34m \ue706 \e[0m ~${s}/${dot}${1} \e[1;30m(backup: ~${s}/${1}.ibk)\e[0m"
 				else
 					echo -e "symlink: backup: ${destination}${s}/${dot}${1}.ibk" >> ${destination}/${log}
 					mv ${destination}${s}/${dot}${1} ${destination}${s}/${1}.ibk
@@ -65,7 +65,7 @@ function here_be_dragons() {
 	fi
 	if [ -e "${HOME}/${repo_folder}${t}/${1}" ]; then
 		if [ "$DEBUG" == "1" ]; then
-			echo -en "\n	\e[1;36m\uf064\e[0m ${repo_folder}${t}/${1} \e[1;37m\uf061\e[0m ~${s}/${dot}${1}"
+			echo -en "\n	\e[1;36m \uf064 \e[0m ${repo_folder}${t}/${1} \e[1;37m \uf061 \e[0m ~${s}/${dot}${1}"
 		else
 			ln -s ~/${repo_folder}${t}/${1} ${destination}${s}/${dot}${1}
 			echo -e "symlink: create: ${repo_folder}${t}/${1} -> ${s}/${dot}${1}" >> ${destination}/${log}
@@ -133,10 +133,10 @@ function symlink_master() {
 testing=
 
 function gitclone() {
-	echo -en "\e[1;30m\uf141\e[0m \e[37m${testing}Cloning repository\e[0m "
+	echo -en "\e[1;30m \uf141 \e[0m \e[37m${testing}Cloning repository\e[0m "
 	if [ -d ${HOME}/${repo_folder} ]; then
 		if [ "$DEBUG" == "1" ]; then echo -en "\n  "; fi
-		echo -en "\e[1;33m\uf12a\e[0m "
+		echo -en "\e[1;33m \uf12a \e[0m "
 		if [ "$DEBUG" == "1" ]; then
 			echo -e "~/${repo_folder} \e[1;30m(directory exists)\e[0m"
 		else
@@ -147,17 +147,17 @@ function gitclone() {
 	else
 		git clone --quiet ${repo} ${HOME}/${repo_folder} | sed 's/^/\t/' >> ${destination}/${log}
 		if [ $? -eq 0 ]; then
-			echo -e "\e[1;32m\uf00c\e[0m"
+			echo -e "\e[1;32m \uf00c \e[0m"
 		else
-			echo -e "\e[31m\uf00d\e[0m"
+			echo -e "\e[31m \uf00d \e[0m"
 		fi
 	fi
 	if [ "$DEBUG" == "1" ]; then
 		echo -en "	\e[0;37m Test "
 		if [ "$testpass" == "1" ]; then
-			echo -e "\e[1;32mPass \uf00c\e[0m"
+			echo -e "\e[1;32mPass  \uf00c \e[0m"
 		else
-			echo -e "Fail \e[31m\uf00d\e[0m"
+			echo -e "Fail \e[31m \uf00d \e[0m"
 		fi
 	fi
 	cd ${HOME}/${repo_folder}
@@ -165,11 +165,11 @@ function gitclone() {
 }
 
 function symlink() {
-	echo -en "\e[1;30m\uf141\e[0m \e[37m${testing}Link configs\e[0m "
+	echo -en "\e[1;30m \uf141 \e[0m \e[37m${testing}Link configs\e[0m "
 	echo -e "symlink: creating symbolic links..." >> ${destination}/${log}
 	if [ ! -d "${destination}/.config/" ]; then
 		if [ "$DEBUG" == "1" ]; then
-			echo -en "\n	\e[1;36m\uf067\e[0m ~/.config \e[1;30m(mkdir)\e[0m"
+			echo -en "\n	\e[1;36m \uf067 \e[0m ~/.config \e[1;30m(mkdir)\e[0m"
 		else
 			mkdir ${destination}/.config
 		fi
@@ -185,23 +185,23 @@ function symlink() {
 		symlink_master config_dir_xorg
 	fi
 	if [ "$DEBUG" == "1" ]; then echo -en "\n \e[0;37m Test "; fi
-	if [ "$testpass" == "1" ]; then echo -e "Pass \e[1;32m\uf00c\e[0m"; else echo -e "Fail \e[31m\uf00d\e[0m"; fi
+	if [ "$testpass" == "1" ]; then echo -e "Pass \e[1;32m \uf00c \e[0m"; else echo -e "Fail \e[31m \uf00d \e[0m"; fi
 	testpass=1
 }
 
 function bindir() {
-	echo -en "\e[1;30m\uf141\e[0m \e[37m${testing}Link bin\e[0m "
+	echo -en "\e[1;30m \uf141 \e[0m \e[37m${testing}Link bin\e[0m "
 	if [ -e "${destination}/bin" ]; then
 		if [ -h "${destination}/bin" ]; then
 			if [ "$DEBUG" == "1" ]; then
-				echo -en "\n	\e[31m\uf057\e[0m ~/bin \e[1;30m(current sym-link will be deleted)\e[0m"
+				echo -en "\n	\e[31m \uf057 \e[0m ~/bin \e[1;30m(current sym-link will be deleted)\e[0m"
 			else
 				echo -e "bin: delete: ${destination}/bin" >> ${destination}/${log}
 				rm ${destination}/bin
 			fi
 		else
 			if [ "$DEBUG" == "1" ]; then
-				echo -en "\n	\e[1;34m\ue706\e[0m ~/bin \e[1;30m(backup: ~/bin.ibk)\e[0m"
+				echo -en "\n	\e[1;34m \ue706 \e[0m ~/bin \e[1;30m(backup: ~/bin.ibk)\e[0m"
 			else
 				echo -e "bin: backup: ${destination}/bin" >> ${destination}/${log}
 				mv ${destination}/bin ${destination}/bin.ibk
@@ -212,17 +212,17 @@ function bindir() {
 	if [ -d ${HOME}/$repo_folder/bin ]; then
 		if [ "$DEBUG" == "1" ]; then 
 			echo -en "\n \e[0;37m Test "
-			echo -e "Pass \e[1;32m\uf00c\e[0m"
+			echo -e "Pass \e[1;32m \uf00c \e[0m"
 		else
 			ln -s ~/${repo_folder}/bin $destination/bin;
-			echo -e "\e[1;32m\uf00c\e[0m"
+			echo -e "\e[1;32m \uf00c \e[0m"
 		fi
 	else
 		echo -en "\n		\e[31mERROR: \e[1;37m~/${repo_folder}/bin\e[0m not found"
 		echo -e "! symlink: ERROR: ~/${repo_folder}/bin not found" >> ${destination}${log}
 		if [ "$DEBUG" == "1" ]; then 
 			echo -en "\n \e[0;37m Test "
-			echo -e "Fail \e[31m\uf00d\e[0m"
+			echo -e "Fail \e[31m \uf00d \e[0m"
 		fi
 	fi
 }
@@ -230,11 +230,11 @@ function bindir() {
 function install() {
 	testpass=1
 	if [ -z $1 ]; then return 0; fi
-	echo -en "\e[1;30m\uf141\e[0m \e[37m${testing}Installing packages\e[0m "
+	echo -en "\e[1;30m \uf141 \e[0m \e[37m${testing}Installing packages\e[0m "
 	if [ -f "${HOME}/${repo_folder}/.pkg-${1}" ]; then
 		IFS=$'\n' read -d '' -r -a pkglist < $HOME/$repo_folder/.pkg-$1
 		if [ ${#pkglist[@]} -eq 0 ]; then
-			echo -e " \e[1;33m\uf12a\e[0m No packages detected"
+			echo -e " \e[1;33m \uf12a \e[0m No packages detected"
 		else
 			if [ "$DEBUG" == "1" ]; then
 				echo -en "\n \e[0m Verifying packages:\e[0m "
@@ -301,9 +301,9 @@ function install() {
 	if [ "$DEBUG" == "1" ]; then 
 		echo -en "\n \e[0;37m Test "
 		if [ "$testpass" == "1" ]; then
-			echo -e "Pass \e[1;32m\uf00c\e[0m"
+			echo -e "Pass \e[1;32m \uf00c \e[0m"
 		else
-			echo -e "Fail \e[31m\uf00d\e[0m"
+			echo -e "Fail \e[31m \uf00d \e[0m"
 		fi
 	fi
 }
@@ -317,7 +317,7 @@ xorg=0
 # check for git
 git --version >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
-	echo -e "\e[1;33m\uf12a\e[1;37m dotme\e[0m requires \e[1;36mgit\e[0m."
+	echo -e "\e[1;33m \uf12a \e[1;37m dotme\e[0m requires \e[1;36mgit\e[0m."
 	exit 1
 fi
 # display usage if no arguments
@@ -329,19 +329,19 @@ fi
 if [ "$2" == "--test" ]; then
 	DEBUG=1
 	testing="\e[1;35mRunning Test:\e[0m "
-	echo -e "\e[1;35m\ue00a Test Mode!\e[0m"
+	echo -e "\e[1;35m \ue00a  Test Mode!\e[0m"
 fi
 # install templates
 if [ "$1" == "chloe" ]; then
 	xorg=1
-	echo -e "\e[1;36m\uf011\e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
+	echo -e "\e[1;36m \uf011 \e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
 	gitclone
 	bindir
 	symlink "${xorg}"
 	install chloe
 	fish
 elif [ "$1" == "neutron" ]; then
-	echo -e "\e[1;36m\uf011\e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
+	echo -e "\e[1;36m \uf011 \e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
 	gitclone
 	bindir
 	symlink "${xorg}"
@@ -349,7 +349,7 @@ elif [ "$1" == "neutron" ]; then
 	fish
 elif [ "$1" == "x220" ]; then
 	xorg=1
-	echo -e "\e[1;36m\uf011\e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
+	echo -e "\e[1;36m \uf011 \e[0m \e[37mEnvironment:\e[1;33m ${1}\e[0m"
 	gitclone
 	bindir
 	symlink "${xorg}"

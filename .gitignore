@@ -30,6 +30,8 @@ config/mpd/database
 config/mpd/log
 config/mpd/pid
 config/mpd/state
+## polybar
+config/polybar/config
 ## vis
 config/vis/vis.log
 ## vim
