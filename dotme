@@ -73,7 +73,7 @@ here_be_dragons() {
 		fi
 	else
 		echo -en "\n		\e[31mERROR: \e[1;37m~/${repo_folder}${t}/${1} \e[0mnot found\e[0m"
-		echo -e "! symlink: ERROR: ~/${repo_folder}${t}/${1} not found" >> ${destination}${log}
+		echo -e "! symlink: ERROR: ~/${repo_folder}${t}/${1} not found" >> ${destination}/${log}
 		testpass=0
 	fi
 }
