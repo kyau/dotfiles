@@ -1,3 +1,4 @@
+config/ckb/ckb.conf
 config/fish/functions
 config/fish/completions/fisher.fish
 config/fish/fishd.*
