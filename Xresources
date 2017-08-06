@@ -45,7 +45,7 @@ URxvt.iconFile:				/usr/share/icons/elementary/apps/16/utilities-terminal.svg
 st.termname:				st-256color
 st.shell:					/bin/fish
 !st.font:					PxPlus_IBM_VGA8 Nerd Font:style=Book:size=12:antialias=true:hinting=true
-st.font:					FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true
+st.font:					FantasqueSansMono Nerd Font:style=Regular:size=14:antialias=true:hinting=true
 st.borderpx:				8
 st.cursorshape:				3
 st.cursorthickness:			2
