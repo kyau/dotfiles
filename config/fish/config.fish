@@ -31,7 +31,6 @@ if status --is-login
 	# Xorg login if applicable
 	set sysd (systemctl list-units --type target | string match -r 'graphical\.target    loaded active active' | sed -r 's/    / /' | string split " ")
 	if [ $sysd[3] = "active" ]
-		echo "LOGIN"
 		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
 			startx
 		end
