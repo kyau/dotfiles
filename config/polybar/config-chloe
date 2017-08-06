@@ -1,5 +1,4 @@
 [colors]
-;background = #ee292d3e
 background = #00292d3e
 foreground = #bfc7d5
 yellow = #ffcb6b
@@ -35,25 +34,11 @@ inherit = bar/master
 modules-left = menu network wm
 modules-center = title
 modules-right = cpuclock coretemps volume time
-;offset-y = -2
 padding-left = 2
 padding-right = 2
 tray-position = right
 tray-padding = 2
 tray-transparent = true
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-mount-0 = /mnt
-;mount-1 = /
-;format-padding = 2
-label-mounted =  %free%
-label-mounted-foreground = ${colors.cyan}
-label-mounted-padding = 1
-label-mounted-background = ${colors.background}
-label-unmounted =
-label-unmounted-foreground = ${colors.background}
 
 [module/volume]
 type = internal/volume
@@ -74,7 +59,6 @@ ramp-headphones-foreground = ${colors.yellow}
 [module/coretemps]
 type = custom/script
 interval = 1
-;format-margin = 1
 exec-if = sensors
 exec = ~/.config/polybar/tempcores.sh
 
@@ -93,14 +77,10 @@ label-disconnected-foreground = ${colors.black}
 type = internal/network
 interface = wifi0
 interval = 3.0
-;format-connected-padding = 1
-;format-disconnected-padding = 1
 format-connected = <label-connected>
-format-connected-underline = ${colors.green}
-format-disconnected-underline = ${colors.black}
-label-connected =  %essid%
+label-connected ="  %essid%"
 label-connected-foreground = ${colors.green}
-label-disconnected = 
+label-disconnected = "  "
 label-disconnected-foreground = ${colors.black}
 
 [module/title]
@@ -110,20 +90,10 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.black}
 label-maxlen = 75
 
-[module/ram]
-type = internal/memory
-interval = 3
-label-foreground = ${colors.blue}
-label-padding = 1
-format-prefix = "  "
-format-prefix-foreground = ${colors.blue}
-;format-padding = 2
-
 [module/cpuclock]
 type = custom/script
 interval = 1
 format = <label>
-;format-padding = 2
 format-prefix = "  "
 format-prefix-foreground = ${colors.cyan}
 label-foreground = ${colors.cyan}
@@ -135,7 +105,6 @@ index-sort = true
 enable-click = true
 enable-scroll = false
 strip-wsnumbers = true
-;format-padding = 1
 label-focused-foreground = ${colors.arch}
 label-focused-padding = 1
 label-unfocused-padding = 1
@@ -146,7 +115,6 @@ label-urgent-padding = 1
 [module/time]
 type = internal/date
 interval = 40
-;format-padding = 0
 format-prefix = "  "
 format-prefix-foreground = ${colors.magenta}
 label-foreground = ${colors.magenta}
@@ -158,39 +126,3 @@ menu-0-0 = %{F#969696}reboot%{F-}
 menu-0-0-exec = systemctl reboot
 label-open = %{F#1793d1}   %{F-}
 label-close = %{F#800000}   %{F-}
-
-[module/battery]
-type = internal/battery
-full-at = 96
-battery = BAT0
-adapter = AC
-poll-interval = 5
-time-format = %H:%M
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-;format-full = <ramp-capacity> <label-full>
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full =  100%
-label-foreground = ${colors.green}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.green}
-bar-capacity-width = 10
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
-
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-format = <label>
-format-foreground = ${colors.blue}
-;format-padding = 2
-label =  %percentage%%
