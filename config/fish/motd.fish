@@ -1,6 +1,6 @@
 #! /usr/bin/fish
 
-set ANSI $HOME/bin/(hostname -s).ans
+set ANSI $HOME/dot/ansi/(hostname -s).ans
 
 function get_padding
 	set -l space ""
