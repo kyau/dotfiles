@@ -1,5 +1,5 @@
-    # Version: 0.3
-    # Date:    2017-07-29T01:03:55-0700
+    # Version: 0.4
+    # Date:    2017-08-06T00:10:09-0700
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -8,12 +8,16 @@ These are the dotfiles that I use while running Arch Linux on my desktop and lap
 
 ### usage
 ```bash
-Usage: ./dotme <environment> [--test]
-  <environment>         environment to install (chloe, neutron, x220)
-  --test                run a test instead of actually installing
+Usage: ./dotme [OPTION]...
+Initiate the user environment. Does nothing with no OPTION.
+  -i            install user packages (.pkg-<profile>)
+  -p <profile>  user environment profile
+  -t            debug mode: runs tests, informational only does not do anything
+  -x            include Xorg apps/configs (applies to -i and -s)
+  -h            display this help and exit
 ```
 
 ### attribution
-* [The Oldschool PC Font Resource](https://int10h.org/oldschool-pc-fonts/fontlist/) - Patcher from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) to modify these awesome oldschool fonts
+* [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
 
