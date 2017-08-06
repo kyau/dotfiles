@@ -23,18 +23,19 @@ if status --is-interactive
 	source $HOME/.config/fish/motd.fish
 end
 
+# default greeting
+set fish_greeting
+
 # is this a login shell?
 if status --is-login
 	# Xorg login if applicable
-	set SYSTEMD_TARGET (systemctl list-units --type target | grep graphical | sed 's/		 / /' | cut -d " " -f3)
-	if [ "active" = "$SYSTEMD_TARGET" ]
+	set sysd (systemctl list-units --type target | string match -r 'graphical\.target    loaded active active' | sed -r 's/    / /' | string split " ")
+	if [ $sysd[3] = "active" ]
+		echo "LOGIN"
 		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
-			echo "Start Xorg"
+			startx
 		end
 	end
 end
-
-# default greeting 
-set fish_greeting
 
 # vim: ts=2 sw=2 noet :
