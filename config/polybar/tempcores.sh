@@ -12,7 +12,7 @@ degree="°C"
 temperaturesValues=(40 50 65 80 90 100)
 #temperaturesColors=("#6bff49" "#f4cb24" "#ff8819" "#ff3205" "#f40202" "#ef02db")
 temperaturesColors=("#1aaa13" "#ffaa3e" "#fadd2d" "#be1919" "#dc2f32" "#ef02db")
-temperaturesIcons=(     )
+temperaturesIcons=(     )
 
 for iCore in ${!tempCore[*]}
 do

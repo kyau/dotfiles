@@ -61,6 +61,6 @@ echo -e
 getdistro
 network
 #environ
-echo -e
+#echo -e
 
 # vim: ts=2 sw=2 noet :

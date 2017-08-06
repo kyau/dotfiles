@@ -21,6 +21,7 @@ if status --is-interactive
 	abbr -a -- - 'cd -'
 
 	source $HOME/.config/fish/motd.fish
+	echo
 end
 
 # default greeting

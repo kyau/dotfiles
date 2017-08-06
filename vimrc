@@ -347,7 +347,7 @@ autocmd BufNewFile,BufRead,StdinReadPost *
     \ if getline(1) =~ '^#!.*\Wfish\s*$' |
     \   set ft=fish |
     \ endif
-
+au FileType fish setl ts=2 sw=2 noet
 
 " Functions {{{
 " ------------------------------------------------------------------------------

@@ -7,16 +7,12 @@
 
 colors=($(xrdb -query | sed -n 's/.*color\([0-9]\)/\1/p' | sort -nu | cut -f2))
 
-echo -en "\e[2A"
+echo -en "  "
 for i in {0..7}; do
-    echo -en "\e[$((30+$i))m ▄         \e[0m"
+    echo -en "\e[$((30+$i))m█ ${colors[i]} \e[0m";
 done
-echo -en "\n"
+echo -en "\n  "
 for i in {8..15}; do
-    echo -en "\e[1;$((22+$i))m █ ${colors[i]} \e[0m";
-done
-echo -en "\n"
-for i in {0..7}; do
-    echo -en "\e[$((30+$i))m ▀         \e[0m"
+    echo -en "\e[1;$((22+$i))m█ ${colors[i]} \e[0m";
 done
 echo -e "\n"
