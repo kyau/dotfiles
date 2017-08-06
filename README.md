@@ -1,5 +1,5 @@
-    # Version: 0.4
-    # Date:    2017-08-06T00:10:09-0700
+    # Version: 0.5
+    # Date:    2017-08-06T00:35:19-0700
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -16,6 +16,10 @@ Initiate the user environment. Does nothing with no OPTION.
   -x            include Xorg apps/configs (applies to -i and -s)
   -h            display this help and exit
 ```
+
+### screenshots
+![Login MOTD](https://raw.githubusercontent.com/kyau/dotfiles/master/ss1.png "Login MOTD")
+![vim](https://raw.githubusercontent.com/kyau/dotfiles/master/ss2.png "vim")
 
 ### attribution
 * [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
