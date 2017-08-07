@@ -34,6 +34,8 @@ config/mpd/state
 ncmpcpp/error.log
 ## polybar
 config/polybar/config
+## ranger
+config/ranger/colorschemes/__init__.py
 ## vis
 config/vis/vis.log
 ## vim
