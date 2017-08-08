@@ -137,7 +137,7 @@ date = "%I:%M %p"
 [module/menu]
 type = custom/menu
 menu-0-0 = %{F#969696}reboot%{F-}
-menu-0-0-exec = systemctl reboot
+menu-0-0-exec = sudo /usr/bin/reboot
 label-open = %{F#1793d1}   %{F-}
 label-close = %{F#800000}   %{F-}
 ; }}}

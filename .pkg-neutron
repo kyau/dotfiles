@@ -1,8 +1,11 @@
-# general
+# $Arch: .pkg-neutron,v 1.003 2017/08/08 01:49:01 kyau Exp $
+
+# General {{{
 bc
 bind-tools
 colordiff
 fish
+htop-solarized
 iotop
 openssh
 reflector
@@ -10,13 +13,18 @@ tmux
 unrar
 unzip
 vim
-# hardware
+# }}}
+# Hardware {{{
 i7z
 intel-ucode
-# cli-apps
-htop-solarized
-# neutron
-#libvirt
-#qemu
-#qemu-arch-extra
-#vagrant
+# }}}
+# KVM {{{
+libvirt
+openssl-1.0
+packer-io
+qemu-headless
+qemu-headless-arch-extra
+vagrant
+# }}}
+
+# vim: ft=conf ts=2 sw=2 noet :

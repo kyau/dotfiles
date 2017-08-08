@@ -16,21 +16,17 @@ vim
 # }}}
 # Hardware {{{
 alsa-utils
-ckb-next-git
-cpupower
 i7z
 intel-ucode
-linux-headers
+libva-intel-driver
+libvdpau-va-gl
+mesa
 ntfs-3g
-nvidia
-nvidia-settings
-openrazer-meta
-polychromatic
 pulseaudio-alsa
 sshuttle-git
 sshfs
-vdpauinfo
 wireless_tools
+xf86-video-intel
 # }}}
 # CLI {{{
 cli-visualizer

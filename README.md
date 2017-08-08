@@ -1,5 +1,4 @@
-    # Version: 0.6
-    # Date:    2017-08-07T18:10:33-0700
+    $Arch: README.md,v 1.007 2017/08/07 23:48:16 kyau Exp $
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
