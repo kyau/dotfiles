@@ -1,3 +1,5 @@
+# $Arch: tunnel.fish,v 1.002 2017/08/07 19:47:11 kyau Exp $
+
 function tunnel
 	if count $argv >/dev/null
 		while set -q argv[1]

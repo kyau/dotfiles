@@ -1,3 +1,6 @@
+; $Arch: config-chloe,v 1.011 2017/08/07 20:10:27 kyau Exp $
+
+; Colors {{{
 [colors]
 background = #00292d3e
 foreground = #bfc7d5
@@ -11,11 +14,13 @@ magenta = #c792ea
 cyan = #89ddff
 gray = #696969
 arch = #1793d1
-
+; }}}
+; Settings {{{
 [settings]
 screenchange-reload = true
 monitor-struct = true
-
+; }}}
+; Bars {{{
 [bar/master]
 monitor = HDMI-0
 monitor-fallback = HDMI-0
@@ -39,7 +44,8 @@ padding-right = 2
 tray-position = right
 tray-padding = 2
 tray-transparent = true
-
+; }}}
+; Module: volume {{{
 [module/volume]
 type = internal/volume
 format-volume = <ramp-volume> <label-volume>
@@ -55,13 +61,15 @@ ramp-volume-foreground = ${colors.yellow}
 ramp-headphones-0 = 
 ramp-headphones-1 = 
 ramp-headphones-foreground = ${colors.yellow}
-
+; }}}
+; Module coretemps {{{
 [module/coretemps]
 type = custom/script
 interval = 1
 exec-if = sensors
 exec = ~/.config/polybar/tempcores.sh
-
+; }}}
+; Module: network {{{
 [module/network]
 type = internal/network
 interface = eno1
@@ -72,7 +80,8 @@ label-connected = "  %local_ip% "
 label-connected-foreground = ${colors.green}
 label-disconnected = "  "
 label-disconnected-foreground = ${colors.black}
-
+; }}}
+; Module: wifi {{{
 [module/wifi]
 type = internal/network
 interface = wifi0
@@ -82,14 +91,16 @@ label-connected ="  %essid%"
 label-connected-foreground = ${colors.green}
 label-disconnected = "  "
 label-disconnected-foreground = ${colors.black}
-
+; }}}
+; Module: title {{{
 [module/title]
 type = internal/xwindow
 label = %title%
 format-prefix = "  "
 format-prefix-foreground = ${colors.black}
 label-maxlen = 75
-
+; }}}
+; Module: cpuclock {{{
 [module/cpuclock]
 type = custom/script
 interval = 1
@@ -98,7 +109,8 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.cyan}
 label-foreground = ${colors.cyan}
 exec = $HOME/.config/polybar/cpuclock.sh
-
+; }}}
+; Module: wm {{{
 [module/wm]
 type = internal/i3
 index-sort = true
@@ -111,7 +123,8 @@ label-unfocused-padding = 1
 label-visible-padding = 1
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 1
-
+; }}}
+; Module: time {{{
 [module/time]
 type = internal/date
 interval = 40
@@ -119,10 +132,14 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.magenta}
 label-foreground = ${colors.magenta}
 date = "%I:%M %p"
-
+; }}}
+; Module: menu {{{
 [module/menu]
 type = custom/menu
 menu-0-0 = %{F#969696}reboot%{F-}
 menu-0-0-exec = systemctl reboot
 label-open = %{F#1793d1}   %{F-}
 label-close = %{F#800000}   %{F-}
+; }}}
+
+; vim: ft=dosini ts=2 sw=2 noet :

@@ -1,3 +1,6 @@
+# $Arch: colors.fish,v 1.007 2017/08/07 19:27:42 kyau Exp $
+
+# Main Function {{{
 function colors
 	if count $argv >/dev/null
 		while set -q argv[1]
@@ -25,11 +28,13 @@ function colors
 		return 0
 	end
 end
-
+# }}}
+# Help {{{
 function __kyau_colors_help
 	printf "help message\\n"
 end
-
+# }}}
+# Colors: Default {{{
 function __kyau_colors_default
 	set -l colors (xrdb -query | sed -n 's/.*color\([0-9]\)/\1/p' | sort -nu | cut -f2)
 	printf "\\n    "
@@ -44,7 +49,8 @@ function __kyau_colors_default
 	end
 	printf "\\n\\n"
 end
-
+# }}}
+# Colors: Invaders {{{
 function __kyau_colors_invaders
   set -l width 76
   set -l lef (math $COLUMNS - $width)
@@ -55,7 +61,8 @@ function __kyau_colors_invaders
   set -l left (printf "%*c" $lef " ")
 	printf "\\n$left \\x1b[31m  ▀▄   ▄▀     \\x1b[32m ▄▄▄████▄▄▄    \\x1b[33m  ▄██▄     \\x1b[34m  ▀▄   ▄▀     \\x1b[35m ▄▄▄████▄▄▄    \\x1b[36m  ▄██▄  \\x1b[0m\\n$left \\x1b[31m ▄█▀███▀█▄    \\x1b[32m███▀▀██▀▀███   \\x1b[33m▄█▀██▀█▄   \\x1b[34m ▄█▀███▀█▄    \\x1b[35m███▀▀██▀▀███   \\x1b[36m▄█▀██▀█▄\\x1b[0m\\n$left \\x1b[31m█▀███████▀█   \\x1b[32m▀▀███▀▀███▀▀   \\x1b[33m▀█▀██▀█▀   \\x1b[34m█▀███████▀█   \\x1b[35m▀▀███▀▀███▀▀   \\x1b[36m▀█▀██▀█▀\\x1b[0m\\n$left \\x1b[31m▀ ▀▄▄ ▄▄▀ ▀   \\x1b[32m ▀█▄ ▀▀ ▄█▀    \\x1b[33m▀▄    ▄▀   \\x1b[34m▀ ▀▄▄ ▄▄▀ ▀   \\x1b[35m ▀█▄ ▀▀ ▄█▀    \\x1b[36m▀▄    ▄▀\\x1b[0m\\n\\n$left \\x1b[1;31m▄ ▀▄   ▄▀ ▄   \\x1b[32m ▄▄▄████▄▄▄    \\x1b[33m  ▄██▄     \\x1b[34m▄ ▀▄   ▄▀ ▄   \\x1b[35m ▄▄▄████▄▄▄    \\x1b[36m  ▄██▄  \\x1b[0m\\n$left \\x1b[1;31m█▄█▀███▀█▄█   \\x1b[32m███▀▀██▀▀███   \\x1b[33m▄█▀██▀█▄   \\x1b[34m█▄█▀███▀█▄█   \\x1b[35m███▀▀██▀▀███   \\x1b[36m▄█▀██▀█▄\\x1b[0m\\n$left \\x1b[1;31m▀█████████▀   \\x1b[32m▀▀▀██▀▀██▀▀▀   \\x1b[33m▀▀█▀▀█▀▀   \\x1b[34m▀█████████▀   \\x1b[35m▀▀▀██▀▀██▀▀▀   \\x1b[36m▀▀█▀▀█▀▀\\x1b[0m\\n$left \\x1b[1;31m ▄▀     ▀▄    \\x1b[32m▄▄▀▀ ▀▀ ▀▀▄▄   \\x1b[33m▄▀▄▀▀▄▀▄   \\x1b[34m ▄▀     ▀▄    \\x1b[35m▄▄▀▀ ▀▀ ▀▀▄▄   \\x1b[36m▄▀▄▀▀▄▀▄\\x1b[0m\\n\\n\\n$left                                     \\x1b[37m▌\\x1b[0m\\n\\n$left                                   \\x1b[37m▌\\x1b[0m\\n\\n$left                              \\x1b[37m    ▄█▄    \\x1b[0m\\n$left                              \\x1b[37m▄█████████▄\\x1b[0m\\n$left                              \\x1b[37m▀▀▀▀▀▀▀▀▀▀▀\\x1b[0m\\n"
 end
-
+# }}}
+# Colors: ALL {{{
 function __kyau_colors_all
   printf "  system\\n  "
 	for co in (seq 0 7)
@@ -82,3 +89,4 @@ function __kyau_colors_all
   end
   printf "\\x1b[0m\\n"
 end
+# }}}

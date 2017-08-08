@@ -1,7 +1,9 @@
-#! /usr/bin/fish
+# $Arch: motd.fish,v 1.021 2017/08/07 19:26:29 kyau Exp $
 
+# ANSI
 set ANSI $HOME/dot/ansi/(hostname -s).ans
 
+# Padding/Remove Color {{{
 function get_padding
 	set -l space ""
 	for i in (seq 1 $argv[1])
@@ -9,11 +11,11 @@ function get_padding
 	end
 	printf $space
 end
-
 function remove_color
 	printf $argv | perl -pe 's/\x1b.*?[mGKH]//g'
 end
-
+# }}}
+# Warning {{{
 function warning
   set -l cols (tput cols)
 	set -l left "  . here be dragons"
@@ -23,7 +25,8 @@ function warning
   set -l padding (get_padding (math $cols - (echo "$left$right" | string length)))
 	printf " \x1b[38;5;124m \u2026 here be dragons\x1b[0m$padding\x1b[38;5;244m\$tty\x1b[0m\x1b[38;5;240m/$tty\n"
 end
-
+# }}}
+# Distribution & Kernel Version {{{
 function getdistro
 	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/')
 	switch $text
@@ -36,31 +39,20 @@ function getdistro
 	set -l kernel "\x1b[38;5;252m$ver\x1b[0m"
 	printf " $kernel\n"
 end
-
+# }}}
+# Hostname & IPs {{{
 function network
 	set -l nic (/bin/ls /sys/class/net | head -1)
 	set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
 	set -l fullhost (hostname -f)
 	printf "    \x1b[38;5;244m$fullhost\x1b[0m \x1b[38;5;240m($iplist)\n"
 end
-
-function environ
-	set -l edit (echo "$EDITOR" | sed -r 's/.*\/(.*)/\1/')
-	set -l shel (echo "$SHELL" | sed -r 's/.*\/(.*)/\1/')
-	set -l page (echo "$PAGER" | sed -r 's/.*\/(.*)/\1/')
-	set -l ter (echo "$TERM" | sed -r 's/(.*)-.*/\1/')
-	set -l grp (groups | sed -r 's/ /,/g')
-	printf "    \x1b[38;5;244m\$user\x1b[0m\x1b[38;5;240m/$USER\x1b[0m   \x1b[38;5;244m\$groups\x1b[0m\x1b[38;5;240m/$grp\n"
-	printf "    \x1b[38;5;244m\$editor\x1b[0m\x1b[38;5;240m/$edit\x1b[0m  \x1b[38;5;244m\$pager\x1b[0m\x1b[38;5;240m/$page  \x1b[38;5;244m\$shell\x1b[0m\x1b[38;5;240m/$shel\x1b[0m  \x1b[38;5;244m\$term\x1b[0m\x1b[38;5;240m/$ter\x1b[0m\n"
-end
-
+# }}}
 
 warning
 cat $ANSI
 echo -e
 getdistro
 network
-#environ
-#echo -e
 
 # vim: ts=2 sw=2 noet :

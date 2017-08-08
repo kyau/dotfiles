@@ -1,11 +1,6 @@
-! ~/.Xresources: xorg theme resources
-!
-! Author:  kyau
-! Version: 0.3
-! Date:    2017-08-04T14:11:01-0700
+! $Arch: Xresources,v 1.006 2017/08/07 18:54:53 kyau Exp $
 
-
-! Xft font resources -----------------------------------------------------------
+! Xft {{{
 Xft.antialias:				true
 Xft.autohint:				false
 Xft.dpi:					96
@@ -13,9 +8,8 @@ Xft.hinting:				true
 Xft.hintstyle:				hintslight
 Xft.lcdfilter:				lcddefault
 Xft.rgba:					rgb
-
-
-! URxvt settings ---------------------------------------------------------------
+! }}}
+! urxvt {{{
 urxvt*font:					xft:Knack Nerd Font:style=regular:pixelsize=14:antialias=true:hinting=true
 urxvt*boldfont:				xft:Knack Nerd Font:style=bold:pixelsize=14:antialias=true:hinting=true
 URxvt.allow_bold:			true
@@ -40,8 +34,8 @@ URxvt.loginShell:			true
 URxvt.buffered:				true
 URxvt.letterSpace:			-1
 URxvt.iconFile:				/usr/share/icons/elementary/apps/16/utilities-terminal.svg
-
-! st settings ---------------------------------------------------------------
+! }}}
+! suckless terminal {{{
 st.termname:				st-256color
 st.shell:					/bin/fish
 !st.font:					PxPlus_IBM_VGA8 Nerd Font:style=Book:size=12:antialias=true:hinting=true
@@ -60,18 +54,15 @@ st.blinktimeout:			800
 st.bellvolume:				100
 st.prompt_char:				$
 st.opacity:					180
-
-
-! ROFI settings ----------------------------------------------------------------
+! }}}
+! rofi {{{
 rofi.color-enabled:			true
 rofi.color-window:			#393939, #393939, #268bd2
 rofi.color-normal:			#393939, #ffffff, #393939, #268bd2, #ffffff
 rofi.color-active:			#393939, #268bd2, #393939, #268bd2, #205171
 rofi.color-urgent:			#393939, #f3843d, #393939, #268bd2, #ffc39c
 rofi.separator-style:		solid
-
-
-! KYAU color scheme ------------------------------------------------------------
+! KYAU color scheme {{{
 ! special
 *.foreground:	#a0a0a0
 *.background:	#090c19
@@ -100,5 +91,6 @@ rofi.separator-style:		solid
 ! white
 *.color7:		#aeaeae
 *.color15:		#dbdde4
+! }}}
 
 ! vim: ft=xdefaults ts=4 sw=4 noet :

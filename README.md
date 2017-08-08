@@ -1,5 +1,5 @@
-    # Version: 0.5
-    # Date:    2017-08-06T00:35:19-0700
+    # Version: 0.6
+    # Date:    2017-08-07T18:10:33-0700
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -24,4 +24,5 @@ Initiate the user environment. Does nothing with no OPTION.
 ### attribution
 * [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
-
+* [nvie/vimrc](https://github.com/nvie/vimrc) - inspiration, documentation & some config portions
+* [The ultimate Vim configuration](https://web.archive.org/web/20170222115910/http://amix.dk/vim/vimrc.html) - inspiration and some config parts

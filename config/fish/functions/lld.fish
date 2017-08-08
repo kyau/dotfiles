@@ -1,4 +1,5 @@
-# Defined in - @ line 0
-function lld --description 'alias lld ls -At1'
+# $Arch: lld.fish,v 1.001 2017/08/07 19:37:55 kyau Exp $
+
+function lld
 	ls -At1 $argv;
 end

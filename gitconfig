@@ -1,9 +1,4 @@
-# ~/.gitconfig: global git configuration
-#
-# Author:  kyau
-# Version: 0.1
-# Date:    2013-05-10T12:54:46-0700
-
+# $Arch: gitconfig,v 1.002 2017/08/07 18:59:10 kyau Exp $
 
 [core]
     editor = vim

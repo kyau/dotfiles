@@ -1,151 +1,118 @@
-# ~/.bash.d/aliases: bash alias definitions
-#
-# Author:  kyau
-# Version: 0.1
-# Date:    2013-04-11T13:48:55-0700
+# $Arch: aliases,v 1.002 2017/08/07 19:08:44 kyau Exp $
 
-
-# Security ---------------------------------------------------------------------
-
+# Security {{{
 # Add confirmations
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -I --preserve-root"
 alias ln="ln -i"
-
 # Disallow changing permissions on '/'
 alias chown="chown --preserve-root"
 alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
-
 # Password generation
 #alias passwd-gen="head -c 16 /dev/random | uuencode -m - | sed -ne 2p"
-
-
-# Program Defaults -------------------------------------------------------------
-
+# }}}
+# Program Defaults {{{
 # Start calculator with math support
 alias bc="bc -l"
-
 # Human readable output
 alias df="df -Th --total"
 alias du="du -ch"
-
 # Vim is default editor
 alias edit="vim"
 alias vi="vim"
-
 # Parent directories on demand
 alias mkdir="mkdir -pv"
-
 # Enable wget resume by default
 alias wget="wget -c"
-
-
-# Git --------------------------------------------------------------------------
-
+# }}}
+# Git {{{
 # Pretty git log
 alias gitlog="git log --graph --all --format=format:'%C(bold red)%h%C(reset) %C(white)-%C(reset) %C(reset)%s %C(bold green)(%ar)%C(reset) %C(bold cyan)[%an]%C(reset)%C(bold yellow)%d%C(reset)%n''''    %C(white)%b%C(reset)' --no-abbrev-commit"
-
 # Git status
 alias gits="git status"
-
 # Display all files to add, don't actually add them (dry run)
 alias gitad="git add -A -n ."
-
 # Add all untracked files to repository
 alias gitadd="git add -A ."
-
 # Automatically stage files that have been modified and deleted, will not
 # add new files
 alias commit="git commit -a"
-
 # Push local to origin (default branch: master)
 push () {
-    if [ -f $1 ] ; then
-        git push origin $1
-    else
-        git push origin master
-    fi
+	if [ -f $1 ] ; then
+		git push origin $1
+	else
+		git push origin master
+	fi
 }
-
 # Pull origin to local (default branch: master)
 pull () {
-    if [ -f $1 ] ; then
-        git pull origin $1
-    else
-        git pull origin master
-    fi
+	if [ -f $1 ] ; then
+		git pull origin $1
+	else
+		git pull origin master
+	fi
 }
-
 # List all untracked files
 alias gitls="git ls-files -o --exclude-standard"
-
 # Show all branches in gitk
 alias gitk='gitk --all &'
-
-
-# Network ----------------------------------------------------------------------
-
+# }}}
+# Network {{{
 # Display external IP address
 alias myip="curl ifconfig.me"
-
 # SSH without saving the hostkey
 alias sshno="ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
-
-
-# Misc -------------------------------------------------------------------------
-
+# }}}
+# Misc {{{
 # Enable color when possible
 alias diff="colordiff -u"
 alias egrep="egrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias fgrep="fgrep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias pacaur="pacaur --color=always"
-
 # Listing directories made easy
 alias ls="ls --color=auto --file-type --group-directories-first"
 alias lsa="ls -A"
 alias ll="ls -l --human-readable"
 alias lla="ll -A"
 alias lld="ls -At1"
-
 # Less painful directory navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cd..="cd .."
-
 # Short-hand
 alias c="clear"
 alias g="grep"
 alias h="history"
 alias k="kill"
 alias k9="kill -9"
-
-
-# Functions --------------------------------------------------------------------
-
+# }}}
+# Functions {{{
 # Extract most known archives with one command
 extract () {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tbz2)     ;;
-            *.tar.bz2)  tar xjf $1      ;;
-            *.tgz)      ;;
-            *.tar.gz)   tar xzf $1      ;;
-            *.bz2)      bunzip2 $1      ;;
-            *.rar)      unrar e $1      ;;
-            *.gz)       gunzip $1       ;;
-            *.tar)      tar xf $1       ;;
-            *.zip)      unzip $1        ;;
-            *.Z)        uncompress $1   ;;
-            *.7z)       7z x $1         ;;
-            *)  echo "'$1' cannot be extracted via extract()"   ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tbz2);;
+			*.tar.bz2) tar xjf $1;;
+			*.tgz);;
+			*.tar.gz) tar xzf $1;;
+			*.bz2) bunzip2 $1;;
+			*.rar) unrar e $1;;
+			*.gz) gunzip $1;;
+			*.tar) tar xf $1;;
+			*.zip) unzip $1;;
+			*.Z) uncompress $1;;
+			*.7z) 7z x $1;;
+			*) echo "'$1' cannot be extracted via extract()";;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
+# }}}
 
-# vim:ft=sh
+# vim: ft=sh ts=2 sw=2 noet :

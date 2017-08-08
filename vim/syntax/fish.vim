@@ -1,59 +1,39 @@
+" $Arch: fish.vim,v 1.001 2017/08/07 19:22:10 kyau Exp $
 
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
-  finish
+if exists('b:current_syntax')
+    finish
 endif
 
-if version < 600
-  so <sfile>:p:h/sh.vim
-else
-  runtime! syntax/sh.vim
-  unlet b:current_syntax
-endif
+syntax case match
 
-syntax keyword shFunctionKey .
-syntax keyword shFunctionKey alias
-syntax keyword shFunctionKey and
-syntax keyword shFunctionKey begin
-syntax keyword shFunctionKey bg
-syntax keyword shFunctionKey bind
-syntax keyword shFunctionKey block
-syntax keyword shFunctionKey break
-syntax keyword shFunctionKey breakpoint
-syntax keyword shFunctionKey builtin
-syntax keyword shFunctionKey case
-syntax keyword shFunctionKey cd
-syntax keyword shFunctionKey command
-syntax keyword shFunctionKey commandline
-syntax keyword shFunctionKey complete
-syntax keyword shFunctionKey contains
-syntax keyword shFunctionKey continue
-syntax keyword shFunctionKey count
-syntax keyword shFunctionKey echo
-syntax keyword shFunctionKey else
-syntax keyword shFunctionKey emit
-syntax keyword shFunctionKey end
-syntax keyword shFunctionKey exec
-syntax keyword shFunctionKey exit
-syntax keyword shFunctionKey fg
-syntax keyword shFunctionKey for
-syntax keyword shFunctionKey function
-syntax keyword shFunctionKey functions
-syntax keyword shFunctionKey history
-syntax keyword shFunctionKey if
-syntax keyword shFunctionKey jobs
-syntax keyword shFunctionKey not
-syntax keyword shFunctionKey or
-syntax keyword shFunctionKey pwd
-syntax keyword shFunctionKey random
-syntax keyword shFunctionKey read
-syntax keyword shFunctionKey return
-syntax keyword shFunctionKey set
-syntax keyword shFunctionKey status
-syntax keyword shFunctionKey switch
-syntax keyword shFunctionKey test
-syntax keyword shFunctionKey ulimit
-syntax keyword shFunctionKey while
+syntax keyword fishKeyword begin function end
+syntax keyword fishConditional if else switch
+syntax keyword fishRepeat while for in
+syntax keyword fishLabel case
 
-syntax keyword shFunctionKey in
+syntax match fishComment /#.*/
+syntax match fishSpecial /\\$/
+syntax match fishIdentifier /\$[[:alnum:]_]\+/
+syntax region fishString start=/'/ skip=/\\'/ end=/'/
+syntax region fishString start=/"/ skip=/\\"/ end=/"/ contains=fishIdentifier
+syntax match fishCharacter /\v\\[abefnrtv *?~%#(){}\[\]<>&;"']|\\[xX][0-9a-f]{1,2}|\\o[0-7]{1,2}|\\u[0-9a-f]{1,4}|\\U[0-9a-f]{1,8}|\\c[a-z]/
+syntax match fishStatement /\v;\s*\zs\k+>/
+syntax match fishCommandSub /\v\(\s*\zs\k+>/
+
+syntax region fishLineContinuation matchgroup=fishStatement
+            \ start='\v^\s*\zs\k+>' skip='\\$' end='$'
+            \ contains=fishSpecial,fishIdentifier,fishString,fishCharacter,fishStatement,fishCommandSub
+
+highlight default link fishKeyword Keyword
+highlight default link fishConditional Conditional
+highlight default link fishRepeat Repeat
+highlight default link fishLabel Label
+highlight default link fishComment Comment
+highlight default link fishSpecial Special
+highlight default link fishIdentifier Identifier
+highlight default link fishString String
+highlight default link fishCharacter Character
+highlight default link fishStatement Statement
+highlight default link fishCommandSub fishStatement
+
+let b:current_syntax = 'fish'

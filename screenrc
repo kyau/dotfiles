@@ -1,75 +1,49 @@
-# ~/.screenrc: screen manager config
-#
-# Author:  kyau
-# Version: 0.1
-# Date:    2013-04-21T16:26:41-0700
+# $Arch: screenrc,v 1.002 2017/08/07 18:59:41 kyau Exp $
 
-
-# General ----------------------------------------------------------------------
-
+# General {{{
 # Automatically detach on SIGHUP
 autodetach on
-
 # Enable alternate screen support
 altscreen on
-
 # CR/LF = on, LF = off
 crlf off
-
 # Erase background with current background color
 defbce on
-
 # Login shell
 deflogin on
-
 # Default new window scrollback
 defscrollback 4096
-
 # Shell starts as a login-shell
 defshell bash
-
 # Display of extended ASCII, kana & kanji
 defutf8 on
-
 # Turn off flow-control
 defflow off
-
 # Display msgs for N seconds
 msgwait 3
-
 # Cryptic messages
 nethack on
-
 # Copyright notice during startup
 startup_message off
-
 # Set $TERM
 term screen-256color
-
 # Terminal capabilities
 termcapinfo xterm*|rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-
 # Visual bell
 vbell off
-
-
-# Visual -----------------------------------------------------------------------
-
+# }}}
+# Visual {{{
 # Background screen stuff
 backtick 1 0    0       "whoami"
 backtick 2 300  300     true
 #backtick 2 300  300     "check_updates.sh"
-
 # Caption / hardstatus
 caption always
 caption string '%{= kw} %?%{K}%-w%{-}%?%{Bk} [%n] %{-}%?%{K}%+w%{-}%? %= %?%{y}%2`%{-} %{C}|%? %{W}%Y-%m-%d%{c}T%{-}%0c:%s %{-}'
 hardstatus string "%1`@%H:%h%? [%1n]%?"
-
-
-# Keybindings ------------------------------------------------------------------
-
+# }}}
+# Keybindings {{{
 bind s split -v
-
 # Use F1-F8 to switch windows
 bindkey -k k1 select 0
 bindkey -k k2 select 1
@@ -79,29 +53,23 @@ bindkey -k k5 select 4
 bindkey -k k6 select 5
 bindkey -k k7 select 6
 bindkey -k k8 select 7
-
 # VIM-style bindings
 bind j focus down
 bind k focus up
 bind h focus left
 bind l focus right
-
 bind J resize +5
 bind K resize -5
-
 bind ^b
 bind ^b screen -t '' "${SHELL}"
-
-
-# Startup ----------------------------------------------------------------------
-
+# }}}
+# Startup {{{
 # Screensaver: cmatrix
 idle 300 eval "screen -t matrix cmatrix" "idle 0"
-
 # Launch default shell window
 screen -t '' 0
-
 # Fit screen to window size
 fit
+# }}}
 
 # vim:ft=screen

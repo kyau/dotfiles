@@ -1,8 +1,6 @@
-# ------------------------------------------------------------------------------
-# tlp - Parameters for power saving
-# See full explanation: http://linrunner.de/en/tlp/docs/tlp-configuration.html
+# $Arch: tlp,v 1.007 2017/08/07 19:19:30 kyau Exp $
 
-
+# General Settings {{{
 TLP_ENABLE=1
 TLP_DEFAULT_MODE=AC
 TLP_PERSISTENT_DEFAULT=0
@@ -10,6 +8,8 @@ DISK_IDLE_SECS_ON_AC=0
 DISK_IDLE_SECS_ON_BAT=2
 MAX_LOST_WORK_SECS_ON_AC=15
 MAX_LOST_WORK_SECS_ON_BAT=60
+# }}}
+# CPU {{{
 CPU_SCALING_GOVERNOR_ON_AC=powersave
 CPU_SCALING_GOVERNOR_ON_BAT=powersave
 #CPU_SCALING_MIN_FREQ_ON_AC=800000
@@ -29,33 +29,47 @@ SCHED_POWERSAVE_ON_BAT=1
 NMI_WATCHDOG=0
 ENERGY_PERF_POLICY_ON_AC=performance
 ENERGY_PERF_POLICY_ON_BAT=powersave
+# }}}
+# PCI/SATA/LAN {{{
 SATA_LINKPWR_ON_AC=max_performance
 SATA_LINKPWR_ON_BAT=min_power
 AHCI_RUNTIME_PM_TIMEOUT=15
 PCIE_ASPM_ON_AC=performance
 PCIE_ASPM_ON_BAT=powersave
 WOL_DISABLE=Y
+# }}}
+# Sound {{{
 SOUND_POWER_SAVE_ON_AC=0
 SOUND_POWER_SAVE_ON_BAT=1
 SOUND_POWER_SAVE_CONTROLLER=Y
+# }}}
+# Ultrabay {{{
 BAY_POWEROFF_ON_AC=0
 BAY_POWEROFF_ON_BAT=0
 BAY_DEVICE="sr0"
+# }}}
+# Runtime {{{
 RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
 RUNTIME_PM_BLACKLIST="00:02.0 0d:00.0"
+# }}}
+# USB {{{
 USB_AUTOSUSPEND=1
 USB_BLACKLIST="8087:0024 1d6b:0002 1d6b:0003 0781:5571 8087:0024 1d6b:0002"
 USB_BLACKLIST_BTUSB=0
 USB_BLACKLIST_PHONE=0
 USB_BLACKLIST_WWAN=0
 RESTORE_DEVICE_STATE_ON_STARTUP=0
+# }}}
+# Battery Thresholds {{{
 START_CHARGE_THRESH_BAT0=75
 STOP_CHARGE_THRESH_BAT0=100
 # Ultrabay / Slice / Replaceable battery (values in %)
 #START_CHARGE_THRESH_BAT1=75
 #STOP_CHARGE_THRESH_BAT1=80
 RESTORE_THRESHOLDS_ON_BAT=1
+# }}}
+# Radio Devices {{{
 # Radio devices to disable on connect.
 #DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
 #DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
@@ -70,3 +84,6 @@ RESTORE_THRESHOLDS_ON_BAT=1
 # Radio devices to enable/disable when undocked.
 #DEVICES_TO_ENABLE_ON_UNDOCK="wifi"
 #DEVICES_TO_DISABLE_ON_UNDOCK=""
+# }}}
+
+# vim: ft=conf ts=2 sw=2 noet :

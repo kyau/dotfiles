@@ -1,13 +1,4 @@
-" ~/.vimrc: personal vim initializations
-"
-" Author:  kyau
-" Version: 0.2
-" Date:    2013-04-24T16:30:44-0700
-"
-" Attribution:
-" - https://github.com/nvie/vimrc
-" - http://amix.dk/vim/vimrc.html
-
+" $Arch: vimrc,v 1.015 2017/08/07 19:05:01 kyau Exp $
 
 " General {{{
 " ------------------------------------------------------------------------------
@@ -16,24 +7,20 @@ filetype indent on					" Enable filetype-specific indenting
 filetype plugin on					" Enable filetype-specific plugins
 set autoread						" Auto read when changed from the outside
 " }}}
-
-
 " Colors & Fonts {{{
-syntax enable						" Enable syntax highlighting
-try									" Load theme if exists
-	colorscheme euphrasia
+syntax enable                       " Enable syntax highlighting
+try                                 " Load theme if exists
+    colorscheme euphrasia
 catch
 endtry
-set background=dark					" Set background to dark color scheme
-set encoding=utf8					" Set utf-8 as standard encoding
+set background=dark                 " Set background to dark color scheme
+set encoding=utf8                   " Set utf-8 as standard encoding
 set termencoding=utf8
-set fileformats=unix,dos,mac		" Use Unix as the standard file type
-set formatoptions+=qrn1				" When wrapping paragraphs, don't end lines
-									" 	with 1-letter words
-set t_Co=256						" Always use 256-color mode
+set fileformats=unix,dos,mac        " Use Unix as the standard file type
+set formatoptions+=qrn1             " When wrapping paragraphs, don't end lines
+                                    "   with 1-letter words
+set t_Co=256                        " Always use 256-color mode
 " }}}
-
-
 " Status Line {{{
 " ------------------------------------------------------------------------------
 set cmdheight=2						" Use a status bar taht is 2 rows high
@@ -64,8 +51,6 @@ set statusline+=%1*\ \ %l%*			" Current line
 set statusline+=%2*,%1*%c%*         " Column number
 set statusline+=%2*\ 0x%04B%*\      " Character under cursor
 " }}}
-
-
 " Vim User Interface {{{
 " ------------------------------------------------------------------------------
 set backspace=indent,eol,start      " allow backspacing over everything in insert mode
@@ -73,13 +58,15 @@ set clipboard=unnamed               " normal OS clipboard interaction
 set colorcolumn=81					" Highlight the column after the 80th
 set cursorline						" Highlight the current line in all windows 
 									" 	and update on cursor movement
+set fillchars+=vert:│
 set hidden							" Hide buffers when they are abandoned
 set hlsearch						" Highlight search results
 set incsearch                       " show search matches as you type
 set ignorecase						" Case-insensitive search
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 									" Characters to display as invisible chars 
-									" 	when :list is enabled
+									"   when :list is enabled
 set lazyredraw						" Don't redraw while executing macros
 set magic							" For regular expressions, turn magic on
 set matchtime=2 					" x/10 seconds to show the matching brackets
@@ -99,7 +86,7 @@ set pastetoggle=<F2>                " when in insert mode, press <F2> to go to
                                     "    that won't be autoindented
 set t_vb=							" Null the bell
 set timeoutlen=500					" Mapped key sequences timeout after (ms)
-"set virtualedit=all                 " allow the cursor to go in to "invalid" places
+"set virtualedit=all                 " allow the cursor to go in to 'invalid' places
 set whichwrap+=<,>,h,l,[,]			" Allow horizontal directional keys to wrap
 set wildmenu						" Turn on the WiLd menu
 set wildignore=*.o,*~,*.pyc,*.class,*.bak,*.swp
@@ -111,19 +98,27 @@ else
 	set wildignore+=.git\*,.hg\*,.svn\*
 endif
 " }}}
-
-
 " Folding Rules {{{
 " ------------------------------------------------------------------------------
 set foldenable                      " enable folding
 set foldcolumn=1                    " add a fold column
 set foldmethod=marker               " detect triple-{ style fold markers
-set foldlevelstart=99               " start out with everything folded
+set foldlevelstart=0                " start out with everything folded
 "set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-                                    " which commands trigger auto-unfold
+
+function! MyFoldText()
+    let nblines = v:foldend - v:foldstart + 1
+    let nblines = '(lines: ' . nblines. ')'
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let comment = substitute(getline(v:foldstart),"^ *","",1)
+    let comment = substitute(comment,"^[\"|\#|\;|!] ", "", "")
+    let comment = substitute(comment," \{\{\{","","")
+    let expansionString = repeat(" ", w - strwidth(nblines.comment.'"'))
+    let txt = '  ' . comment . expansionString . nblines . ' '
+    return txt
+endfunction
+set foldtext=MyFoldText()
 " }}}
-
-
 " Backups, History & Undo {{{
 " ------------------------------------------------------------------------------
 set nobackup						" Turn off file backup
@@ -133,11 +128,9 @@ set noswapfile						" Do not use a swapfile for buffers
 set undolevels=1000					" Keep 1000 levels of undo
 if v:version > 730
 	set undofile					" Keep a persistent undo backup file
-	set undodir=~/.vim/.undo,~/tmp,/tmp
+	set undodir=~/.vim/.undo,~/tmp/vim,/tmp/vim
 endif
 " }}}
-
-
 " Text, Tab & Indent Related {{{
 " ------------------------------------------------------------------------------
 set autoindent						" Auto indent
@@ -161,17 +154,14 @@ set textwidth=79 					" Maximum width of text being inserted
 set smartindent						" Smart indenting when starting a newline
 set wrap							" Wrap lines
 " }}}
-
 " Switch to a more POSIX-compatible shell for vim {{{
 if &shell =~# 'fish$'
     set shell=bash
 endif
 " }}}
-
 " Common abbreviations / misspellings {{{
 source ~/.vim/autocorrect.vim
 " }}}
-
 " Keybindings {{{
 " ------------------------------------------------------------------------------
 " Treat long lines as break lines (useful when moving around in them)
@@ -211,12 +201,16 @@ endif
 vnoremap <silent> * :call VisualSelection('f', '')<cr>
 vnoremap <silent> # :call VisualSelection('b', '')<cr>
 " }}}
-
-
 " Leader Keybindings {{{
 " ------------------------------------------------------------------------------
 let mapleader = ","					" Map <leader> key to ,
 let g:mapleader = ","				" Allow functions to access <leader> key
+
+" Quick edit ~/.vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Reload ~/.vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Fast saving
 map <leader>w :w!<cr>
@@ -238,6 +232,9 @@ map <leader>e :e ~/buffer<cr>
 
 " Insert timestamp
 map <leader>dt :r !date +"\%Y-\%m-\%dT\%H:\%M:\%S\%z"<cr>i<bs><esc>
+
+" Insert document header
+map <leader>tt i $Arch: <esc>:put =expand('%:t')<cr>i<bs><esc>A,v 1.000 <esc>:r !date +"\%Y/\%m/\%d \%H:\%M:\%S "<cr>i<bs><esc>A<esc>:r !echo $USER<cr>i<bs><esc>A Exp $<esc><home>i
 
 " Remove the Windows ^M (for when encodings get messed up)
 map <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -311,9 +308,10 @@ map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+
+" Convert file to unix unicode utf-8
+map <leader>u :set ff=unix<cr>:set fileencoding=utf8<cr>
 " }}}
-
-
 " Buffers & Tabs {{{
 " ------------------------------------------------------------------------------
 " Specify the behavior when switching between buffers

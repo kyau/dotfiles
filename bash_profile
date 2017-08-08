@@ -1,13 +1,6 @@
-# ~/.bash_profile: executed by bash(1) for login shells.
-#
-# Author:  kyau
-# Version: 0.1
-# Date:    2013-04-28T05:04:14-0700
+# $Arch: bash_profile,v 1.002 2017/08/07 18:56:44 kyau Exp $
 
-# If .bashrc exists source upon login
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-
-# Additional login display
 uname -mrsv
 uptime
 echo

@@ -1,3 +1,5 @@
+# $Arch: sysinfo.fish,v 1.010 2017/08/07 19:27:26 kyau Exp $
+
 function sysinfo
 	clear
 	source $HOME/.config/fish/motd.fish

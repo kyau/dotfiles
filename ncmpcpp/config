@@ -1,8 +1,12 @@
+# $Arch: config,v 1.003 2017/08/07 22:22:09 kyau Exp $
+
+# MPD {{{
 mpd_music_dir = "/mnt/archive/media/Music/"
 mpd_crossfade_time = "3"
 mpd_host = "127.0.0.1"
 mpd_port = "6600"
-
+# }}}
+# Visualizer {{{
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "my_fifo"
 visualizer_sync_interval = "30" 
@@ -10,7 +14,8 @@ visualizer_in_stereo = "no"
 visualizer_type = "spectrum" (spectrum/wave)
 visualizer_look = "▋▋"
 visualizer_color = "blue"
-
+# }}}
+# Theme {{{
 current_item_prefix = "$(white)$r"
 current_item_suffix = "$/r$(end)"
 
@@ -33,7 +38,8 @@ alternative_header_second_line_format = {{$6$b%a$/b$9}{ - $b$7{%t}|{%f}$9$/b}{ (
 
 color1 = "white"
 color2 = "black"
-
+# }}}
+# General Settings {{{
 mouse_support = "yes"
 header_visibility = "no"
 statusbar_visibility = "yes"
@@ -46,3 +52,6 @@ autocenter_+mode = "yes"
 ignore_leading_the = "yes"
 main_window_color = "magenta"
 system_encoding = "utf8"
+# }}}
+
+# vim: ft=conf ts=2 sw=2 noet :

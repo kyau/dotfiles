@@ -1,4 +1,5 @@
-# Defined in - @ line 0
-function k --description 'alias k kill'
-	kill  $argv;
+#	$Arch: k.fish,v 1.001 2017/08/07 19:34:12 kyau Exp $
+
+function k
+	kill $argv;
 end

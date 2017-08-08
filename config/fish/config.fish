@@ -1,7 +1,14 @@
+# $Arch: config.fish,v 1.010 2017/08/07 19:25:03 kyau Exp $
+
+# General {{{
 # always fix delete
 tput smkx
-
-# is this an interactive shell?
+# proper umask
+umask 077
+# default greeting
+set fish_greeting
+# }}}
+# Interactive Shell {{{
 if status --is-interactive
 	# Enable core dumping
 	ulimit -c unlimited
@@ -17,17 +24,14 @@ if status --is-interactive
 	set -gx IRCNICK kyau
 	set -gx VISUAL $EDITOR
 	set -gx PAGER less
-
+	# setup - for previous directory
 	abbr -a -- - 'cd -'
-
+  # display the motd
 	source $HOME/.config/fish/motd.fish
 	echo
 end
-
-# default greeting
-set fish_greeting
-
-# is this a login shell?
+# }}}
+# Login Shell {{{
 if status --is-login
 	# Xorg login if applicable
 	set sysd (systemctl list-units --type target | string match -r 'graphical\.target    loaded active active' | sed -r 's/    / /' | string split " ")
@@ -37,5 +41,6 @@ if status --is-login
 		end
 	end
 end
+# }}}
 
 # vim: ts=2 sw=2 noet :

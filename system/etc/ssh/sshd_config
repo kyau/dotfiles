@@ -1,10 +1,10 @@
-#   $OpenBSD: sshd_config,v 1.101 2017/03/14 07:19:07 djm Exp $
+# $Arch: sshd_config,v 1.006 2017/08/07 19:19:48 kyau Exp $
 
 Protocol 2
 Port 22
 LogLevel INFO
-
-Banner /etc/ssh/banner
+Banner /etc/ssh/sshd_banner
+AllowGroups ssh
 
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
@@ -17,10 +17,8 @@ ChallengeResponseAuthentication no
 PubkeyAuthentication yes
 LoginGraceTime 20
 AuthorizedKeysFile .ssh/authorized_keys
-
 UsePAM yes
 PrintMotd no
-
 Subsystem sftp /usr/lib/ssh/sftp-server
 
-AllowGroups ssh
+# vim: ft=sshdconfig ts=2 sw=2 noet :

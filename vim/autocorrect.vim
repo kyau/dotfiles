@@ -1,3 +1,5 @@
+" $Arch: autocorrect.vim,v 1.000 2017/08/07 19:20:49 kyau Exp $
+
 iab abbout about
 iab abotu about
 iab abouta about a

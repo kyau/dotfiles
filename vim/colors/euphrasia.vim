@@ -1,10 +1,6 @@
-" ~/.vim/colors/euphrasia.vim: colour scheme for Vim
-"
-" Author:  bohoomil,kyau
-" Version: 1.1
-" Date:    2013-04-10T00:26:34-0700
+" $Arch: euphrasia.vim,v 1.011 2017/08/07 19:21:07 kyau Exp $
 
-
+" General {{{
 set background=dark
 hi clear
 if exists("syntax_on")
@@ -12,8 +8,8 @@ if exists("syntax_on")
 endif
 
 let g:colors_name="euphrasia"
-
-" Terminal (Vim) --------------------------------------------------------------
+" }}}
+" Terminal (Vim) {{{
 if &t_Co > 255
 	hi Normal                  ctermfg=none
 	hi Boolean                 ctermfg=13
@@ -142,9 +138,9 @@ if &t_Co > 255
 	hi rstCitation             ctermfg=7
 	hi rstQuotedLiteralBlock   ctermfg=11
 	hi rstLineBlock            ctermfg=6
-
-else " linux console settings
-
+" }}}
+" Linux Console Settings {{{
+else
 	hi Normal                  ctermfg=white   cterm=none
 	hi Boolean                 ctermfg=magenta                 cterm=bold
 	hi Character               ctermfg=white
@@ -270,11 +266,9 @@ else " linux console settings
 	hi rstCitation             ctermfg=black                   cterm=bold
 	hi rstQuotedLiteralBlock   ctermfg=yellow                  cterm=bold
 	hi rstLineBlock            ctermfg=cyan
-
 endif
-
-
-" GUI (GVim) ------------------------------------------------------------------
+" }}}
+" GUI (GVim) {{{
 hi Normal                  guifg=#F8F8F8 guibg=#090C19
 hi Boolean                 guifg=#F47BDA
 hi Character               guifg=#DBDDE4 guibg=#090C19 gui=none 
@@ -395,4 +389,4 @@ hi rstInterpretedTextOrHyperlinkReference guifg=#5DCE33
 hi rstCitation             guifg=#AEAEAE
 hi rstQuotedLiteralBlock   guifg=#FADD2D
 hi rstLineBlock            guifg=#258F8F
-
+" }}}
