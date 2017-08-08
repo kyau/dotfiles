@@ -25,10 +25,25 @@ xset r rate 250 60
 #nvidia-settings -a GlyphCache=1
 #nvidia-settings -a InitialPixmapPlacement=2
 # }}}
-# Clipboard {{{
+# Auto-Start {{{
+# Wallpaper
+nitrogen --restore
+# Clipboard
 if [ -x /usr/bin/autocutsel ]; then 
 	autocutsel -selection PRIMARY -fork
 fi
+# Hide mouse after 2 seconds of no use (except on background)
+unclutter --fork --timeout 2 --jitter 5 --ignore-scrolling --exclude-root &
+# Start pulseaudio session
+start-pulseaudio-x11
+# Corsair Keyboard
+ckb -bc &
+# Notifications
+#dunst &
+# Enable Compositing
+compton -bc &
+# Turn numlock on
+numlockx on &
 # }}}
 # WM Selection {{{
 case $1 in

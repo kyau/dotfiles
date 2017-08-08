@@ -159,19 +159,6 @@ for_window [class="Steam"] floating enable
 for_window [class="Xfd"] floating enable
 # }}}
 # Startup Applications {{{
-# corsair keyboard
-exec --no-startup-id ckb -bc &
-# pulseaudio
-exec --no-startup-id start-pulseaudio-x11 &
-# set background wallpaper
-exec --no-startup-id nitrogen --restore
-# enable compositing
-exec --no-startup-id compton -bc &
-# turn numlock on
-exec --no-startup-id numlockx on &
-# hide mouse after 2 seconds of no use
-exec --no-startup-id unclutter --fork --timeout 2 --jitter 5 --ignore-scrolling &
-# polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # }}}
 
