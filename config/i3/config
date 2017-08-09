@@ -39,7 +39,7 @@ client.urgent						#be1919 #d0cecd #090c19 #141021		#be1919
 client.placeholder			#312842 #000000 #090c19 #000000		#d0cecd
 client.background				#090c19
 # }}}
-# keybindings {{{
+# Keybindings {{{
 # start a terminal
 bindsym $mod+Return exec st
 # kill focused window
@@ -157,6 +157,7 @@ for_window [class="Nvidia-settings"] floating enable
 for_window [class="Qrazercfg"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Xfd"] floating enable
+for_window [class="Vinagre"] floating enable
 # }}}
 # Startup Applications {{{
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
