@@ -158,6 +158,7 @@ for_window [class="Qrazercfg"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Xfd"] floating enable
 for_window [class="Vinagre"] floating enable
+for_window [class="Virt-manager"] floating enable
 # }}}
 # Startup Applications {{{
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
