@@ -1,4 +1,4 @@
-# $Arch: sshd_config,v 1.006 2017/08/07 19:19:48 kyau Exp $
+# $Arch: sshd_config,v 1.007 2017/08/13 14:41:52 kyau Exp $
 
 Protocol 2
 Port 22
@@ -19,6 +19,7 @@ LoginGraceTime 20
 AuthorizedKeysFile .ssh/authorized_keys
 UsePAM yes
 PrintMotd no
+PrintlastLog no
 Subsystem sftp /usr/lib/ssh/sftp-server
 
 # vim: ft=sshdconfig ts=2 sw=2 noet :
