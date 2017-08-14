@@ -1,4 +1,4 @@
-# $Arch: config.fish,v 1.012 2017/08/13 14:39:42 kyau Exp $
+# $Arch: config.fish,v 1.014 2017/08/14 05:15:03 kyau Exp $
 
 # General {{{
 # Always fix the delete key
@@ -31,7 +31,7 @@ if status --is-interactive
 	# Pager w/ color
 	set -x PAGER "less"
 	set -x LESS "-RSM~gIsw"
-  # `set -gx` replaced `setenv` in fish 2.6+
+	# `set -gx` replaced `setenv` in fish 2.6+
 	set -gx LESS_TERMCAP_mb (set_color -o red)
 	set -gx LESS_TERMCAP_md (set_color -o red)
 	set -gx LESS_TERMCAP_me (set_color normal)
@@ -43,9 +43,17 @@ if status --is-interactive
 	# }}}
 	# Aliases {{{
 	source "$HOME/.config/fish/aliases.fish"
-
 	# }}}
-  # MOTD {{{
+	# SSH Agent {{{
+	source "$HOME/.config/fish/ssh-agent.fish"
+	if test -z "$SSH_ENV"
+		set -xg SSH_ENV $HOME/.ssh/environment
+	end
+	if not __ssh_agent_is_started
+		__ssh_agent_start
+	end
+	# }}}
+	# MOTD {{{
 	source "$HOME/.config/fish/motd.fish"
 	echo
 	# }}}
@@ -54,16 +62,13 @@ end
 # Login Shell {{{
 if status --is-login
 	# Xorg login if applicable
-	set sysd (systemctl list-units --type target | string match -r 'graphical\.target    loaded active active' | sed -r 's/    / /' | string split " ")
-	if [ $sysd[3] = "active" ]
-		if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
-			# Auto-start ssh-agent
-			/usr/bin/ssh-agent | sed 's/^/set -gx /g' | sed 's/=/ /g' | sed 's/; export.*$//g' | head -2 > "$HOME/.ssh/environment"
-			/usr/bin/chmod 600 "$HOME/.ssh/environment"
-			source "$HOME/.ssh/environment"
-			/usr/bin/ssh-add
-			# Auto-start Xorg
-			startx
+	set sysd (systemctl list-units --type target | string match -r 'graphical\.target		 loaded active active' | sed -r 's/		 / /' | string split " ")
+	if test (count $sysd) -gt 2
+		if [ $sysd[3] = "active" ]
+			if begin; test -z "$DISPLAY"; and test -n "$XDG_VTNR"; and test "$XDG_VTNR" = "1"; end
+				# Auto-start Xorg
+				startx
+			end
 		end
 	end
 end

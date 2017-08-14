@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.027 2017/08/14 04:47:49 kyau Exp $
+# $Arch: fish_prompt.fish,v 1.028 2017/08/14 05:10:12 kyau Exp $
 
 function fish_prompt
 	set -l status_copy $status
@@ -63,7 +63,7 @@ function fish_prompt
 		else if git_is_touched
 			set git_color "$color_error"
 		else
-			set git_color (printf "\\x1b[38;5;92m")
+			set git_color (printf "\\x1b[38;5;14m")
 		end
 		set -l git_ahead (git_ahead "*" "-" "*-")
 		set -l left_par "("
