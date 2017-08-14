@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.026 2017/08/14 03:43:42 kyau Exp $
+# $Arch: fish_prompt.fish,v 1.027 2017/08/14 04:47:49 kyau Exp $
 
 function fish_prompt
 	set -l status_copy $status
@@ -7,7 +7,7 @@ function fish_prompt
 	set -l base
 	set -l color (set_color white)
 	set -l color2 (set_color normal)
-	set -l color_error (set_color $fish_color_error)
+	set -l color_error (printf "\\x1b[38;5;124m")
 	set -l color_normal (set_color $fish_color_normal)
 	if test "$status_copy" -ne 0
 		set color "$color_error"
@@ -16,15 +16,12 @@ function fish_prompt
 
 	if test ! -z "$SSH_CLIENT"
 		if test 0 -eq (id -u "$USER")
-			printf "%s%s%s" "$color_error" (hostname -s) "$color_normal"
-		else
-			printf "\\x1b[38;5;238m%s%s" (hostname -s) "$color_normal"
-		end
-
-		if test 0 -eq (id -u "$USER")
 			echo -sn "$color_error\$ $color_normal"
+		end
+		if test 0 -eq (id -u "$USER")
+			printf "%s%s%s " "$color_error" (hostname -s) "$color_normal"
 		else
-			echo -sn " "
+			printf "\\x1b[38;5;242m%s%s " (hostname -s) "$color_normal"
 		end
 	else
 		if test 0 -eq (id -u "$USER")
@@ -34,7 +31,7 @@ function fish_prompt
 		end
 	end
 	if test "$PWD" = ~
-		set base (set_color cyan)"~"
+		set base (printf "\\x1b[38;5;14m")"~"
 	else if pwd_is_home
 		set dir
 	else
@@ -60,31 +57,24 @@ function fish_prompt
 			set git_color (set_color green)
 			if git_is_dirty
 				set git_glyph "$git_color $git_glyph $color_error$git_glyph"
-				set git_color "$color_error"
 			end
 		else if git_is_dirty
 			set git_color "$color_error"
 		else if git_is_touched
 			set git_color "$color_error"
 		else
-			set git_color (set_color cyan)
+			set git_color (printf "\\x1b[38;5;92m")
 		end
-		set -l git_ahead (git_ahead "+" "-" "+-")
-		if test "$branch_name" = "master"
-			set branch_name
-			if git_is_stashed
-				set branch_name "{}"
-			end
-		else
-			set -l left_par "("
-			set -l right_par ")"
-			if git_is_stashed
-				set left_par "{"
-				set right_par "}"
-			end
-			set branch_name " $git_color$left_par$color2$branch_name$git_color$right_par"
+		set -l git_ahead (git_ahead "*" "-" "*-")
+		set -l left_par "("
+		set -l right_par ")"
+		if git_is_stashed
+			set left_par "{"
+			set right_par "}"
 		end
-		echo -sn "$git_color$git_glyph$branch_name$git_ahead$color_normal"
+		set -l color_branch (printf "\\x1b[38;5;199m")
+		set branch_name "$git_color$left_par$branch_name$git_color$right_par"
+		echo -sn "$git_color$git_glyph$branch_name$git_ahead$color_normal "
 	else
 		echo -sn "$color_normal "
 	end
