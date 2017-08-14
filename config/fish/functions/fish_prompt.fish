@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.025 2017/08/14 00:40:29 kyau Exp $
+# $Arch: fish_prompt.fish,v 1.026 2017/08/14 03:43:42 kyau Exp $
 
 function fish_prompt
 	set -l status_copy $status
@@ -15,7 +15,6 @@ function fish_prompt
 	end
 
 	if test ! -z "$SSH_CLIENT"
-		set -l color ""
 		if test 0 -eq (id -u "$USER")
 			printf "%s%s%s" "$color_error" (hostname -s) "$color_normal"
 		else
@@ -56,11 +55,11 @@ function fish_prompt
 	end
 	if set branch_name (git_branch_name)
 		set -l git_color
-		set -l git_glyph "╍"
+		set -l git_glyph (printf " \\uf141 ")
 		if git_is_staged
 			set git_color (set_color green)
 			if git_is_dirty
-				set git_glyph "$git_color$git_glyph$color_error$git_glyph"
+				set git_glyph "$git_color $git_glyph $color_error$git_glyph"
 				set git_color "$color_error"
 			end
 		else if git_is_dirty
@@ -85,7 +84,8 @@ function fish_prompt
 			end
 			set branch_name " $git_color$left_par$color2$branch_name$git_color$right_par"
 		end
-		echo -sn " $git_color$git_glyph$branch_name$git_ahead"
+		echo -sn "$git_color$git_glyph$branch_name$git_ahead$color_normal"
+	else
+		echo -sn "$color_normal "
 	end
-	echo -sn "$color_normal "
 end
