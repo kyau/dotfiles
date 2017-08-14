@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.0022 2017/08/07 19:31:33 kyau Exp $
+# $Arch: fish_prompt.fish,v 1.023 2017/08/14 00:22:48 kyau Exp $
 
 function fish_prompt
     set -l status_copy $status
@@ -16,6 +16,13 @@ function fish_prompt
     end
     if test 0 -eq (id -u "$USER")
         echo -sn "$color_error\$ $color_normal"
+    end
+    if test ! -z "$SSH_CLIENT"
+			set -l color "$color2"
+			if test 0 -eq (id -u "$USER")
+				set color "$color_error"
+			end
+			echo -sn "$color"(hostname -s)"$color_normal "
     end
     if test "$PWD" = ~
         set base (set_color cyan)"~"
