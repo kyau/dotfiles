@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.024 2017/08/14 00:31:26 kyau Exp $
+# $Arch: fish_prompt.fish,v 1.025 2017/08/14 00:40:29 kyau Exp $
 
 function fish_prompt
 	set -l status_copy $status
@@ -15,11 +15,13 @@ function fish_prompt
 	end
 
 	if test ! -z "$SSH_CLIENT"
-		set -l color "\\x1b[38;5;238m"
+		set -l color ""
 		if test 0 -eq (id -u "$USER")
-			set color "$color_error"
+			printf "%s%s%s" "$color_error" (hostname -s) "$color_normal"
+		else
+			printf "\\x1b[38;5;238m%s%s" (hostname -s) "$color_normal"
 		end
-		printf "%s%s" "$color" (hostname -s) "$color_normal"
+
 		if test 0 -eq (id -u "$USER")
 			echo -sn "$color_error\$ $color_normal"
 		else
