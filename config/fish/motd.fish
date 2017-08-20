@@ -19,7 +19,11 @@ end
 function warning
   set -l cols (tput cols)
 	set -l left "  . here be dragons"
-	set -l lastlogin (last -2 -R  $USER | head -2 | cut -c 20- | sed -n 2p | sed -r 's/(.*) -.*/\1/')
+	if test $FISH_PLATFORM = "Linux"
+		set -l lastlogin (last -2 -R $USER | head -2 | cut -c 20- | sed -n 2p | sed -r 's/(.*) -.*/\1/')
+	else
+		set -l lastlogin (last -2 kyau | head -2 | cut -c 45- | sed -n 2p | sed -r "s/(.*) -.*/\1/")
+	end
   set -l tty (tty | sed -r 's/\/dev\/(.*)/\1/' | sed -r 's/\///')
   set -l right ".tty/$tty"
   set -l padding (get_padding (math $cols - (echo "$left$right" | string length)))
@@ -28,10 +32,12 @@ end
 # }}}
 # Distribution & Kernel Version {{{
 function getdistro
-	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/')
+	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/' | head -1)
 	switch $text
 		case 'Arch*'
 			printf " \x1b[38;5;32m \uf300 \x1b[38;5;252march\x1b[38;5;32mlinux\x1b[0m"
+		case 'OpenBSD*'
+			printf "    \x1b[38;5;226mOpenBSD\x1b[0m"
 		case '*'
 			printf " $text"
 	end
@@ -42,10 +48,16 @@ end
 # }}}
 # Hostname & IPs {{{
 function network
-	set -l nic (/bin/ls /sys/class/net | head -1)
-	set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
-	set -l fullhost (hostname -f)
-	printf "    \x1b[38;5;244m$fullhost\x1b[0m \x1b[38;5;240m($iplist)\n"
+	if test $FISH_PLATFORM = "Linux"
+		set -l nic (/bin/ls /sys/class/net | head -1)
+		set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
+		set -l fullhost (hostname -f)
+		printf "    \x1b[38;5;244m$fullhost\x1b[0m \x1b[38;5;240m($iplist)\n"
+	else
+		set -l iplist (cat /etc/systemip)
+		set -l fullhost (hostname)
+		printf "    \x1b[38;5;244m$fullhost\x1b[0m \x1b[38;5;240m($iplist)\n"
+	end
 end
 # }}}
 

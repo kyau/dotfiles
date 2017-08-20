@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # $Arch: dotme,v 2.021 2017/08/07 21:45:02 kyau Exp $
 
 # Configuration {{{
