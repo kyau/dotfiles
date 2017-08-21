@@ -1,10 +1,11 @@
 # $Arch: sysinfo.fish,v 1.010 2017/08/07 19:27:26 kyau Exp $
 
 function sysinfo
+  set -l colors
 	source $HOME/.config/fish/motd.fish
 	if test -f /usr/bin/xhost
 		if test (xhost)
-			set -l colors (xrdb -query | sed -n 's/.*color\([0-9]\)/\1/p' | sort -nu | cut -f2)
+			set colors (xrdb -query | sed -n 's/.*color\([0-9]\)/\1/p' | sort -nu | cut -f2)
 		end
 	else
 		set -l count 1
