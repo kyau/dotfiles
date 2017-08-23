@@ -25,6 +25,7 @@ config/fish/completions/fisher.fish
 config/fish/fishd.*
 ## irssi
 irssi/config
+irssi/away.log
 ## mpd
 config/mpd/database
 config/mpd/log

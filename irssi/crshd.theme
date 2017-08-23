@@ -235,7 +235,7 @@ formats = {
     line_start = "{line_start}";
     line_start_irssi = "{line_start}";
 
-    join = "%G>%N>       join %g>%n {channick $0}";
+    join = "%G>%N>       join %g>%n {channick $0} {chanhost $1}";
     part = "%R<%N<       part %r<%n {channick $0} {reason %C$2%b}";
     kick = "%R<%N<     kicked %r<%n {channick $0} {reason %C$2%b}";
     quit = "%R<%N<       quit %r<%n {channick $0} {reason %C$2%b}";
@@ -264,7 +264,7 @@ formats = {
     timestamp = "{timestamp %%I:%%M }";
   };
   "fe-common/irc" = {
-    chanmode_change = "%Y!%N!       mode %y!%n {channick $1}";
+    chanmode_change = "%Y!%N!       %bmode %y!%n %n{nick $2} %m{channick $1}";
     server_chanmode_change = "%Y!%N!       mode %y!%n {channick $1}";
 
     own_action = "{ownaction $[-11]0} $1";

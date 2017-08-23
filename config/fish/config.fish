@@ -1,8 +1,6 @@
-# $Arch: config.fish,v 1.015 2017/08/20 14:30:18 kyau Exp $
+# $Arch: config.fish,v 1.016 2017/08/23 02:06:45 kyau Exp $
 
 # General {{{
-# Always fix the delete key
-tput smkx
 # Set a proper umask
 umask 077
 # Null the default fish greeting
@@ -12,6 +10,8 @@ set -x FISH_PLATFORM (uname -s)
 # }}}
 # Interactive Shell {{{
 if status --is-interactive
+	# Always fix the delete key
+	tput smkx
 	# System variables {{{
 	ulimit -c unlimited
 	set -x PATH "$HOME/bin" $PATH
