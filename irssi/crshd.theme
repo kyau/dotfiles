@@ -176,7 +176,7 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%N";
+  sb_background = "%N%0";
 
   # default backround for "default" statusbar group
   #sb_default_bg = "%4";
@@ -189,22 +189,22 @@ abstracts = {
 
   # text at the beginning of statusbars. sb-item already puts
   # space there,so we don't use anything by default.
-  sbstart = "";
+  sbstart = "%G   ";
   # text at the end of statusbars. Use space so that it's never
   # used for anything.
   sbend = "";
 
-  topicsbstart = "%BChannel: %b\"$*";
-  topicsbend = "$*%b\"";
+  topicsbstart = "%C  %n%Z000000┇%n%b$*";
+  topicsbend = "$*%b";
 
-  prompt = " %r$* »%n ";
-  # prompt = " %N└╼ ";
+  #prompt = " %r$* »%n ";
+  prompt = "%N%z258f8f%Z000000 $* %k%N%Z258f8f%N ";
 
-  sb = "[$*]";
-  sbmode = " %N[%g%g+%n$*%N]";
-  sbaway = " %g/* zZzZ */%n";
-  sbservertag = ":%g$0%n";
-  sbnickmode = "$0";
+  sb = "%w$*%n %N%k%n%Z000000%n ";
+  sbmode = " %c+%w$*";
+  sbaway = " %c/* zZzZ */%n";
+  sbservertag = ":%c$0";
+  sbnickmode = "%M$0%n";
 
   # Usercount
   sb_usercount = "{sb %_$0%_ nicks ($1-)}";
@@ -219,11 +219,11 @@ abstracts = {
   # ',' separator
   sb_act_sep = " ";
   # normal text
-  sb_act_text = "%N%9$*%n";
+  sb_act_text = "%R$*%n";
   # public message
-  sb_act_msg = "%Y%9$*%n";
+  sb_act_msg = "%9$*%n";
   # hilight
-  sb_act_hilight = "%R%9$*%n";
+  sb_act_hilight = "%Y$*%n";
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "%R%9$1-%n";
 };
@@ -235,14 +235,14 @@ formats = {
     line_start = "{line_start}";
     line_start_irssi = "{line_start}";
 
-    join = "%G>%N>       join %g>%n {channick $0} {chanhost $1}";
-    part = "%R<%N<       part %r<%n {channick $0} {reason %C$2%b}";
-    kick = "%R<%N<     kicked %r<%n {channick $0} {reason %C$2%b}";
-    quit = "%R<%N<       quit %r<%n {channick $0} {reason %C$2%b}";
+    join = "%G%N       join %g%n {channick $0} {chanhost $1}";
+    part = "%R%N       part %r%n {channick $0} {reason %C$2%b}";
+    kick = "%R%N     kicked %r%n {channick $0} {reason %C$2%b}";
+    quit = "%R%N       quit %r%n {channick $0} {reason %C$2%b}";
     quit_once = "{channel $3} {channick $0} {chanhost $1} %kquit {reason %C$2%b}";
 
-    nick_changed = "%N{channick $[-13]0} %G>%n {channick $1}";
-    your_nick_changed = "%N          you %G>%n {channick $1}";
+    nick_changed = "%N{channick $[-13]0} %G%n {channick $1}";
+    your_nick_changed = "%N          you %G%n {channick $1}";
 
     pubmsg = "{pubmsgnick $2 {pubnick \00313$[-11]0}}$1";
 
@@ -272,5 +272,5 @@ formats = {
     action_private_query = "{pvtaction_query $[-11]0} $2";
     action_public = "{pubaction $[-11]0}$1";
   };
-  "Irssi::Script::ichat" = { ichat_timestamp = "%Y>%N>      $1 %y>%n"; };
+  "Irssi::Script::ichat" = { ichat_timestamp = "%Y%N      $1 %y%n"; };
 };

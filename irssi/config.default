@@ -1,50 +1,23 @@
-# $Arch: config.default,v 1.002 2017/08/07 22:25:21 kyau Exp $
+# $Arch: config.default,v 1.008 2017/08/24 22:16:38 kyau Exp $
 
 # Servers {{{
 servers = (
-	{ address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-	{
-		address = "ssl.efnet.org";
-		chatnet = "EFNet";
-		port = "9999";
-		use_tls = "yes";
-	},
-	{
-		address = "irc.esper.net";
-		chatnet = "EsperNet";
-		port = "6697";
-		use_tls = "yes";
-		tls_verify = "yes";
-	},
-	{
-		address = "chat.freenode.net";
-		chatnet = "Freenode";
-		port = "6697";
-		use_tls = "yes";
-		tls_verify = "yes";
-	},
-	{
-		address = "irc.oftc.net";
-		chatnet = "OFTC";
-		port = "6697";
-		use_tls = "yes";
-		tls_verify = "yes";
-	},
-	{ address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-	{
-		address = "irc.undernet.org";
-		chatnet = "Undernet";
-		port = "6667";
-	},
-	{
-		address = "dark.kyau.net";
-		chatnet = "ZNC";
-		port = "6697";
-		password = "kyau/freenode:INSERTPASSWORDHERE";
-		use_tls = "yes";
-		tls_verify = "no";
-		autoconnect = "yes";
-	}
+  {
+    address = "vhost";
+    chatnet = "EFnet";
+    port = "1234";
+    password = "kyau/efnet:PASSWORDHERE";
+    use_ssl = "yes";
+    autoconnect = "no";
+  },
+  {
+    address = "vhost";
+    chatnet = "Freenode";
+    port = "1234";
+    password = "kyau/freenode:PASSWORDHERE";
+    use_ssl = "yes";
+    autoconnect = "no";
+  }
 );
 # }}}
 # Networks {{{
@@ -86,12 +59,11 @@ chatnets = {
 # }}}
 # Channels {{{
 channels = (
-	{ name = "#archlinux"; chantnet = "ZNC"; autojoin = "Yes"; },
-	{ name = "#archlinux-offtopic"; chantnet = "ZNC"; autojoin = "Yes"; },
-	{ name = "#archlinux-security"; chantnet = "ZNC"; autojoin = "Yes"; },
-	{ name = "##ibmthinkpad"; chantnet = "ZNC"; autojoin = "Yes"; },
-	{ name = "#majormud"; chantnet = "ZNC"; autojoin = "Yes"; },
-	{ name = "##soyoustart"; chantnet = "ZNC"; autojoin = "Yes"; }
+  { name = "#kyaulabs"; chantnet = "EFnet"; autojoin = "Yes"; },
+  { name = "#devops"; chantnet = "EFnet"; autojoin = "Yes"; }
+	{ name = "#archlinux"; chantnet = "Freenode"; autojoin = "Yes"; },
+	{ name = "##ibmthinkpad"; chantnet = "Freenode"; autojoin = "Yes"; },
+	{ name = "#majormud"; chantnet = "Freenode"; autojoin = "Yes"; },
 );
 # }}}
 # Aliases {{{
@@ -253,45 +225,33 @@ aliases = {
 # }}}
 # Statusbar {{{
 statusbar = {
-
 	items = {
-
 		barstart = "{sbstart}";
 		barend = "{sbend}";
-
 		topicbarstart = "{topicsbstart}";
 		topicbarend = "{topicsbend}";
-
 		time = "{sb $Z}";
-		user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
-
+		user = " %Z000000┇%n {sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
 		window = "{sb $winref:$tag/$itemname{sbmode $M}}";
 		window_empty = "{sb $winref{sbservertag $tag}}";
-
 		prompt = "{prompt $[.15]itemname}";
 		prompt_empty = "{prompt $winname}";
-
 		topic = " $topic";
 		topic_empty = " Irssi v$J - http://www.irssi.org";
-
 		lag = "{sb Lag: $0-}";
 		act = "{sb Act: $0-}";
 		more = "-- more --";
 	};
 
 	default = {
-
 		window = {
-
 			disabled = "no";
 			type = "window";
 			placement = "bottom";
 			position = "1";
 			visible = "active";
-
 			items = {
 				barstart = { priority = "100"; };
-				time = { };
 				user = { };
 				window = { };
 				window_empty = { };
@@ -303,12 +263,10 @@ statusbar = {
 		};
 
 		window_inact = {
-
 			type = "window";
 			placement = "bottom";
 			position = "1";
 			visible = "inactive";
-
 			items = {
 				barstart = { priority = "100"; };
 				window = { };
@@ -319,12 +277,10 @@ statusbar = {
 		};
 
 		prompt = {
-
 			type = "root";
 			placement = "bottom";
 			position = "100";
 			visible = "always";
-
 			items = {
 				prompt = { priority = "-1"; };
 				prompt_empty = { priority = "-1"; };
@@ -333,12 +289,10 @@ statusbar = {
 		};
 
 		topic = {
-
 			type = "root";
 			placement = "top";
 			position = "1";
 			visible = "always";
-
 			items = {
 				topicbarstart = { priority = "100"; };
 				topic = { };
@@ -352,13 +306,20 @@ statusbar = {
 # Settings {{{
 settings = {
 	core = {
-		real_name = "http://kyau.net/";
+		real_name = "Student of Knowledge";
 		user_name = "kyau";
 		nick = "kyau";
 		timestamp_format = "%I:%M";
 	};
 	"fe-text" = { actlist_sort = "refnum"; };
-	"fe-common/core" = { theme = "crshd"; };
+	"fe-common/core" = {
+		activity_hide_level = "JOINS PARTS QUITS";
+		beep_msg_level = "MSGS HILIGHT DCCMSGS";
+		theme = "crshd";
+	};
+	keyboard = (
+		{ key = "meta-x"; id = "command"; data = "window last"; }
+	);
 };
 # }}}
 # Ignores {{{
@@ -366,11 +327,7 @@ ignores = (
 	{
 		level = "JOINS PARTS QUITS NICKS";
 		channels = (
-			"##ibmthinkpad",
-			"#archlinux",
-			"#archlinux-offtopic",
-			"#archlinux-security",
-			"##soyoustart"
+			"##ibmthinkpad"
 		);
 	}
 );
