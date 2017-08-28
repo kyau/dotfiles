@@ -1,4 +1,4 @@
-# $Arch: aliases.fish,v 1.001 2017/08/14 04:29:10 kyau Exp $
+# $Arch: aliases.fish,v 1.002 2017/08/28 11:50:56 kyau Exp $
 
 # Abbreviations {{{
 abbr -a -- - 'cd -'
@@ -22,6 +22,7 @@ alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-
 alias h="history"
 alias motd="source $HOME/.config/fish/motd.fish"
 alias nssh="ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
+alias scp="scp -q"
 alias tmux="tmux -u"
 alias vi="$EDITOR"
 alias wget="wget -c"

@@ -1,4 +1,4 @@
-# $Arch: motd.fish,v 1.022 2017/08/20 16:37:46 kyau Exp $
+# $Arch: motd.fish,v 1.023 2017/08/28 11:51:12 kyau Exp $
 
 # ANSI
 set ANSI $HOME/dot/ansi/(hostname -s).ans
@@ -68,7 +68,9 @@ printf " \\x1b[38;5;255m┌\\x1b[38;5;242m────\\x1b[38;5;235m─·\\x1b[
 getdistro
 network
 printf " \\x1b[38;5;235m·\\x1b[38;5;237m░\\x1b[38;5;233m── \\x1b[38;5;235m· \\x1b[38;5;242m· \\x1b[1;37m· \\x1b[38;5;242m· \\x1b[38;5;235m·\\x1b[0m \\x1b[38;5;233m───────────────────────────────────────────\\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
-printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242mcommands\\x1b[38;5;240m: help, sysinfo, rules, vhosts               \\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
+if test $HOSTNAME = "raptr.kyaulabs.com"
+	printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242mcommands\\x1b[38;5;240m: help, sysinfo, rules, vhosts               \\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
+end
 printf " \\x1b[38;5;235m└─────────────────────────────────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n"
 
 # vim: ts=2 sw=2 noet :
