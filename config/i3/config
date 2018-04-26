@@ -106,6 +106,9 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+# scratchpad
+bindsym $mod+KP_Subtract move scratchpad
+bindsym $mod+KP_Add scratchpad show
 # keyboard media keys
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '1%+'"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
@@ -161,6 +164,11 @@ for_window [class="Vinagre"] floating enable
 for_window [class="Virt-manager"] floating enable
 for_window [class="keepassxc"] floating enable
 for_window [class="Mirage"] floating enable
+for_window [class="Wine"] border pixel 0
+for_window [class="EVE"] floating enable
+for_window [class="EVEMon.exe"] floating enable
+for_window [class="EVEMon.exe"] border normal
+for_window [class="Pyfa.py"] floating enable
 # }}}
 # Startup Applications {{{
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

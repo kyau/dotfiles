@@ -1,0 +1,2 @@
+#!/bin/bash
+wine /home/kyau/evemon/EVEMon.exe

@@ -6,7 +6,7 @@ if [[ -z $1 ]]; then
 fi
 if [ "$1" == "chloe" ]; then
     sudo mount /dev/sdb2 /mnt/archive -o uid=1000,gid=10,fmask=0177,dmask=0077
-    sshfs http@pulsar:/nginx /mnt/nginx
+    #sshfs http@pulsar:/nginx /mnt/nginx
 fi
 if [ "$1" == "x220" ]; then
     sudo mount -t cifs //chloe/ARCHiVE /mnt/archive --verbose -o user=Kyau,uid=1000,gid=100,file_mode=0660,dir_mode=0770,noperm
