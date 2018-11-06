@@ -14,7 +14,7 @@ if status --is-interactive
 	tput smkx
 	# System variables {{{
 	ulimit -c unlimited
-	set -x PATH "$HOME/bin" $PATH
+	set -x PATH "$HOME/bin" "/usr/sbin" "/usr/local/sbin" $PATH
 	set -x CLICOLOR "1"
 	set -x LC_ALL "en_US.UTF-8"
 	set -x LC_CTYPE "en_US.UTF-8"

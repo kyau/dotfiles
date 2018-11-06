@@ -35,13 +35,17 @@ function getdistro
 	set -l rtext
 	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/' | head -1)
 	set -l ver (uname -r | sed -r 's/(.*)-(.*)-.*/\1-\2/')
-	set -l kernel "\x1b[38;5;252m$ver\x1b[0m"
+	set -l kernel "$ver"
 	switch $text
 		case 'Arch*'
-			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;32m \\uf300 \\x1b[38;5;252march\\x1b[38;5;32mlinux\\x1b[0m $kernel                                 \\x1b[38;5;237m░░░·\\x1b[0m\\n"
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;32m ▲ \\x1b[38;5;252march\\x1b[38;5;32mlinux\\x1b[0m $kernel                                 \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 
+		case 'CentOS*'
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ☼ \\x1b[38;5;226mcentos\\x1b[0m \\x1b[38;5;252m%-43s\\x1b[0m \\x1b[38;5;237m░░░·\\x1b[0m\\n" "$kernel"
+		case 'Debian*'
+			prinf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m \\ue225 \\x1b[38;5;5mdebian\\x1b[0m $kernel                                     \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case 'OpenBSD*'
-			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m \\ue225 \\x1b[38;5;226mopenbsd\\x1b[0m $kernel                                        \\x1b[38;5;237m░░░·\\x1b[0m\\n"
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ≈ \\x1b[38;5;226mopenbsd\\x1b[0m $kernel                                        \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case '*'
 			printf "$text $kernel"
 	end
@@ -53,11 +57,11 @@ function network
 		set -l nic (/bin/ls /sys/class/net | head -1)
 		set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
 		set -l fullhost (hostname -f)
-		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \x1b[38;5;242m$fullhost\x1b[0m \x1b[38;5;240m($iplist)\n"
+		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m$fullhost\\x1b[0m \\x1b[38;5;240m%-31s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "($iplist)"
 	else
 		set -l iplist (cat /etc/systemip)
 		set -l fullhost (hostname)
-		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \x1b[38;5;242m$fullhost\x1b[0m \x1b[38;5;240m%-33s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "($iplist)"
+		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m$fullhost\\x1b[0m \\x1b[38;5;240m%-33s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "($iplist)"
 	end
 end
 # }}}
@@ -68,9 +72,9 @@ printf " \\x1b[38;5;255m┌\\x1b[38;5;242m────\\x1b[38;5;235m─·\\x1b[
 getdistro
 network
 printf " \\x1b[38;5;235m·\\x1b[38;5;237m░\\x1b[38;5;233m── \\x1b[38;5;235m· \\x1b[38;5;242m· \\x1b[1;37m· \\x1b[38;5;242m· \\x1b[38;5;235m·\\x1b[0m \\x1b[38;5;233m───────────────────────────────────────────\\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
-if test $HOSTNAME = "raptr.kyaulabs.com"
+#if test $HOSTNAME = "raptr.kyaulabs.com"
 	printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242mcommands\\x1b[38;5;240m: help, sysinfo, rules, vhosts               \\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
-end
+#end
 printf " \\x1b[38;5;235m└─────────────────────────────────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n"
 
 # vim: ts=2 sw=2 noet :

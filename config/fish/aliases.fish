@@ -13,7 +13,7 @@ alias ....="cd ../../.."
 # }}}
 # Aliases: Miscellaneous {{{
 alias bc="bc -l"
-alias df="df -Th --sync --total -x devtmpfs -x tmpfs -x overlaid | sed -r 's/^([a-z0-9/-]+) /\x1b[38;5;238m\1 \x1b[38;5;130m/' | sed -r 's/([0-9]+%)/\x1b[38;5;32m\1\x1b[38;5;85m/' | sed -r 's/([0-9|.]+[K|M|G|T|P])/\x1b[38;5;244m\1/g' | tail -n +2 | sort -k 1"
+#alias df="df -Th --sync --total -x devtmpfs -x tmpfs -x overlaid | sed -r 's/^([a-z0-9/-]+) /\x1b[38;5;238m\1 \x1b[38;5;130m/' | sed -r 's/([0-9]+%)/\x1b[38;5;32m\1\x1b[38;5;85m/' | sed -r 's/([0-9|.]+[K|M|G|T|P])/\x1b[38;5;244m\1/g' | tail -n +2 | sort -k 1"
 alias diff="colordiff -u"
 alias du="du -ch"
 alias edit="$EDITOR"
@@ -59,4 +59,7 @@ alias push="git push origin"
 # }}}
 # Aliases: QEMU {{{
 alias virsh="virsh -c qemu:///system"
+# }}}
+# Aliases: ARK {{{
+alias ark="sudo -u steam /home/steam/bin/arkmanager"
 # }}}
