@@ -7,7 +7,7 @@ repo=git@github.com:kyau/dotfiles.git
 # folder the repo will be stored in (~/$repofolder)
 repo_folder="dot"
 # package installer
-pkgman="pacaur"
+pkgman="pikaur"
 # configs in the root directory
 root_files=( "bash_profile" "bashrc" "gitconfig" "ssh/config" "ssh/authorized_keys" "tmux.conf" "vimrc" )
 # xorg configs in the root directory
@@ -47,7 +47,7 @@ function here_be_dragons() {
 					printf "\\n	\\x1b[1;34m \\ue706 \\x1b[0m ~%s/%s%s \\x1b[1;30m(backup: ~%s/%s.ibk)\\x1b[0m" "${s}" "${dot}" "${1}" "${s}" "${1}"
 				else
 					printf "symlink: backup: %s%s/%s%s.ibk\\n" "${destination}" "${s}" "${dot}" "${1}" >> "${destination}/${log}"
-					/bin/mv "${destination}${s}/${dot}${1}" "${destination}${s}/${1}.ibk"
+					/bin/mv "${destination}${s}/${dot}${1}" "${destination}${s}/${1//\//_}.ibk"
 				fi
 			fi
 		fi
@@ -275,7 +275,8 @@ function install() {
 						testpass=0
 					fi
 				else
-					if yes 2>/dev/null | $pkgman -Sq "$pkg" > /dev/null; then
+					#if yes 2>/dev/null | $pkgman -Sq "$pkg" --noconfirm > /dev/null; then
+					if $pkgman -Sq "$pkg" --noconfirm > /dev/null; then
 					#if [ $? -eq 0 ]; then
 						pkgc="\\x1b[0;36m"
 						printf "pkg: install: %s installed\\n" "${pkg}" >> "${destination}/${log}"
@@ -291,7 +292,8 @@ function install() {
 					printf "\\x1b[0m, "
 					if [ "$debug" == "1" ] && [ "$aur" == "1" ]; then printf "%saur:" "${pkgc}"; fi
 				fi
-					printf "%s%s\\x1b[0m" "${pkgc}" "${pkg}"
+					#printf "%s%s\\x1b[0m" "${pkgc}" "${pkg}"
+					printf "${pkgc}%s\\x1b[0m" "${pkg}"
 			done
 		fi
 	else
