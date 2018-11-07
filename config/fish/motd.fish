@@ -2,6 +2,8 @@
 
 # ANSI
 set ANSI $HOME/dot/ansi/(hostname -s).ans
+set _SSL_DOMAINS "kyau.net" "kyaulabs.com" "voidbbs.com" "ah42.org"
+set _SERVICES "nftables" "sshd" "nginx" "mariadb"
 
 # Padding/Remove Color {{{
 function get_padding
@@ -16,7 +18,7 @@ function remove_color
 end
 # }}}
 # Warning {{{
-function warning
+function _motd_warning
   set -l cols (tput cols)
 	set -l left "  . here be dragons"
 	if test $FISH_PLATFORM = "Linux"
@@ -31,14 +33,14 @@ function warning
 end
 # }}}
 # Distribution & Kernel Version {{{
-function getdistro
+function _motd_getdistro
 	set -l rtext
 	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/' | head -1)
 	set -l ver (uname -r | sed -r 's/(.*)-(.*)-.*/\1-\2/')
 	set -l kernel "$ver"
 	switch $text
 		case 'Arch*'
-			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;32m ▲ \\x1b[38;5;252march\\x1b[38;5;32mlinux\\x1b[0m $kernel                                 \\x1b[38;5;237m░░░·\\x1b[0m\\n"
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;32m ▲ \\x1b[38;5;252march\\x1b[38;5;32mlinux\\x1b[0m %-40s \\x1b[38;5;237m░░░·\\x1b[0m\\n" "$kernel"
 
 		case 'CentOS*'
 			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ☼ \\x1b[38;5;226mcentos\\x1b[0m \\x1b[38;5;252m%-43s\\x1b[0m \\x1b[38;5;237m░░░·\\x1b[0m\\n" "$kernel"
@@ -52,12 +54,12 @@ function getdistro
 end
 # }}}
 # Hostname & IPs {{{
-function network
+function _motd_network
 	if test $FISH_PLATFORM = "Linux"
 		set -l nic (/bin/ls /sys/class/net | head -1)
 		set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
 		set -l fullhost (hostname -f)
-		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m$fullhost\\x1b[0m \\x1b[38;5;240m%-31s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "($iplist)"
+		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m%-24s\\x1b[0m \\x1b[38;5;240m%-27s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "$fullhost" "($iplist)"
 	else
 		set -l iplist (cat /etc/systemip)
 		set -l fullhost (hostname)
@@ -65,16 +67,111 @@ function network
 	end
 end
 # }}}
+# Sysinfo {{{
+set -g _sysinfo_count
+function _motd_sysinfo
+	set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
+	set -l _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
+	set -l _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo) / 1024)
+	set -l _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
+	set -l _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
+	set _sysinfo_ram (math $_sysinfo_ram + (awk '/DirectMap1G/ {print $2}' /proc/meminfo))
+	set -l _sysinfo_hdd (lsblk -nd | grep -v " rom " | awk '{print $4}')
+	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %s)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" $_sysinfo_cpus[2]
+	printf "      \\x1b[38;5;244mvcpu\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" "$_sysinfo_vcpu"
+	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math $_sysinfo_ram / 1024 + 1)
+	for i in (seq (count $_sysinfo_hdd))
+		printf "      \\x1b[38;5;244mdisk%d\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" $i $_sysinfo_hdd[$i]
+	end
+	set _sysinfo_count (math (count $_sysinfo_hdd) + 1)
+end
+# }}}
+# Services {{{
+function _motd_services
+	set -l firstRun true
+	set -l _motd_padding (string join "" "\\x1b[" "$_sysinfo_count" "A")
+	printf "$_motd_padding\\x1b[25C\\x1b[38;5;238m─│────\\x1b[38;5;235m─\\x1b[38;5;238m─\\x1b[38;5;235m─────────────────\\x1b[38;5;172mservices\\x1b[38;5;235m─┐\\x1b[0m\n"
+	for index in (seq (count $_SERVICES))
+		set -l service $_SERVICES[$index]
+		set -l serviceStatus (systemctl is-active $service.service)
+		set -l _service_length (math (string length $service) + (string length $serviceStatus) + 3)
+		set -l _service_width (math 30 - $_service_length)
+		set -l _service_space " "
+		for i in (seq $_service_width)
+			set _service_space "$_service_space "
+		end
+		if test -e /lib/systemd/system/$service.service
+			if test $firstRun = true
+				printf "\\x1b[26C\\x1b[38;5;238m│\\x1b[0m " ""
+			else
+				printf "\\x1b[26C\\x1b[38;5;235m│\\x1b[0m " ""
+			end
+			if test $serviceStatus = "active"
+				printf "\\x1b[38;5;34m▪ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;34m$serviceStatus\\x1b[0m"
+			else
+				printf "\\x1b[38;5;124m▫ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;124m$serviceStatus\\x1b[0m"
+			end
+			if test $firstRun = true
+				printf " \\x1b[38;5;235m·\\x1b[0m\n"
+				set firstRun false
+			else
+				printf " \\x1b[38;5;238m│\\x1b[0m\n"
+			end
+		end
+	end
+	printf "\\x1b[26C\\x1b[38;5;235m└──────────────────────·─\\x1b[38;5;242m──\\x1b[38;5;247m·─\\x1b[38;5;242m────\\x1b[38;5;247m┘\\x1b[0m\\n" ""
+end
+# }}}
+# SSL {{{
+function _motd_ssl
+	printf "\n\\x1b[25C\\x1b[38;5;238m─│───────────────────\\x1b[38;5;172mcertificates\\x1b[38;5;238m─┐\\x1b[0m\n" ""
+	set -l _certificate_now (date +"%Y-%m-%d %H:%M:%S")
+	set -l _certificate_now_timestamp (date -d "$_certificate_now" +%s)
+	for index in (seq (count $_SSL_DOMAINS))
+		set -l domain $_SSL_DOMAINS[$index]
+		set -l certTime (openssl s_client -connect $domain:443 < /dev/null 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+		set -l _certificate_time (date -d "$certTime" +"%Y-%m-%d %H:%M:%S")
+		set -l _certificate_timestamp (date -d "$certTime" +%s)
+		set -l sign ""
+		set -l ending ""
+		if test $_certificate_timestamp -gt $_certificate_now_timestamp
+			set sign "\\x1b[38;5;34m▪\\x1b[0m"
+			set _certificate_time (datediff -f "%dd %Hh" -i "%Y-%m-%d %H:%M:%S" -i "%Y-%m-%d %H:%M:%S" "$_certificate_now" "$_certificate_time")
+			set ending "\\x1b[38;5;34m$_certificate_time\\x1b[0m"
+		else
+			set sign "\\x1b[38;5;124m‼\\x1b[0m"
+		end
+		set -l _certificate_length (math (string length $domain) + (string length $_certificate_time) + 3)
+		set -l _certificate_width (math 30 - $_certificate_length)
+		set -l _certificate_space " "
+		for i in (seq $_certificate_width)
+			set _certificate_space "$_certificate_space "
+		end
 
-warning
-cat $ANSI
+		printf "\\x1b[26C\\x1b[38;5;238m│\\x1b[0m " ""
+		printf "$sign \\x1b[38;5;248m$domain$_certificate_space$ending"
+		printf " \\x1b[38;5;238m│\\x1b[0m\n"
+	end
+	printf "\\x1b[26C\\x1b[38;5;235m└───────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n" ""
+end
+# }}}
+
+_motd_warning
+cat $ANSI | sed -e 's/^/   /g'
 printf " \\x1b[38;5;255m┌\\x1b[38;5;242m────\\x1b[38;5;235m─·\\x1b[38;5;242m─\x1b[38;5;235m─·─────────────────────────────────────────────────┐\\n"
-getdistro
-network
+_motd_getdistro
+_motd_network
 printf " \\x1b[38;5;235m·\\x1b[38;5;237m░\\x1b[38;5;233m── \\x1b[38;5;235m· \\x1b[38;5;242m· \\x1b[1;37m· \\x1b[38;5;242m· \\x1b[38;5;235m·\\x1b[0m \\x1b[38;5;233m───────────────────────────────────────────\\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
-#if test $HOSTNAME = "raptr.kyaulabs.com"
-	printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242mcommands\\x1b[38;5;240m: help, sysinfo, rules, vhosts               \\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n"
-#end
+set -l _motd_uptime (uptime -p | cut -d ' ' -f2-)
+printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242muptime\\x1b[38;5;240m: %-45s\\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n" "$_motd_uptime"
 printf " \\x1b[38;5;235m└─────────────────────────────────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n"
+if test $HOSTNAME = "web.wa.kyaulabs.com"
+	_motd_ssl
+end
+_motd_sysinfo
+_motd_services
+set -l _lastlog_ip (lastlog -u $USER | sed -n 2p | awk '{print $3}')
+#set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
+printf "\\x1b[1A      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
 
 # vim: ts=2 sw=2 noet :
