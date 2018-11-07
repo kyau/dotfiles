@@ -45,7 +45,7 @@ function _motd_getdistro
 		case 'CentOS*'
 			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ☼ \\x1b[38;5;226mcentos\\x1b[0m \\x1b[38;5;252m%-43s\\x1b[0m \\x1b[38;5;237m░░░·\\x1b[0m\\n" "$kernel"
 		case 'Debian*'
-			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m \\ue225 \\x1b[38;5;5mdebian\\x1b[0m $kernel                                     \\x1b[38;5;237m░░░·\\x1b[0m\\n"
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ₪ \\x1b[38;5;5mdebian\\x1b[0m $kernel                                     \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case 'OpenBSD*'
 			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ≈ \\x1b[38;5;226mopenbsd\\x1b[0m $kernel                                        \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case '*'
@@ -73,11 +73,15 @@ function _motd_sysinfo
 	set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
 	set -l _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
 	set -l _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo | head -n 1) / 1024)
+	set -l _sysinfo_cpu_speed (math -s2 (awk '/cpu MHz/ {print $4}' /proc/cpuinfo | head -n 1) / 1000)
 	set -l _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
 	set -l _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
-	set _sysinfo_ram (math $_sysinfo_ram + (awk '/DirectMap1G/ {print $2}' /proc/meminfo))
+	set -l _sysinfo_ram2 (awk '/DirectMap1G/ {print $2}' /proc/meminfo)
+	if test -z "$_sysinfo_ram2"
+		set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
+	end
 	set -l _sysinfo_hdd (lsblk -nd | grep -v " rom " | awk '{print $4}')
-	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %s)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" $_sysinfo_cpus[2]
+	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" $_sysinfo_cpu_speed
 	printf "      \\x1b[38;5;244mvcpu\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" "$_sysinfo_vcpu"
 	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math $_sysinfo_ram / 1024 + 1)
 	for i in (seq (count $_sysinfo_hdd))
