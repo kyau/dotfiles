@@ -45,7 +45,7 @@ function _motd_getdistro
 		case 'CentOS*'
 			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ☼ \\x1b[38;5;226mcentos\\x1b[0m \\x1b[38;5;252m%-43s\\x1b[0m \\x1b[38;5;237m░░░·\\x1b[0m\\n" "$kernel"
 		case 'Debian*'
-			prinf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m \\ue225 \\x1b[38;5;5mdebian\\x1b[0m $kernel                                     \\x1b[38;5;237m░░░·\\x1b[0m\\n"
+			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m \\ue225 \\x1b[38;5;5mdebian\\x1b[0m $kernel                                     \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case 'OpenBSD*'
 			printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m\\x1b[38;5;199m ≈ \\x1b[38;5;226mopenbsd\\x1b[0m $kernel                                        \\x1b[38;5;237m░░░·\\x1b[0m\\n"
 		case '*'
