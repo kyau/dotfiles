@@ -35,7 +35,7 @@ end
 # Distribution & Kernel Version {{{
 function _motd_getdistro
 	set -l rtext
-	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*:PRETTY_NAME="(.*)"/\1/' | head -1)
+	set -l text (grep "PRETTY_NAME" /etc/*release | sed -r 's/.*PRETTY_NAME="(.*)"$/\1/' | head -1)
 	set -l ver (uname -r | sed -r 's/(.*)-(.*)-.*/\1-\2/')
 	set -l kernel "$ver"
 	switch $text
@@ -72,7 +72,7 @@ set -g _sysinfo_count
 function _motd_sysinfo
 	set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
 	set -l _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
-	set -l _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo) / 1024)
+	set -l _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo | head -n 1) / 1024)
 	set -l _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
 	set -l _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
 	set _sysinfo_ram (math $_sysinfo_ram + (awk '/DirectMap1G/ {print $2}' /proc/meminfo))
