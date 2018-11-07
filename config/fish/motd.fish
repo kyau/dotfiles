@@ -77,11 +77,11 @@ function _motd_sysinfo
 	set -l _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
 	set -l _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
 	set -l _sysinfo_ram2 (awk '/DirectMap1G/ {print $2}' /proc/meminfo)
-	if test -z "$_sysinfo_ram2"
+	if test -n "$_sysinfo_ram2"
 		set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
 	end
 	set -l _sysinfo_hdd (lsblk -nd | grep -v " rom " | awk '{print $4}')
-	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" $_sysinfo_cpu_speed
+	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
 	printf "      \\x1b[38;5;244mvcpu\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" "$_sysinfo_vcpu"
 	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math $_sysinfo_ram / 1024 + 1)
 	for i in (seq (count $_sysinfo_hdd))
