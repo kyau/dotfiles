@@ -61,5 +61,5 @@ alias push="git push origin"
 alias virsh="virsh -c qemu:///system"
 # }}}
 # Aliases: ARK {{{
-alias ark="sudo -u steam /home/steam/bin/arkmanager"
+alias ark="/home/kyau/bin/arkmanager"
 # }}}
