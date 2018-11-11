@@ -1,3 +1,5 @@
+## ark
+bin/arkmanager
 ## ckb
 config/ckb/ckb.conf
 ## fish (use fisher to manage these)
