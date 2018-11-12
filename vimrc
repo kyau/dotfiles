@@ -1,4 +1,4 @@
-" $Arch: vimrc,v 1.015 2017/08/07 19:05:01 kyau Exp $
+" $Arch: vimrc,v 1.017 2018/11/12 03:21:50 kyau Exp $
 
 " General {{{
 " ------------------------------------------------------------------------------
@@ -25,15 +25,15 @@ set t_Co=256                        " Always use 256-color mode
 " ------------------------------------------------------------------------------
 set cmdheight=2						" Use a status bar taht is 2 rows high
 set laststatus=2					" Always show the status line
-hi User1 ctermfg=3 ctermbg=0 
-hi User2 ctermfg=1 ctermbg=0
-hi User3 ctermfg=14 ctermbg=0
-hi User4 ctermfg=10 ctermbg=0
-hi User5 ctermfg=1 ctermbg=0 cterm=bold
-hi User6 ctermfg=15 ctermbg=0
-hi User7 ctermfg=12 ctermbg=0
-hi User8 ctermfg=8 ctermbg=0
-hi User9 ctermfg=7 ctermbg=0
+hi User1 ctermfg=3 ctermbg=236
+hi User2 ctermfg=1 ctermbg=236
+hi User3 ctermfg=14 ctermbg=236
+hi User4 ctermfg=10 ctermbg=236
+hi User5 ctermfg=1 ctermbg=236 cterm=bold
+hi User6 ctermfg=15 ctermbg=236
+hi User7 ctermfg=12 ctermbg=236
+hi User8 ctermfg=8 ctermbg=236
+hi User9 ctermfg=7 ctermbg=236
 set statusline=
 set statusline+=\ %1*\[%n\]         " Buffernumber
 set statusline+=\ %3*■%*\           " Symbol
@@ -63,8 +63,8 @@ set hidden							" Hide buffers when they are abandoned
 set hlsearch						" Highlight search results
 set incsearch                       " show search matches as you type
 set ignorecase						" Case-insensitive search
-set showbreak=↪\ 
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set showbreak=↑\ 
+set listchars=tab:→\ ,eol:¶,nbsp:·,trail:•,extends:≡,precedes:⟨
 									" Characters to display as invisible chars 
 									"   when :list is enabled
 set lazyredraw						" Don't redraw while executing macros
@@ -79,7 +79,6 @@ set showmode						" Always show current editing mode
 set smartcase						" When searching be smart about cases
 set noerrorbells					" Do not ring the bell for error messages
 set novisualbell					" Do not use visual bells
-set nowrap                          " don't wrap lines
 set formatoptions-=t                " don't wrap text when typing
 set pastetoggle=<F2>                " when in insert mode, press <F2> to go to
                                     "    paste mode, where you can paste mass data
@@ -108,13 +107,14 @@ set foldlevelstart=0                " start out with everything folded
 
 function! MyFoldText()
     let nblines = v:foldend - v:foldstart + 1
-    let nblines = '(lines: ' . nblines. ')'
+    "let nblines = '(lines: ' . nblines. ')'
+    let nblines = '(' . nblines . ')'
     let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
     let comment = substitute(getline(v:foldstart),"^ *","",1)
     let comment = substitute(comment,"^[\"|\#|\;|!] ", "", "")
     let comment = substitute(comment," \{\{\{","","")
     let expansionString = repeat(" ", w - strwidth(nblines.comment.'"'))
-    let txt = '  ' . comment . expansionString . nblines . ' '
+    let txt = ' □ ' . comment . expansionString . nblines . ' '
     return txt
 endfunction
 set foldtext=MyFoldText()
@@ -152,7 +152,7 @@ set tabstop=4						" One tab is equal to four spaces
 set linebreak						" Wrap long lines
 set textwidth=79 					" Maximum width of text being inserted
 set smartindent						" Smart indenting when starting a newline
-set wrap							" Wrap lines
+set nowrap                          " don't wrap lines
 " }}}
 " Switch to a more POSIX-compatible shell for vim {{{
 if &shell =~# 'fish$'

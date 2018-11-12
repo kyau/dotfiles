@@ -1,4 +1,4 @@
-" $Arch: euphrasia.vim,v 1.011 2017/08/07 19:21:07 kyau Exp $
+" $Arch: euphrasia.vim,v 1.012 2018/11/12 03:21:28 kyau Exp $
 
 " General {{{
 set background=dark
@@ -38,16 +38,16 @@ if &t_Co > 255
 	hi ErrorMsg                ctermfg=9    ctermbg=none
 	hi Exception               ctermfg=13
 	hi Float                   ctermfg=14
-	hi FoldColumn              ctermfg=14   ctermbg=0
-	hi Folded                  ctermfg=14   ctermbg=0
+	hi FoldColumn              ctermfg=14   ctermbg=236
+	hi Folded                  ctermfg=14   ctermbg=236
 	hi Function                ctermfg=3
 	hi Identifier              ctermfg=11                cterm=none
 	hi IncSearch               ctermfg=15   ctermbg=1
 	hi Keyword                 ctermfg=4
 	hi Label                   ctermfg=5
 	hi LineNr                  ctermfg=8    ctermbg=none cterm=none
-	hi CursorLine              ctermbg=0    cterm=none
-	hi CursorLineNr            ctermfg=11   ctermbg=0    cterm=bold
+	hi CursorLine              ctermbg=0    ctermbg=236  cterm=none
+	hi CursorLineNr            ctermfg=11   ctermbg=236   cterm=bold
 	hi Macro                   ctermfg=3                 cterm=none
 	hi MatchParen              ctermfg=0    ctermbg=14
 	hi ModeMsg                 ctermfg=11
@@ -69,11 +69,11 @@ if &t_Co > 255
 	hi String                  ctermfg=2    ctermbg=none
 	hi Structure               ctermfg=67
 	hi Tag                     ctermfg=5
-    hi TabLine                 ctermfg=8    ctermbg=0    cterm=none
-    hi TabLineFill             ctermbg=0    cterm=none
-    hi TabLineSel              ctermfg=15   ctermbg=0    cterm=none
-    hi Title                   ctermfg=15   ctermbg=0
-	hi Todo                    ctermfg=10   ctermbg=0
+    hi TabLine                 ctermfg=8    ctermbg=236   cterm=none
+    hi TabLineFill             ctermbg=236  cterm=none
+    hi TabLineSel              ctermfg=15   ctermbg=236   cterm=none
+    hi Title                   ctermfg=15   ctermbg=236
+	hi Todo                    ctermfg=10   ctermbg=236
 	hi Typedef                 ctermfg=4
 	hi Type                    ctermfg=5
 	hi Underlined              ctermfg=7
@@ -81,16 +81,16 @@ if &t_Co > 255
 	hi Visual                  ctermfg=15   ctermbg=8
 	hi VisualNOS               ctermfg=10   ctermbg=8    cterm=bold
 	hi WarningMsg              ctermfg=9   
-	hi WildMenu                ctermfg=5    ctermbg=0
+	hi WildMenu                ctermfg=5    ctermbg=236
 
 	" statusline
-	hi StatusLine              ctermfg=7    ctermbg=0    cterm=none
+	hi StatusLine              ctermfg=7    ctermbg=236   cterm=none
 	hi StatusLineNC            ctermfg=0    ctermbg=7
-	hi StatusModFlag           ctermfg=9    ctermbg=0    cterm=none
-	hi StatusRO                ctermfg=13   ctermbg=0    cterm=none
-	hi StatusHLP               ctermfg=10   ctermbg=0    cterm=none
-	hi StatusPRV               ctermfg=11   ctermbg=0    cterm=none
-	hi StatusFTP               ctermfg=12   ctermbg=0    cterm=none
+	hi StatusModFlag           ctermfg=9    ctermbg=236   cterm=none
+	hi StatusRO                ctermfg=13   ctermbg=236   cterm=none
+	hi StatusHLP               ctermfg=10   ctermbg=236   cterm=none
+	hi StatusPRV               ctermfg=11   ctermbg=236   cterm=none
+	hi StatusFTP               ctermfg=12   ctermbg=236   cterm=none
 
 	" spellchecking
 	hi SpellLocal              ctermfg=0    ctermbg=14   cterm=underline
@@ -99,7 +99,7 @@ if &t_Co > 255
 	hi SpellRare               ctermfg=0    ctermbg=13   cterm=underline
 
 	" pmenu
-	hi Pmenu                   ctermfg=7    ctermbg=0
+	hi Pmenu                   ctermfg=7    ctermbg=236
 	hi PmenuSel                ctermfg=none ctermbg=8 
 	hi PmenuSbar               ctermfg=8    ctermbg=15
 
