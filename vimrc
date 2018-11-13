@@ -311,6 +311,9 @@ map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><r
 
 " Convert file to unix unicode utf-8
 map <leader>u :set ff=unix<cr>:set fileencoding=utf8<cr>
+
+" Convert ANSI from dos to unix (Just use <C-v><Esc> to input the ^[ character)
+map <leader>ansi :set ff=unix<cr>:set fileencoding=utf8<cr>:%s/Ü/▄/g<cr>:%s/²/▓/g<cr>:%s/±/▒/g<cr>:%s/°/░/g<cr>:%s/ß/▀/g<cr>:%s/Û/█/g<cr>:v/./d<cr>,<cr>
 " }}}
 " Buffers & Tabs {{{
 " ------------------------------------------------------------------------------

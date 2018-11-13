@@ -14,7 +14,7 @@ if &t_Co > 255
 	hi Normal                  ctermfg=none
 	hi Boolean                 ctermfg=13
 	hi Character               ctermfg=15
-    hi ColorColumn             ctermbg=0
+    hi ColorColumn             ctermbg=236
     hi Comment                 ctermfg=8    ctermbg=none cterm=none
 	hi Conditional             ctermfg=6
 	hi Constant                ctermfg=3
