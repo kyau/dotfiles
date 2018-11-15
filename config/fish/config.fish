@@ -1,4 +1,4 @@
-# $Arch: config.fish,v 1.016 2017/08/23 02:06:45 kyau Exp $
+# $Arch: config.fish,v 1.017 2018/11/15 14:57:13 kyau Exp $
 
 # General {{{
 # Set a proper umask
@@ -7,6 +7,12 @@ umask 077
 set fish_greeting
 # Set platform variable
 set -x FISH_PLATFORM (uname -s)
+# Set window title
+function fish_title
+	set -l _fish_hostname (hostname -s)
+	echo "$_fish_hostname:" $_ ' '
+	dirs
+end
 # }}}
 # Interactive Shell {{{
 if status --is-interactive
