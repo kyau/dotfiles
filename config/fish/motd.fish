@@ -161,7 +161,7 @@ end
 # }}}
 
 _motd_warning
-cat $ANSI | sed -e 's/^/   /g'
+cat $ANSI | sed -e 's/^/ /g'
 printf " \\x1b[38;5;255m┌\\x1b[38;5;242m────\\x1b[38;5;235m─·\\x1b[38;5;242m─\x1b[38;5;235m─·─────────────────────────────────────────────────┐\\n"
 _motd_getdistro
 _motd_network
