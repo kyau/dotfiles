@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Arch: dotme,v 2.023 2018/11/11 03:36:32 kyau Exp $
+# $Arch: dotme,v 2.024 2018/12/05 09:51:22 kyau Exp $
 
 # Configuration {{{
 # location of dotfiles repository
@@ -313,6 +313,7 @@ function install() {
 # fish() {{{
 function fish() {
 	printf "  Finish installing \\x1b[0;36mfish\\x1b[0m:\\n    * chsh -s /usr/bin/fish\\n    * fish\\n    * curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish\\n    * fisher\\n\\n"
+	printf "    * git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm\\n\\n"
 }
 # }}}
 # show_help() {{{
