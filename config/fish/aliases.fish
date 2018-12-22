@@ -23,7 +23,7 @@ alias h="history"
 alias motd="source $HOME/.config/fish/motd.fish"
 alias nssh="ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
 alias scp="scp -q"
-alias tmux="tmux -u"
+alias tmux="tmux -2 -u"
 alias vi="$EDITOR"
 alias wget="wget -c"
 # }}}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Arch: dotme,v 2.024 2018/12/05 09:51:22 kyau Exp $
+# $Arch: dotme,v 2.025 2018/12/22 04:15:29 kyau Exp $
 
 # Configuration {{{
 # location of dotfiles repository
@@ -276,7 +276,7 @@ function install() {
 					fi
 				else
 					#if yes 2>/dev/null | $pkgman -Sq "$pkg" --noconfirm > /dev/null; then
-					if $pkgman -Sq "$pkg" --noconfirm > /dev/null; then
+					if $pkgman -Sq "$pkg" --noedit --nodiff --noconfirm > /dev/null; then
 					#if [ $? -eq 0 ]; then
 						pkgc="\\x1b[0;36m"
 						printf "pkg: install: %s installed\\n" "${pkg}" >> "${destination}/${log}"
