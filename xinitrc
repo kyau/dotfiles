@@ -1,4 +1,4 @@
-# $Arch: xinitrc,v 1.003 2017/08/07 19:05:57 kyau Exp $
+# $Arch: xinitrc,v 1.004 2018/12/24 01:03:17 kyau Exp $
 
 # General {{{
 # Update xorg resources if needed
@@ -37,7 +37,7 @@ unclutter --fork --timeout 2 --jitter 5 --ignore-scrolling --exclude-root &
 # Start pulseaudio session
 start-pulseaudio-x11
 # Corsair Keyboard
-ckb -bc &
+#ckb -bc &
 # Notifications
 #dunst &
 # Enable Compositing

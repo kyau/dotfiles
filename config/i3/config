@@ -1,10 +1,10 @@
-# $Arch: config,v 1.014 2017/08/07 19:50:03 kyau Exp $
+# $Arch: config,v 1.015 2018/12/23 14:50:33 kyau Exp $
 
 # Variables {{{
 set $mod Mod4
 set $workspace1 "1:"
 set $workspace2 "2:"
-set $workspace3 "3:"
+set $workspace3 "3:"
 set $workspace4 "4:"
 set $workspace5 "5:"
 set $workspace6 "6:"
@@ -45,9 +45,9 @@ bindsym $mod+Return exec st
 # kill focused window
 bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id exec rofi -show run -font "Hack 10" -lines 6 -i -separator-style solid -opacity "90"
+bindsym $mod+d exec --no-startup-id exec rofi -show run -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
 # alt-tab functionality from rofi
-bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "Hack 10" -lines 6 -i -separator-style solid -opacity "90"
+bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -150,7 +150,7 @@ bindsym $mod+r mode "resize"
 # Workspace Assignment {{{
 # applications start on specific workspaces
 assign [class="Subl3"] $workspace2
-assign [class="Google-chrome"] $workspace3
+assign [class="Firefox"] $workspace3
 for_window [class="^.*"] border pixel 2
 for_window [class="ckb"] floating enable
 for_window [class="Lxappearance"] floating enable

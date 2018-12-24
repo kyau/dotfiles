@@ -1,4 +1,4 @@
-; $Arch: config-akira,v 1.011 2017/08/07 20:10:12 kyau Exp $
+; $Arch: config-akira,v 1.013 2018/12/24 00:54:14 kyau Exp $
 
 ; Color {{{
 [colors]
@@ -31,15 +31,15 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 underline-size = 0
 overline-size = 0
-font-0 = "M+ 2p Medium:size=10:antialias=true:hinting=true;"
-font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;1"
+font-0 = "PxPlus AmstradPC1512\-2y:size=12:antialias=true:hinting=true;4"
+font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;4"
 
 [bar/top]
 inherit = bar/master
 modules-left = menu wifi wm
 modules-center = title
 modules-right = backlight battery cpuclock coretemps volume time
-offset-y = -2
+;offset-y = 6
 padding-left = 2
 padding-right = 2
 tray-position = right
@@ -85,7 +85,7 @@ label-disconnected-foreground = ${colors.black}
 ; Module: wifi {{{
 [module/wifi]
 type = internal/network
-interface = wifi0
+interface = wlan0
 interval = 3.0
 format-connected = <label-connected>
 label-connected = "  %local_ip%"
@@ -118,7 +118,7 @@ index-sort = true
 enable-click = true
 enable-scroll = false
 strip-wsnumbers = true
-label-focused-foreground = ${colors.arch}
+label-focused-foreground = ${colors.yellow}
 label-focused-padding = 1
 label-unfocused-padding = 1
 label-visible-padding = 1
@@ -139,7 +139,7 @@ date = "%I:%M %p"
 type = custom/menu
 menu-0-0 = %{F#969696}reboot%{F-}
 menu-0-0-exec = systemctl reboot
-label-open = %{F#1793d1}   %{F-}
+label-open = %{F#1793d1}   %{F-}
 label-close = %{F#800000}   %{F-}
 ; }}}
 ; Module: battery {{{
@@ -150,24 +150,24 @@ battery = BAT0
 adapter = AC
 poll-interval = 5
 time-format = %H:%M
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
 label-charging = %percentage%%
 label-discharging = %percentage%%
-label-full = "  100%"
+label-full = " 100%"
 label-foreground = ${colors.green}
-ramp-capacity-0 = "   "
-ramp-capacity-1 = "   "
-ramp-capacity-2 = "   "
-ramp-capacity-3 = "   "
-ramp-capacity-4 = "   "
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
 ramp-capacity-foreground = ${colors.green}
 bar-capacity-width = 10
-animation-charging-0 = "   "
-animation-charging-1 = "   "
-animation-charging-2 = "   "
-animation-charging-3 = "   "
-animation-charging-4 = "   "
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
 animation-charging-framerate = 750
 ; }}}
 ; Module: backlight {{{
