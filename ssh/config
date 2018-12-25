@@ -1,24 +1,34 @@
-# $Arch: config,v 1.004 2018/04/26 15:46:05 kyau Exp $
+# $Arch: config,v 1.005 2018/12/24 19:07:21 kyau Exp $
 
-Host rescue
-	HostName dark.kyau.net
-	User root
-
-Host dark
-	HostName dark.kyau.net
+# KYAU Labs: Local {{{
+Host web
+	HostName 10.0.42.30
 	User kyau
 
-Host chaos
-	HostName chaos.kyau.net
+Host git
+	HostName 10.0.42.31
+	User kyau
+
+Host void
+	HostName 10.0.42.32
+	User kyau
+
+Host ah42
+	HostName 10.0.42.34
 	User kyau
 
 Host neutron
-	HostName neutron.kyau.net
+	HostName 10.0.42.36
 	User kyau
+
+Host xu4
+	HostName 10.0.42.42
+	User kyau
+# }}}
 
 Host *
 	KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-	#PasswordAuthentication no
+	PasswordAuthentication no
 	ChallengeResponseAuthentication no
 	PubkeyAuthentication yes
 	UseRoaming no

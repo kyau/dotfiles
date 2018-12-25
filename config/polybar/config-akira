@@ -1,4 +1,4 @@
-; $Arch: config-akira,v 1.013 2018/12/24 00:54:14 kyau Exp $
+; $Arch: config-akira,v 1.014 2018/12/24 18:55:51 kyau Exp $
 
 ; Color {{{
 [colors]
@@ -77,9 +77,9 @@ interface = wired0
 interval = 3
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-connected = "  %local_ip% "
+label-connected = " %local_ip%"
 label-connected-foreground = ${colors.green}
-label-disconnected = "  "
+label-disconnected = ""
 label-disconnected-foreground = ${colors.black}
 ; }}}
 ; Module: wifi {{{
@@ -88,16 +88,16 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 format-connected = <label-connected>
-label-connected = "  %local_ip%"
+label-connected = " %local_ip%"
 label-connected-foreground = ${colors.green}
-label-disconnected = "  "
+label-disconnected = ""
 label-disconnected-foreground = ${colors.black}
 ; }}}
 ; Module: title {{{
 [module/title]
 type = internal/xwindow
 label = %title%
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.black}
 label-maxlen = 75
 ; }}}
@@ -119,17 +119,17 @@ enable-click = true
 enable-scroll = false
 strip-wsnumbers = true
 label-focused-foreground = ${colors.yellow}
-label-focused-padding = 1
-label-unfocused-padding = 1
-label-visible-padding = 1
+label-focused-padding = 0
+label-unfocused-padding = 0
+label-visible-padding = 0
 label-urgent-foreground = ${colors.red}
-label-urgent-padding = 1
+label-urgent-padding = 0
 ; }}}
 ; Module: time {{{
 [module/time]
 type = internal/date
 interval = 40
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.magenta}
 label-foreground = ${colors.magenta}
 date = "%I:%M %p"
@@ -139,8 +139,8 @@ date = "%I:%M %p"
 type = custom/menu
 menu-0-0 = %{F#969696}reboot%{F-}
 menu-0-0-exec = systemctl reboot
-label-open = %{F#1793d1}   %{F-}
-label-close = %{F#800000}   %{F-}
+label-open = %{F#1793d1}%{F-}
+label-close = %{F#800000}%{F-}
 ; }}}
 ; Module: battery {{{
 [module/battery]
@@ -176,7 +176,7 @@ type = internal/backlight
 card = intel_backlight
 format = <label>
 format-foreground = ${colors.blue}
-label = "  %percentage%%"
+label = " %percentage%%"
 ; }}}
 
 ; vim: ft=dosini ts=2 sw=2 noet :
