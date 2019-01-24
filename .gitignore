@@ -28,6 +28,7 @@ config/fish/fishd.*
 ## irssi
 irssi/config
 irssi/away.log
+irssi/blow.ini
 ## mpd
 config/mpd/database
 config/mpd/log
@@ -37,8 +38,13 @@ config/mpd/state
 ncmpcpp/error.log
 ## polybar
 config/polybar/config
+config/polybar/.*
 ## ranger
 config/ranger/colorschemes/__init__.py
+## tmux
+tmux/plugins/tpm
+tmux/plugins/tmux-prefix-highlight
+tmux/plugins/tmux-sensible
 ## vis
 config/vis/vis.log
 ## vim

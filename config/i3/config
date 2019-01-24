@@ -2,16 +2,16 @@
 
 # Variables {{{
 set $mod Mod4
-set $workspace1 "1:"
-set $workspace2 "2:"
-set $workspace3 "3:"
-set $workspace4 "4:"
-set $workspace5 "5:"
-set $workspace6 "6:"
-set $workspace7 "7:"
-set $workspace8 "8:"
-set $workspace9 "9:"
-set $workspace10 "10:"
+set $workspace1 "1:kyau"
+set $workspace2 "2:firefox"
+set $workspace3 "3:vim"
+set $workspace4 "4:void.wa.kyaulabs.com"
+set $workspace5 "5:ssh"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10:irc"
 # }}}
 # General Options {{{
 # Font for window titles.

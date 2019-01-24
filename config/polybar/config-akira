@@ -31,20 +31,34 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 underline-size = 0
 overline-size = 0
-font-0 = "PxPlus AmstradPC1512\-2y:size=12:antialias=true:hinting=true;4"
+font-0 = "M+ 1p Medium:size=10:antialias=true:hinting=true;4"
 font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;4"
+font-2 = "cryptocoins:style=Regular;4"
 
 [bar/top]
 inherit = bar/master
-modules-left = menu wifi wm
+modules-left = menu wifi
 modules-center = title
-modules-right = backlight battery cpuclock coretemps volume time
+modules-right = backlight battery cpuclock coretemps volume
 ;offset-y = 6
 padding-left = 2
 padding-right = 2
 tray-position = right
 tray-padding = 2
 tray-transparent = true
+
+[bar/bottom]
+inherit = bar/master
+bottom = true
+modules-left = wm
+modules-center = crypto
+modules-right = time
+padding-left = 2
+padding-right = 2
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
 ; }}}
 ; Module: volume {{{
 [module/volume]
@@ -88,7 +102,8 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 format-connected = <label-connected>
-label-connected = " %local_ip%"
+;label-connected = " %local_ip%"
+label-connected = " %essid%"
 label-connected-foreground = ${colors.green}
 label-disconnected = ""
 label-disconnected-foreground = ${colors.black}
@@ -114,16 +129,51 @@ exec = $HOME/.config/polybar/cpuclock.sh
 ; Module: wm {{{
 [module/wm]
 type = internal/i3
+pin-workspaces = false
+strip-wsnumbers = true
 index-sort = true
 enable-click = true
 enable-scroll = false
-strip-wsnumbers = true
-label-focused-foreground = ${colors.yellow}
-label-focused-padding = 0
-label-unfocused-padding = 0
-label-visible-padding = 0
-label-urgent-foreground = ${colors.red}
-label-urgent-padding = 0
+fuzzy-match = false
+ws-icon-0 = 1:kyau;
+ws-icon-1 = 2:firefox;
+ws-icon-2 = 3:vim;
+ws-icon-3 = 4:void.wa.kyaulabs.com;
+ws-icon-4 = 5:ssh;
+ws-icon-5 = 6:;
+ws-icon-6 = 7:;
+ws-icon-7 = 8:;
+ws-icon-8 = 9:;
+ws-icon-9 = 10:irc;
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+label-focused = %{F#00aaaa}%icon%%{F-}  %name%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 2
+label-unfocused = %icon%
+label-unfocused-foregroud = #ffffff
+label-unfocused-padding = 2
+label-visible = %icon%  %name%
+label-visible-underline = #555555
+label-visible-padding = 2
+label-urgent = %icon%  %name%
+label-urgent-foreground = #aa0000
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+label-separator =
+label-separator-padding = 2
+label-separator-foreground = #ffb52a
+
+;label-focused-foreground = ${colors.yellow}
+;label-focused-padding = 0
+;label-unfocused-padding = 0
+;label-visible-padding = 0
+;label-urgent-foreground = ${colors.red}
+;label-urgent-padding = 0
 ; }}}
 ; Module: time {{{
 [module/time]
@@ -137,10 +187,13 @@ date = "%I:%M %p"
 ; Module: menu {{{
 [module/menu]
 type = custom/menu
-menu-0-0 = %{F#969696}reboot%{F-}
-menu-0-0-exec = systemctl reboot
+menu-0-1 = %{F#008000}%{F-}  %{F#969696}reboot%{F-}
+menu-0-1-exec = systemctl reboot
+menu-0-0 = %{F#800000}%{F-}  %{F#969696}power off%{F-}
+menu-0-0-exec = systemctl poweroff
 label-open = %{F#1793d1}%{F-}
-label-close = %{F#800000}%{F-}
+label-close = %{F#434343}%{F-}
+label-separator = "  "
 ; }}}
 ; Module: battery {{{
 [module/battery]
@@ -177,6 +230,12 @@ card = intel_backlight
 format = <label>
 format-foreground = ${colors.blue}
 label = " %percentage%%"
+; }}}
+; Module: crypto {{{
+[module/crypto]
+type = custom/script
+interval = 60
+exec = /home/kyau/.config/polybar/crypto.py
 ; }}}
 
 ; vim: ft=dosini ts=2 sw=2 noet :

@@ -13,7 +13,7 @@ root_files=( "bash_profile" "bashrc" "gitconfig" "ssh/config" "ssh/authorized_ke
 # xorg configs in the root directory
 root_files_xorg=( "Xmodmap" "Xresources" "xbindkeysrc" "xinitrc" )
 # directories in the root directory
-root_dir=( "bash.d" "irssi" "vim" )
+root_dir=( "bash.d" "irssi" "tmux" "vim" )
 # xorg directories in the root directory
 root_dir_xorg=( "ncmpcpp" )
 # configs inside ~/.config/
