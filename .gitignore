@@ -3,6 +3,7 @@ bin/arkmanager
 ## ckb
 config/ckb/ckb.conf
 ## fish (use fisher to manage these)
+config/fish/fish_variables
 config/fish/functions/getopts.fish
 config/fish/functions/fisher.fish
 config/fish/functions/getopts.fish
