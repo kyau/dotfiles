@@ -1,4 +1,4 @@
-    $Arch: README.md,v 1.007 2017/08/07 23:48:16 kyau Exp $
+	$Arch: README.md,v 1.008 2019/02/10 02:25:20 kyau Exp $
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -21,6 +21,7 @@ Initiate the user environment. Does nothing with no OPTION.
 ![vim](https://raw.githubusercontent.com/kyau/dotfiles/master/ss2.png "vim")
 
 ### attribution
+* [PxPlus Amstrad](https://int10h.org/oldschool-pc-fonts/) - New old-school font used in terminal
 * [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
 * [nvie/vimrc](https://github.com/nvie/vimrc) - inspiration, documentation & some config portions
