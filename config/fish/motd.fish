@@ -124,9 +124,9 @@ function _motd_services
 			set -a _services_all $service
 		end
 	end
-	set _sysinfo_count_end
+	set _sysinfo_count_end 0
 	if test $_sysinfo_count -gt (math (count $_services_count) + 2)
-		set -l _tmp_val (math $_sysinfo_count - (math (count $_services_count) + 1))
+		set -l _tmp_val (math $_sysinfo_count - (math (count $_services_count) + 4))
 		set _sysinfo_count_end (string join "" "\\x1b[" "$_tmp_val" "B")
 	end
 	set -l _motd_padding (string join "" "\\x1b[" "$_sysinfo_count" "A")

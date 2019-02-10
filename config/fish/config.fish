@@ -67,7 +67,7 @@ if status --is-interactive
 	# }}}
 	# MOTD {{{
 	source "$HOME/.config/fish/motd.fish"
-	echo
+	#echo
 	# }}}
 end
 # }}}
