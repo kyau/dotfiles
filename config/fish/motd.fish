@@ -1,4 +1,4 @@
-# $Arch: motd.fish,v 1.031 2019/02/10 01:28:08 kyau Exp $
+# $Arch: motd.fish,v 1.032 2019/02/10 01:36:32 kyau Exp $
 
 # ANSI
 set -g ANSI $HOME/dot/ansi/(hostname -s).ans
@@ -84,13 +84,11 @@ function _motd_sysinfo
 			set _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
 			set _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
 			set -l _sysinfo_ram2 (awk '/DirectMap1G/ {print $2}' /proc/meminfo)
-			set _sysinfo_cpu_cache (string join "$_sysinfo_cpu_cache" "M")
-			set _sysinfo_cpu_speed (string join "$_sysinfo_cpu_speed" "GHz")
 			if test -n "$_sysinfo_ram2"
 				set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
 			end
 			set _sysinfo_ram (math -s0 $_sysinfo_ram / 1024 + 1)
-			printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%s Cache, %s)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
+			printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
 		case armv7l
 			switch (cat /proc/cpuinfo | awk '/^Hardware/{print $3}')
 				case ODROID-XU4
@@ -136,9 +134,14 @@ function _motd_services
 	printf "$_motd_padding\\x1b[25C\\x1b[38;5;238m─│────\\x1b[38;5;235m─\\x1b[38;5;238m─\\x1b[38;5;235m─────────────────\\x1b[38;5;172mservices\\x1b[38;5;235m─┐\\x1b[0m\n"
 	for index in (seq (count $_services_all))
 		set -l service $_services_all[$index]
-		set -l serviceStatus (systemctl show -p SubState $service | sed 's/SubState=//g')
+		set -l serviceStatus
+		if test (systemctl show -p ActiveState $service | sed 's/ActiveState=//g') = "inactive"
+			set serviceStatus (systemctl show -p SubState $service.socket | sed 's/SubState=//g')
+		else
+			set serviceStatus (systemctl show -p SubState $service | sed 's/SubState=//g')
+		end
 		switch $serviceStatus
-			case running exited
+			case running exited listening
 				set serviceStatus "active"
 			case '*'
 				set serviceStatus "inactive"
