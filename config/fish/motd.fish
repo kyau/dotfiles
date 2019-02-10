@@ -1,4 +1,4 @@
-# $Arch: motd.fish,v 1.032 2019/02/10 01:36:32 kyau Exp $
+# $Arch: motd.fish,v 1.033 2019/02/10 01:53:01 kyau Exp $
 
 # ANSI
 set -g ANSI $HOME/dot/ansi/(hostname -s).ans
@@ -56,8 +56,7 @@ end
 # Hostname & IPs {{{
 function _motd_network
 	if test $FISH_PLATFORM = "Linux"
-		set -l nic (/bin/ls /sys/class/net | head -1)
-		set -l iplist (ip -4 addr show $nic | grep -oP "(?<=inet ).*(?=/)" | sed -e :a -e '$!N; s/\n/, /; ta')
+		set -l iplist (string trim (hostname -i))
 		set -l fullhost (hostname -f)
 		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m%-24s\\x1b[0m \\x1b[38;5;240m%-27s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "$fullhost" "($iplist)"
 	else
@@ -219,7 +218,13 @@ if test $HOSTNAME = "web.wa.kyaulabs.com"
 	_motd_ssl
 end
 _motd_sysinfo
-set -l _lastlog_ip (lastlog -u $USER | sed -n 2p | awk '{print $3}')
+set -l _lastlog_ip
+set -l _lastlog (string split " " (lastlog -u $USER | sed -n 's/  */ /gp' | sed -n 2p))
+if test (count $_lastlog) = 8
+	set _lastlog_ip "localhost"
+else
+	set _lastlog_ip $_lastlog[2]
+end
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
 _motd_services
