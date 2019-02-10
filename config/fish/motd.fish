@@ -1,9 +1,9 @@
 # $Arch: motd.fish,v 1.024 2019/02/09 23:02:20 kyau Exp $
 
 # ANSI
-set ANSI $HOME/dot/ansi/(hostname -s).ans
-set _SSL_DOMAINS "kyau.net" "kyaulabs.com" "voidbbs.com" "ah42.org"
-set _SERVICES "nftables" "sshd" "nginx" "mariadb"
+set -g ANSI $HOME/dot/ansi/(hostname -s).ans
+set -g _SSL_DOMAINS "kyau.net" "kyaulabs.com" "voidbbs.com" "ah42.org"
+set -g _SERVICES "nftables" "sshd" "nginx" "mariadb"
 
 # Padding/Remove Color {{{
 function get_padding
@@ -70,60 +70,123 @@ end
 # Sysinfo {{{
 set -g _sysinfo_count
 function _motd_sysinfo
-	set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
-	set -l _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
-	set -l _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo | head -n 1) / 1024)
-	set -l _sysinfo_cpu_speed (math -s2 (awk '/cpu MHz/ {print $4}' /proc/cpuinfo | head -n 1) / 1000)
-	set -l _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
-	set -l _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
-	set -l _sysinfo_ram2 (awk '/DirectMap1G/ {print $2}' /proc/meminfo)
-	if test -n "$_sysinfo_ram2"
-		set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
+	set -l _sysinfo_cpus
+	set -l _sysinfo_vcpu
+	set -l _sysinfo_ram
+	set -l _sysinfo_cpu_cache
+	set -l _sysinfo_cpu_speed
+  switch (uname -m)
+		case x86_64 x86
+			set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
+			set _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
+			set _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo | head -n 1) / 1024)
+			set _sysinfo_cpu_speed (math -s2 (awk '/cpu MHz/ {print $4}' /proc/cpuinfo | head -n 1) / 1000)
+			set _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
+			set _sysinfo_ram (math (awk '/DirectMap4k/ {print $2}' /proc/meminfo) + (awk '/DirectMap2M/ {print $2}' /proc/meminfo))
+			set -l _sysinfo_ram2 (awk '/DirectMap1G/ {print $2}' /proc/meminfo)
+			set _sysinfo_cpus $_sysinfo_cpus[1]
+			set _sysinfo_cpu_cache (string join $_sysinfo_cpu_cache "M")
+			set _sysinfo_cpu_speed (string join $_sysinfo_cpu_speed "GHz")
+			if test -n "$_sysinfo_ram2"
+				set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
+			end
+			set _sysinfo_ram (math -s0 $_sysinfo_ram / 1024 + 1)
+			printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%s Cache, %s)\\x1b[0m\\n" "$_sysinfo_cpus" "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
+		case armv7l
+			switch (cat /proc/cpuinfo | awk '/^Hardware/{print $3}')
+				case ODROID-XU4
+					printf "      \\x1b[38;5;244mcpu0\\x1b[0m\\x1b[38;5;240m/ARM® Cortex-A15 (32K Cache, 2.0GHz)\\x1b[0m\\n"
+					printf "      \\x1b[38;5;244mcpu1\\x1b[0m\\x1b[38;5;240m/ARM® Cortex-A7 (32K Cache, 1.4GHz)\\x1b[0m\\n"
+				case '*'
+					printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/unknown\\x1b[0m\\n"
+			end
+			set _sysinfo_vcpu (grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
+			set _sysinfo_ram (math -s0 (awk '/MemTotal/ {print $2}' /proc/meminfo) / 1024)
 	end
 	set -l _sysinfo_hdd (lsblk -nd | grep -v " rom " | awk '{print $4}')
-	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
+	#printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%s Cache, %s)\\x1b[0m\\n" "$_sysinfo_cpus" "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
 	printf "      \\x1b[38;5;244mvcpu\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" "$_sysinfo_vcpu"
-	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math -s0 $_sysinfo_ram / 1024 + 1)
+	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" "$_sysinfo_ram"
 	for i in (seq (count $_sysinfo_hdd))
 		printf "      \\x1b[38;5;244mdisk%d\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" $i $_sysinfo_hdd[$i]
 	end
-	set _sysinfo_count (math (count $_sysinfo_hdd) + 1)
+	set _sysinfo_count (math (count $_sysinfo_hdd) + 2)
 end
 # }}}
 # Services {{{
 function _motd_services
 	set -l firstRun true
-	set -l _motd_padding (string join "" "\\x1b[" "$_sysinfo_count" "A")
-	printf "$_motd_padding\\x1b[25C\\x1b[38;5;238m─│────\\x1b[38;5;235m─\\x1b[38;5;238m─\\x1b[38;5;235m─────────────────\\x1b[38;5;172mservices\\x1b[38;5;235m─┐\\x1b[0m\n"
+	set -l _services_all
 	for index in (seq (count $_SERVICES))
 		set -l service $_SERVICES[$index]
-		set -l serviceStatus (systemctl is-active $service.service)
+		set -l serviceStatus (systemctl show -p ActiveState $service | sed 's/ActiveState=//g')
+		if test $serviceStatus = "active"
+			set -a _services_all $service
+		end
+	end
+	set _sysinfo_count_end
+	if test $_sysinfo_count -gt (math (count $_services_count) + 2)
+		set -l _tmp_val (math $_sysinfo_count - (math (count $_services_count) + 1))
+		set _sysinfo_count_end (string join "" "\\x1b[" "$_tmp_val" "B")
+	end
+	#set _sysinfo_count 2
+	set -l _motd_padding (string join "" "\\x1b[" "$_sysinfo_count" "A")
+	printf "$_motd_padding\\x1b[25C\\x1b[38;5;238m─│────\\x1b[38;5;235m─\\x1b[38;5;238m─\\x1b[38;5;235m─────────────────\\x1b[38;5;172mservices\\x1b[38;5;235m─┐\\x1b[0m\n"
+	for index in (seq (count $_services_all))
+		set -l service $_services_all[$index]
+		set -l serviceStatus (systemctl show -p SubState $service | sed 's/SubState=//g')
 		set -l _service_length (math (string length $service) + (string length $serviceStatus) + 3)
 		set -l _service_width (math 30 - $_service_length)
 		set -l _service_space " "
 		for i in (seq $_service_width)
 			set _service_space "$_service_space "
 		end
-		if test -e /lib/systemd/system/$service.service
-			if test $firstRun = true
-				printf "\\x1b[26C\\x1b[38;5;238m│\\x1b[0m " ""
-			else
-				printf "\\x1b[26C\\x1b[38;5;235m│\\x1b[0m " ""
-			end
-			if test $serviceStatus = "active"
-				printf "\\x1b[38;5;34m▪ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;34m$serviceStatus\\x1b[0m"
-			else
-				printf "\\x1b[38;5;124m▫ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;124m$serviceStatus\\x1b[0m"
-			end
-			if test $firstRun = true
-				printf " \\x1b[38;5;235m·\\x1b[0m\n"
-				set firstRun false
-			else
-				printf " \\x1b[38;5;238m│\\x1b[0m\n"
-			end
+		if test $firstRun = true
+			printf "\\x1b[26C\\x1b[38;5;238m│\\x1b[0m " ""
+		else
+			printf "\\x1b[26C\\x1b[38;5;235m│\\x1b[0m " ""
+		end
+		if test $serviceStatus = "running"
+			printf "\\x1b[38;5;34m▪ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;34m$serviceStatus\\x1b[0m"
+		else
+			printf "\\x1b[38;5;124m▫ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;124m$serviceStatus\\x1b[0m"
+		end
+		if test $firstRun = true
+			printf " \\x1b[38;5;235m·\\x1b[0m\n"
+			set firstRun false
+		else
+			printf " \\x1b[38;5;238m│\\x1b[0m\n"
 		end
 	end
-	printf "\\x1b[26C\\x1b[38;5;235m└──────────────────────·─\\x1b[38;5;242m──\\x1b[38;5;247m·─\\x1b[38;5;242m────\\x1b[38;5;247m┘\\x1b[0m\\n" ""
+#	for index in (seq (count $_SERVICES))
+#		set -l service $_SERVICES[$index]
+#		set -l serviceStatus (systemctl is-active $service.service)
+#		set -l _service_length (math (string length $service) + (string length $serviceStatus) + 3)
+#		set -l _service_width (math 30 - $_service_length)
+#		set -l _service_space " "
+#		for i in (seq $_service_width)
+#			set _service_space "$_service_space "
+#		end
+#		if test -e /lib/systemd/system/$service.service
+#			if test $firstRun = true
+#				printf "\\x1b[26C\\x1b[38;5;238m│\\x1b[0m " ""
+#			else
+#				printf "\\x1b[26C\\x1b[38;5;235m│\\x1b[0m " ""
+#			end
+#			if test $serviceStatus = "active"
+#				printf "\\x1b[38;5;34m▪ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;34m$serviceStatus\\x1b[0m"
+#			else
+#				printf "\\x1b[38;5;124m▫ \\x1b[38;5;244m$service$_service_space\\x1b[38;5;124m$serviceStatus\\x1b[0m"
+#			end
+#			if test $firstRun = true
+#				printf " \\x1b[38;5;235m·\\x1b[0m\n"
+#				set firstRun false
+#			else
+#				printf " \\x1b[38;5;238m│\\x1b[0m\n"
+#			end
+#		end
+#	end
+	printf "\\x1b[26C\\x1b[38;5;235m└──────────────────────·─\\x1b[38;5;242m──\\x1b[38;5;247m·─\\x1b[38;5;242m────\\x1b[38;5;247m┘\\x1b[0m\\n$_sysinfo_count_end" ""
 end
 # }}}
 # SSL {{{
@@ -173,9 +236,9 @@ if test $HOSTNAME = "web.wa.kyaulabs.com"
 	_motd_ssl
 end
 _motd_sysinfo
-_motd_services
 set -l _lastlog_ip (lastlog -u $USER | sed -n 2p | awk '{print $3}')
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
-printf "\\x1b[1A      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
+printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
+_motd_services
 
 # vim: ts=2 sw=2 noet :
