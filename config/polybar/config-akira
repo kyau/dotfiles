@@ -1,4 +1,4 @@
-; $Arch: config-akira,v 1.014 2018/12/24 18:55:51 kyau Exp $
+; $Arch: config-akira,v 1.017 2019/01/26 01:21:05 kyau Exp $
 
 ; Color {{{
 [colors]
@@ -39,7 +39,7 @@ font-2 = "cryptocoins:style=Regular;4"
 inherit = bar/master
 modules-left = menu wifi
 modules-center = title
-modules-right = backlight battery cpuclock coretemps volume
+modules-right = battery backlight cpuclock coretemps volume
 ;offset-y = 6
 padding-left = 2
 padding-right = 2
@@ -52,7 +52,7 @@ inherit = bar/master
 bottom = true
 modules-left = wm
 modules-center = crypto
-modules-right = time
+modules-right = date time
 padding-left = 2
 padding-right = 2
 
@@ -143,7 +143,7 @@ ws-icon-4 = 5:ssh;
 ws-icon-5 = 6:;
 ws-icon-6 = 7:;
 ws-icon-7 = 8:;
-ws-icon-8 = 9:;
+ws-icon-8 = 9:win10;
 ws-icon-9 = 10:irc;
 format = <label-state> <label-mode>
 label-mode = %mode%
@@ -174,6 +174,15 @@ label-separator-foreground = #ffb52a
 ;label-visible-padding = 0
 ;label-urgent-foreground = ${colors.red}
 ;label-urgent-padding = 0
+; }}}
+; Module: date {{{
+[module/date]
+type = internal/date
+interval = 3600
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+label-foreground = ${colors.green}
+date = "%Y-%m-%d%"
 ; }}}
 ; Module: time {{{
 [module/time]

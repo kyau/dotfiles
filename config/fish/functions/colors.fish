@@ -13,7 +13,9 @@ function colors
 						switch $argv[2]
 							case inv inva invad invade invader invaders
 								__kyau_colors_invaders
-							case a al all
+							case an ans ansi
+								__kyau_colors_ansi
+							case al all
 								__kyau_colors_all
 						end
 						#printf "format mode: %s\\n" "$argv[2]"
@@ -46,6 +48,22 @@ function __kyau_colors_default
 	for i in (seq 8 15)
 		set -l tmp (math $i + 1)
 		printf "\\x1b[1;%sm█%s\\x1b[0m " (math 22 + $i) "$colors[$tmp]"
+	end
+	printf "\\n\\n"
+end
+# }}}
+# Colors: ANSI {{{
+function __kyau_colors_ansi
+	set -l colors (xrdb -query | sed -n 's/.*color\([0-9]\)/\1/p' | sort -nu | cut -f2)
+	printf "\\n    "
+	for i in (seq 0 7)
+		set -l tmp (math $i + 1)
+		printf "\\x1b[%sm█ 0;%s\\x1b[0m " (math 30 + $i) (math 30 + $i)
+	end
+	printf "\\n    "
+	for i in (seq 8 15)
+		set -l tmp (math $i + 1)
+		printf "\\x1b[1;%sm█ 1;%s\\x1b[0m " (math 22 + $i) (math 22 + $i)
 	end
 	printf "\\n\\n"
 end

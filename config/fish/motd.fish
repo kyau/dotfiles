@@ -1,4 +1,4 @@
-# $Arch: motd.fish,v 1.023 2017/08/28 11:51:12 kyau Exp $
+# $Arch: motd.fish,v 1.024 2019/02/09 23:02:20 kyau Exp $
 
 # ANSI
 set ANSI $HOME/dot/ansi/(hostname -s).ans
@@ -83,7 +83,7 @@ function _motd_sysinfo
 	set -l _sysinfo_hdd (lsblk -nd | grep -v " rom " | awk '{print $4}')
 	printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
 	printf "      \\x1b[38;5;244mvcpu\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" "$_sysinfo_vcpu"
-	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math $_sysinfo_ram / 1024 + 1)
+	printf "      \\x1b[38;5;244mram\\x1b[0m\\x1b[38;5;240m/%dMB\\x1b[0m\\n" (math -s0 $_sysinfo_ram / 1024 + 1)
 	for i in (seq (count $_sysinfo_hdd))
 		printf "      \\x1b[38;5;244mdisk%d\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n" $i $_sysinfo_hdd[$i]
 	end

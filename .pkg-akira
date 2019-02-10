@@ -31,14 +31,20 @@ xf86-video-intel
 # CLI {{{
 cli-visualizer
 irssi
+fish-irssi-git
 mpc
 mpd
+nagelfar
 ncmpcpp-git
 ranger-git
+tcl
+tcllib
+tcltls
 # }}}
 # Xorg {{{
 autocutsel
 compton-git
+dosbox
 #google-chrome
 firefox
 firefox-sync

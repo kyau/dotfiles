@@ -10,7 +10,7 @@ set $workspace5 "5:ssh"
 set $workspace6 "6:"
 set $workspace7 "7:"
 set $workspace8 "8:"
-set $workspace9 "9:"
+set $workspace9 "9:win10"
 set $workspace10 "10:irc"
 # }}}
 # General Options {{{
@@ -150,7 +150,8 @@ bindsym $mod+r mode "resize"
 # Workspace Assignment {{{
 # applications start on specific workspaces
 assign [class="Subl3"] $workspace2
-assign [class="Firefox"] $workspace3
+assign [class="Firefox"] $workspace2
+assign [class="Virtualbox"] $workspace9
 for_window [class="^.*"] border pixel 2
 for_window [class="ckb"] floating enable
 for_window [class="Lxappearance"] floating enable
