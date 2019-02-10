@@ -223,7 +223,7 @@ set -l _lastlog (string split " " (lastlog -u $USER | sed -n 's/  */ /gp' | sed 
 if test (count $_lastlog) = 8
 	set _lastlog_ip "localhost"
 else
-	set _lastlog_ip $_lastlog[2]
+	set _lastlog_ip $_lastlog[3]
 end
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
