@@ -1,4 +1,4 @@
-# $Arch: motd.fish,v 1.033 2019/02/10 01:53:01 kyau Exp $
+# $Arch: motd.fish,v 1.034 2019/02/11 22:46:19 kyau Exp $
 
 # ANSI
 set -g ANSI $HOME/dot/ansi/(hostname -s).ans
@@ -127,6 +127,9 @@ function _motd_services
 	set _sysinfo_count_end 0
 	if test $_sysinfo_count -gt (math (count $_services_count) + 2)
 		set -l _tmp_val (math $_sysinfo_count - (math (count $_services_count) + 4))
+		if test $_tmp_val -lt 0
+			set _tmp_val 0
+		end
 		set _sysinfo_count_end (string join "" "\\x1b[" "$_tmp_val" "B")
 	end
 	set -l _motd_padding (string join "" "\\x1b[" "$_sysinfo_count" "A")
