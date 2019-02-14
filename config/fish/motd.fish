@@ -1,8 +1,8 @@
-# $Arch: motd.fish,v 1.034 2019/02/11 22:46:19 kyau Exp $
+# $Arch: motd.fish,v 1.035 2019/02/13 23:31:42 kyau Exp $
 
 # ANSI
 set -g ANSI $HOME/dot/ansi/(hostname -s).ans
-set -g _SSL_DOMAINS "kyau.net" "kyaulabs.com" "voidbbs.com" "ah42.org"
+set -g _SSL_DOMAINS "ah42.org" "botpack.xyz" "dotpre.xyz" "kyau.net" "kyaulabs.com" "voidbbs.com"
 set -g _SERVICES "nftables" "sshd" "nginx" "mariadb"
 
 # Padding/Remove Color {{{
