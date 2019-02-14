@@ -227,9 +227,9 @@ else
 end
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
+_motd_services
 if test $HOSTNAME = "web.wa.kyaulabs.com"
 	_motd_ssl
 end
-_motd_services
 
 # vim: ts=2 sw=2 noet :
