@@ -214,9 +214,6 @@ printf " \\x1b[38;5;235m·\\x1b[38;5;237m░\\x1b[38;5;233m── \\x1b[38;5;235
 set -l _motd_uptime (uptime -p | cut -d ' ' -f2-)
 printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242muptime\\x1b[38;5;240m: %-45s\\x1b[38;5;237m░\\x1b[38;5;242m│\\x1b[0m\\n" "$_motd_uptime"
 printf " \\x1b[38;5;235m└─────────────────────────────────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n"
-if test $HOSTNAME = "web.wa.kyaulabs.com"
-	_motd_ssl
-end
 _motd_sysinfo
 set -l _lastlog_ip
 set -l _lastlog (string split " " (lastlog -u $USER | sed -n 's/  */ /gp' | sed -n 2p))
@@ -227,6 +224,9 @@ else
 end
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
+if test $HOSTNAME = "web.wa.kyaulabs.com"
+	_motd_ssl
+end
 _motd_services
 
 # vim: ts=2 sw=2 noet :

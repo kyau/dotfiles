@@ -4,10 +4,12 @@
 bc
 bind-tools
 colordiff
+dateutils
 fish
 htop
 iotop
 openssh
+nfs-utils
 reflector
 tmux
 unrar
