@@ -1,4 +1,4 @@
-# $Arch: config,v 1.017 2019/02/10 21:11:15 kyau Exp $
+# $Arch: config,v 1.018 2019/02/18 19:10:13 kyau Exp $
 
 # Variables {{{
 set $mod Mod4
@@ -48,22 +48,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id exec rofi -show run -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
 # alt-tab functionality from rofi
 bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
+bindsym $mod+l exec betterlockscreen -l pixel -t "akira.wa.kyaulabs.com"
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -157,6 +148,7 @@ for_window [class="ckb"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Nitrogen"] floating enable
+for_window [class="Nitrogen"] move position center
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Qrazercfg"] floating enable
 for_window [class="Steam"] floating enable
@@ -175,6 +167,7 @@ for_window [title="Remmina Remote Desktop Client"] floating enable
 # }}}
 # Startup Applications {{{
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec xautolock -time 10 -locker 'betterlockscreen -l pixel -t "akira.wa.kyaulabs.com"; xset dpms force off'
 # }}}
 
 # vim: ft=conf ts=2 sw=2 noet :

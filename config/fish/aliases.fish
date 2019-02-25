@@ -1,4 +1,4 @@
-# $Arch: aliases.fish,v 1.002 2017/08/28 11:50:56 kyau Exp $
+# $Arch: aliases.fish,v 1.004 2019/02/25 11:25:12 kyau Exp $
 
 # Abbreviations {{{
 abbr -a -- - 'cd -'
@@ -57,9 +57,6 @@ alias gitlog="git log --graph --all --format=format:'%C(bold red)%h%C(reset) %C(
 alias gitls="git ls-files -o --exclude-standard"
 alias pull="git pull origin"
 alias push="git push origin"
-# }}}
-# Aliases: QEMU {{{
-alias virsh="virsh -c qemu:///system"
 # }}}
 # Aliases: ARK {{{
 alias ark="/home/kyau/bin/arkmanager"

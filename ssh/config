@@ -1,4 +1,4 @@
-# $Arch: config,v 1.005 2018/12/24 19:07:21 kyau Exp $
+# $Arch: config,v 1.007 2019/02/24 00:28:27 kyau Exp $
 
 # KYAU Labs: Local {{{
 Host web
@@ -19,6 +19,10 @@ Host ah42
 
 Host neutron
 	HostName 10.0.42.36
+	User kyau
+
+Host skye
+	HostName 10.0.42.10
 	User kyau
 
 Host xu4
