@@ -1,4 +1,4 @@
-! $Arch: Xresources,v 1.008 2018/12/24 01:03:58 kyau Exp $
+! $Arch: Xresources,v 1.010 2019/03/03 00:02:52 kyau Exp $
 
 ! Xft {{{
 Xft.antialias:				true
@@ -45,12 +45,12 @@ rofi.separator-style:		solid
 ! }}}
 ! KYAU color scheme {{{
 ! special
-*.foreground:	#a0a0a0
+*.foreground:	#c0c0c0
 *.background:	#090c19
 *.cursorColor:	#e6e6e6
 ! black
 *.color0:		#1c2032
-*.color8:		#434343
+*.color8:		#808080
 ! red
 *.color1:		#961414
 *.color9:		#dc1216
@@ -58,7 +58,7 @@ rofi.separator-style:		solid
 *.color2:		#1aaa13
 *.color10:		#5dce33
 ! yellow
-*.color3:		#fab916
+*.color3:		#ff7f00
 *.color11:		#fae32d
 ! blue
 *.color4:		#3a57d7
@@ -70,8 +70,8 @@ rofi.separator-style:		solid
 *.color6:		#258f8f
 *.color14:		#4dc5dc
 ! white
-*.color7:		#aeaeae
-*.color15:		#dbdde4
+*.color7:		#c0c0c0
+*.color15:		#ffffff
 ! }}}
 
 ! vim: ft=xdefaults ts=4 sw=4 noet :

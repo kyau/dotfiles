@@ -2,9 +2,26 @@
 
 " General {{{
 " ------------------------------------------------------------------------------
-set nocompatible				    " Use Vim settings, rather than Vi settings
-filetype indent on					" Enable filetype-specific indenting
-filetype plugin on					" Enable filetype-specific plugins
+set nocompatible				    " be iMproved, required
+filetype off                        " temporarily disable for Vundle startup
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'       " let Vundle manage itself
+Plugin 'gorodinskiy/vim-coloresque' " css/less/sass/html color preview
+Plugin 'tpope/vim-surround'         " quoting/parenthesizing made simple
+Plugin 'mattn/emmet-vim'            " emmet for vim
+call vundle#end()
+" Enable Emmet only for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+filetype indent plugin on			" Enable filetype-specific indenting/plugins
 set autoread						" Auto read when changed from the outside
 " }}}
 " Colors & Fonts {{{

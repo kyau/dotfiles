@@ -1,4 +1,4 @@
-# $Arch: config,v 1.018 2019/02/18 19:10:13 kyau Exp $
+# $Arch: config,v 1.019 2019/03/07 22:42:20 kyau Exp $
 
 # Variables {{{
 set $mod Mod4
@@ -8,8 +8,8 @@ set $workspace3 "3:vim"
 set $workspace4 "4:void.wa.kyaulabs.com"
 set $workspace5 "5:ssh"
 set $workspace6 "6:"
-set $workspace7 "7:"
-set $workspace8 "8:"
+set $workspace7 "7:games"
+set $workspace8 "8:discord"
 set $workspace9 "9:win10"
 set $workspace10 "10:irc"
 # }}}
@@ -155,8 +155,15 @@ for_window [class="Steam"] floating enable
 for_window [class="Xfd"] floating enable
 for_window [class="Vinagre"] floating enable
 for_window [class="Virt-manager"] floating enable
+for_window [class="Virt-manager"] move position center
+for_window [title="^.* on QEMU/KVM: natasha"] floating enable
+for_window [title="^.* on QEMU/KVM: natasha"] border pixel 0
+for_window [title="^.* on QEMU/KVM: natasha"] resize set 1366 712
+for_window [title="^.* on QEMU/KVM: natasha"] move position center
 for_window [class="keepassxc"] floating enable
 for_window [class="keepassxc"] move position center
+for_window [class="syncterm"] floating enable
+for_window [class="syncterm"] move position center
 for_window [class="Mirage"] floating enable
 for_window [class="Wine"] border pixel 0
 for_window [class="EVE"] floating enable
