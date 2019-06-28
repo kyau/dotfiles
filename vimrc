@@ -1,4 +1,4 @@
-" $Arch: vimrc,v 1.017 2018/11/12 03:21:50 kyau Exp $
+" $KYAULabs: vimrc,v 1.019 2019/06/27 07:56:00 kyau Exp $
 
 " General {{{
 " ------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ function! MyFoldText()
     let comment = substitute(comment,"^[\"|\#|\;|!] ", "", "")
     let comment = substitute(comment," \{\{\{","","")
     let expansionString = repeat(" ", w - strwidth(nblines.comment.'"'))
-    let txt = ' □ ' . comment . expansionString . nblines . ' '
+    let txt = ' ◇ ' . comment . expansionString . nblines . ' '
     return txt
 endfunction
 set foldtext=MyFoldText()
@@ -251,7 +251,7 @@ map <leader>e :e ~/buffer<cr>
 map <leader>dt :r !date +"\%Y-\%m-\%dT\%H:\%M:\%S\%z"<cr>i<bs><esc>
 
 " Insert document header
-map <leader>tt i $Arch: <esc>:put =expand('%:t')<cr>i<bs><esc>A,v 1.000 <esc>:r !date +"\%Y/\%m/\%d \%H:\%M:\%S "<cr>i<bs><esc>A<esc>:r !echo $USER<cr>i<bs><esc>A Exp $<esc><home>i
+map <leader>tt i $KYAULabs: <esc>:put =expand('%:t')<cr>i<bs><esc>A,v 1.000 <esc>:r !date +"\%Y/\%m/\%d \%H:\%M:\%S "<cr>i<bs><esc>A<esc>:r !echo $USER<cr>i<bs><esc>A Exp $<esc><home>i
 
 " Remove the Windows ^M (for when encodings get messed up)
 map <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -366,6 +366,9 @@ autocmd BufNewFile,BufRead,StdinReadPost *
     \   set ft=fish |
     \ endif
 au FileType fish setl ts=2 sw=2 noet
+
+" PostgreSQL
+let g:sql_type_default = 'pgsql'
 
 " Functions {{{
 " ------------------------------------------------------------------------------
