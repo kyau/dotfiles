@@ -1,4 +1,4 @@
-; $Arch: config-akira,v 1.017 2019/01/26 01:21:05 kyau Exp $
+; $KYAULabs: config-akira,v 1.018 2019/07/01 02:56:59 kyau Exp $
 
 ; Color {{{
 [colors]
@@ -31,14 +31,16 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 underline-size = 0
 overline-size = 0
-font-0 = "M+ 1p Medium:size=10:antialias=true:hinting=true;4"
+font-0 = "M+ 1p Medium:size=8:antialias=true:hinting=true;3"
 font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;4"
-font-2 = "cryptocoins:style=Regular;4"
+font-2 = "mana:style=Regular;4"
+font-3 = "Keyrune:style=Regular;4"
+font-4 = "cryptocoins:style=Regular;4"
 
 [bar/top]
 inherit = bar/master
-modules-left = menu wifi
-modules-center = title
+modules-left = menu
+modules-center = date time
 modules-right = battery backlight cpuclock coretemps volume
 ;offset-y = 6
 padding-left = 2
@@ -51,8 +53,8 @@ tray-transparent = true
 inherit = bar/master
 bottom = true
 modules-left = wm
-modules-center = crypto
-modules-right = date time
+modules-center = 
+modules-right = title
 padding-left = 2
 padding-right = 2
 
@@ -102,10 +104,10 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 format-connected = <label-connected>
-;label-connected = " %local_ip%"
-label-connected = " %essid%"
+label-connected = " %{F#bbbbbb}%local_ip%%{F-}"
+;label-connected = " %essid%"
 label-connected-foreground = ${colors.green}
-label-disconnected = ""
+label-disconnected = ""
 label-disconnected-foreground = ${colors.black}
 ; }}}
 ; Module: title {{{
@@ -138,7 +140,7 @@ fuzzy-match = false
 ws-icon-0 = 1:kyau;
 ws-icon-1 = 2:firefox;
 ws-icon-2 = 3:vim;
-ws-icon-3 = 4:void.wa.kyaulabs.com;
+ws-icon-3 = 4:blackbox;
 ws-icon-4 = 5:ssh;
 ws-icon-5 = 6:;
 ws-icon-6 = 7:games;
@@ -200,8 +202,10 @@ menu-0-1 = %{F#008000}%{F-}  %{F#969696}reboot%{F-}
 menu-0-1-exec = systemctl reboot
 menu-0-0 = %{F#800000}%{F-}  %{F#969696}power off%{F-}
 menu-0-0-exec = systemctl poweroff
-label-open = %{F#1793d1}%{F-}
-label-close = %{F#434343}%{F-}
+;label-open = %{F#1793d1}%{F-}
+;label-close = %{F#434343}%{F-}
+label-open = %{T3}%{F#d3203a}%{T-} AKiRA%{F-}
+label-close = %{T3}%{F#434343}%{F-}%{T-}
 label-separator = "  "
 ; }}}
 ; Module: battery {{{
