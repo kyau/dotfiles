@@ -45,9 +45,9 @@ bindsym $mod+Return exec st
 # kill focused window
 bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id exec rofi -show run -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
+bindsym $mod+d exec --no-startup-id exec rofi -show run -font "agave 12" -lines 6 -i -separator-style solid -opacity "90"
 # alt-tab functionality from rofi
-bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "PxPlus AmstradPC1512-2y 12" -lines 6 -i -separator-style solid -opacity "90"
+bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "agave 12" -lines 6 -i -separator-style solid -opacity "90"
 bindsym $mod+l exec betterlockscreen -l pixel -t "akira.wa.kyaulabs.com"
 # change focus
 bindsym $mod+Left focus left

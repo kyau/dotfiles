@@ -1,0 +1,70 @@
+# General {{{
+bc
+bind-tools
+colordiff
+fish
+gptfdisk
+htop-solarized
+iotop
+openssh
+rclone
+reflector
+tmux
+unrar
+unzip
+vim
+# }}}
+# Hardware {{{
+alsa-utils
+linux-headers
+ntfs-3g
+pulseaudio-alsa
+sshuttle-git
+# }}}
+# CLI {{{
+#cli-visualizer
+irssi
+#mpc
+#mpd
+#ncmpcpp-git
+ranger-git
+# }}}
+# Xorg {{{
+autocutsel
+compton-git
+dosbox
+firefox
+firefox-sync
+arch-firefox-search
+firefox-hardening
+i3-gaps
+imagemagick
+keepassxc
+lxappearance
+mediainfo
+mirage
+nitrogen
+numlockx
+#obs-studio
+perl-image-exiftool
+polybar-git
+rofi
+screenkey
+slop
+sublime-text-dev
+thunar
+thunar-volman
+tumbler
+unclutter-xfixes-git
+vapoursynth
+vapoursynth-plugin-mvtools
+mpv-git
+w3m
+xorg-xfd
+xst-git
+# }}}
+# Xorg Themes {{{
+arc-gtk-theme
+arc-icon-theme
+ttf-dejavu
+ttf-mplus
