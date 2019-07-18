@@ -1,8 +1,12 @@
-# $Arch: config,v 1.008 2019/02/28 00:10:40 kyau Exp $
+# $KYAULabs: config,v 1.010 2019/07/18 01:02:02 kyau Exp $
 
 # KYAU Labs: Local {{{
 Host chloe
 	HostName 10.0.42.2
+	User kyau
+
+Host akira
+	HostName 10.0.42.3
 	User kyau
 
 Host skye
@@ -17,7 +21,7 @@ Host web
 	HostName 10.0.42.30
 	User kyau
 
-Host git
+Host torrent
 	HostName 10.0.42.31
 	User kyau
 
@@ -49,4 +53,4 @@ Host *
 	MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 	ServerAliveInterval 120
 
-# vim: ft=sshconfig ts=2 sw=2 noet :
+# vim: ft=sshconfig ts=4 sw=4 noet :

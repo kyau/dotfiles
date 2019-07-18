@@ -1,11 +1,15 @@
+# $KYAULabs: pkg-desktop,v 1.003 2019/07/18 00:54:59 kyau Exp $
+
 # General {{{
 bc
 bind-tools
 colordiff
+dateutils
 fish
 gptfdisk
-htop-solarized
+htop
 iotop
+nfs-utils
 openssh
 rclone
 reflector
@@ -16,73 +20,67 @@ vim
 # }}}
 # Hardware {{{
 alsa-utils
+ckb-next-git
+cpupower
 i7z
 intel-ucode
-libva-intel-driver
-libvdpau-va-gl
-mesa
+linux-headers
+mesa-vdpau
 ntfs-3g
+nvidia
+nvidia-settings
 pulseaudio-alsa
 #sshuttle-git
-sshfs
-wireless_tools
-xf86-video-intel
+vdpauinfo
 # }}}
 # CLI {{{
 cli-visualizer
 irssi
-fish-irssi-git
 mpc
 mpd
-nagelfar
 ncmpcpp-git
+pigz
 ranger-git
-tcl
-tcllib
-tcltls
+syncterm
 # }}}
 # Xorg {{{
 autocutsel
+betterlockscreen
 compton-git
 dosbox
-#google-chrome
+dunst
+ffmpeg-git
 firefox
 firefox-sync
-arch-firefox-search
 firefox-hardening
-firefox-noscript
-firefox-extension-privacybadger
-firefox-extension-https-everywhere
-gvfs
 i3-gaps
 imagemagick
 keepassxc
 lxappearance
 mediainfo
 mirage
-vapoursynth
 mpv-git
+nautilus
+nautilus-wipe
 nitrogen
 numlockx
 #obs-studio
 perl-image-exiftool
 polybar-git
-#profile-sync-daemon
 rofi
 screenkey
 slop
 sublime-text-dev
-thunar
-thunar-volman
 tumbler
 unclutter-xfixes-git
-vapoursynth-plugin-mvtools
+virt-manager
+virtualbox
+virtualbox-guest-iso
 w3m
 xorg-xfd
-xst-git
 # }}}
 # Xorg Themes {{{
-arc-gtk-theme
-arc-icon-theme
+flat-remix-git
+flat-remix-gtk
 ttf-dejavu
 ttf-mplus

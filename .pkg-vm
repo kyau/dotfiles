@@ -1,4 +1,4 @@
-# $Arch: .pkg-skye,v 1.001 2018/04/28 00:14:17 kyau Exp $
+# $KYAULabs: pkg-vm,v 1.001 2019/07/18 00:32:51 kyau Exp $
 
 # General {{{
 bc
@@ -6,6 +6,7 @@ bind-tools
 colordiff
 dateutils
 fish
+gptfdisk
 htop
 iotop
 openssh
@@ -15,7 +16,6 @@ tmux
 unrar
 unzip
 vim
-# }}}
 # }}}
 
 # vim: ft=conf ts=2 sw=2 noet :

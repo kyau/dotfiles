@@ -1,12 +1,16 @@
+# $KYAULabs: pkg-laptop,v 1.004 2019/07/18 00:53:03 kyau Exp $
+
 # General {{{
 bc
 bind-tools
 colordiff
+dateutils
 fish
 gptfdisk
-htop-solarized
+htop
 iotop
 openssh
+nfs-utils
 rclone
 reflector
 tmux
@@ -16,26 +20,38 @@ vim
 # }}}
 # Hardware {{{
 alsa-utils
-linux-headers
+i7z
+intel-ucode
+libva-intel-driver
+libvdpau-va-gl
+mesa
 ntfs-3g
 pulseaudio-alsa
-sshuttle-git
+#sshuttle-git
+sshfs
+thinkfan-git
+tlp
+wireless_tools
+xf86-video-intel
 # }}}
 # CLI {{{
-#cli-visualizer
+cli-visualizer
 irssi
-#mpc
-#mpd
-#ncmpcpp-git
+mpc
+mpd
+ncmpcpp-git
+pigz
 ranger-git
+syncterm
 # }}}
 # Xorg {{{
 autocutsel
+betterlockscreen
 compton-git
 dosbox
+dunst
 firefox
 firefox-sync
-arch-firefox-search
 firefox-hardening
 i3-gaps
 imagemagick
@@ -43,6 +59,7 @@ keepassxc
 lxappearance
 mediainfo
 mirage
+mpv-git
 nitrogen
 numlockx
 #obs-studio
@@ -52,19 +69,16 @@ rofi
 screenkey
 slop
 sublime-text-dev
-thunar
-thunar-volman
 tumbler
 unclutter-xfixes-git
-vapoursynth
-vapoursynth-plugin-mvtools
-mpv-git
+virt-manager
+virtualbox
+virtualbox-guest-iso
 w3m
 xorg-xfd
-xst-git
 # }}}
 # Xorg Themes {{{
-arc-gtk-theme
-arc-icon-theme
+flat-remix-git
+flat-remix-gtk
 ttf-dejavu
 ttf-mplus

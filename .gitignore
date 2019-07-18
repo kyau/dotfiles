@@ -26,6 +26,8 @@ config/fish/functions/pwd_info.fish
 config/fish/functions/pwd_is_home.fish
 config/fish/completions/fisher.fish
 config/fish/fishd.*
+## i3
+config/i3/config
 ## irssi
 irssi/config
 irssi/away.log

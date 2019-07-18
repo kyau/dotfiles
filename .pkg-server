@@ -1,13 +1,16 @@
-# $Arch: .pkg-neutron,v 1.003 2017/08/08 01:49:01 kyau Exp $
+# $KYAULabs: pkg-server,v 1.004 2019/07/17 23:24:31 kyau Exp $
 
 # General {{{
 bc
 bind-tools
 colordiff
+dateutils
 fish
-htop-solarized
+gptfdisk
+htop
 iotop
 openssh
+nfs-utils
 reflector
 tmux
 unrar
@@ -19,12 +22,16 @@ i7z
 intel-ucode
 # }}}
 # KVM {{{
+bridge-utils
+dmidecode
+#libguestfs
 libvirt
+openbsd-netcat
 openssl-1.0
-packer-io
+ovmf
 qemu-headless
 qemu-headless-arch-extra
-vagrant
+virt-install
 # }}}
 
 # vim: ft=conf ts=2 sw=2 noet :

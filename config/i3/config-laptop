@@ -1,4 +1,4 @@
-# $KYAULabs: config,v 1.020 2019/07/01 03:01:25 kyau Exp $
+# $KYAULabs: config-laptop,v 1.022 2019/07/18 00:58:25 kyau Exp $
 
 # Variables {{{
 set $mod Mod4

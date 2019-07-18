@@ -1,0 +1,254 @@
+; $Arch: config-chloe,v 1.011 2017/08/07 20:10:27 kyau Exp $
+
+; Colors {{{
+[colors]
+background = #00292d3e
+foreground = #bfc7d5
+yellow = #ffcb6b
+black = #073642
+white = #bfc7d5
+red = #ac4142
+green = #a9c77d
+blue = #82aaff
+magenta = #c792ea
+cyan = #89ddff
+gray = #696969
+arch = #1793d1
+; }}}
+; Settings {{{
+[settings]
+screenchange-reload = true
+monitor-struct = true
+; }}}
+; Bars {{{
+[bar/master]
+monitor = DP-2
+monitor-fallback = DP-2
+width = 100%
+height = 26
+separator = "   "
+background = ${colors.background}
+foreground = ${colors.foreground}
+underline-size = 0
+overline-size = 0
+font-0 = "M+ 1p Medium:size=8:antialias=true:hinting=true;3"
+font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;4"
+font-2 = "mana:style=Regular;4"
+font-3 = "Keyrune:style=Regular;4"
+font-4 = "cryptocoins:style=Regular;4"
+
+[bar/top]
+inherit = bar/master
+modules-left = menu
+modules-center = date time
+modules-right = battery backlight cpuclock coretemps volume
+;offset-y = 6
+padding-left = 2
+padding-right = 2
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+
+[bar/bottom]
+inherit = bar/master
+bottom = true
+modules-left = wm
+modules-center = 
+modules-right = title
+padding-left = 2
+padding-right = 2
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+; }}}
+; Module: volume {{{
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.yellow}
+label-muted =  MUTE
+label-muted-foreground = ${colors.red}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.yellow}
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-foreground = ${colors.yellow}
+; }}}
+; Module: coretemp {{{
+[module/coretemps]
+type = custom/script
+interval = 1
+exec-if = sensors
+exec = ~/.config/polybar/tempcores.sh
+; }}}
+; Module: network {{{
+[module/network]
+type = internal/network
+interface = wired0
+interval = 3
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = " %local_ip%"
+label-connected-foreground = ${colors.green}
+label-disconnected = ""
+label-disconnected-foreground = ${colors.black}
+; }}}
+; Module: wifi {{{
+[module/wifi]
+type = internal/network
+interface = wlan0
+interval = 3.0
+format-connected = <label-connected>
+label-connected = " %{F#bbbbbb}%local_ip%%{F-}"
+;label-connected = " %essid%"
+label-connected-foreground = ${colors.green}
+label-disconnected = ""
+label-disconnected-foreground = ${colors.black}
+; }}}
+; Module: title {{{
+[module/title]
+type = internal/xwindow
+label = %title%
+format-prefix = " "
+format-prefix-foreground = ${colors.black}
+label-maxlen = 75
+; }}}
+; Module: cpuclock {{{
+[module/cpuclock]
+type = custom/script
+interval = 1
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.cyan}
+label-foreground = ${colors.cyan}
+exec = $HOME/.config/polybar/cpuclock.sh
+; }}}
+; Module: wm {{{
+[module/wm]
+type = internal/i3
+pin-workspaces = false
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+fuzzy-match = false
+ws-icon-0 = 1:kyau;
+ws-icon-1 = 2:top;ﲾ
+ws-icon-2 = 3:games;ﲅ
+ws-icon-3 = 4:discord;ﭮ
+ws-icon-4 = 5:ssh;
+ws-icon-5 = 6:six;
+ws-icon-6 = 7:seven;
+ws-icon-7 = 8:eight;
+ws-icon-8 = 9:win10;
+ws-icon-9 = 10:irc;
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+label-focused = %{F#00aaaa}%icon%%{F-}  %name%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 2
+label-unfocused = %icon%
+label-unfocused-foregroud = #ffffff
+label-unfocused-padding = 2
+label-visible = %icon%  %name%
+label-visible-underline = #555555
+label-visible-padding = 2
+label-urgent = %icon%  %name%
+label-urgent-foreground = #aa0000
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+label-separator =
+label-separator-padding = 2
+label-separator-foreground = #ffb52a
+
+;label-focused-foreground = ${colors.yellow}
+;label-focused-padding = 0
+;label-unfocused-padding = 0
+;label-visible-padding = 0
+;label-urgent-foreground = ${colors.red}
+;label-urgent-padding = 0
+; }}}
+; Module: date {{{
+[module/date]
+type = internal/date
+interval = 3600
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+label-foreground = ${colors.green}
+date = "%Y-%m-%d%"
+; }}}
+; Module: time {{{
+[module/time]
+type = internal/date
+interval = 40
+format-prefix = " "
+format-prefix-foreground = ${colors.magenta}
+label-foreground = ${colors.magenta}
+date = "%I:%M %p"
+; }}}
+; Module: menu {{{
+[module/menu]
+type = custom/menu
+menu-0-1 = %{F#008000}%{F-}  %{F#969696}reboot%{F-}
+menu-0-1-exec = systemctl reboot
+menu-0-0 = %{F#800000}%{F-}  %{F#969696}power off%{F-}
+menu-0-0-exec = systemctl poweroff
+;label-open = %{F#1793d1}%{F-}
+;label-close = %{F#434343}%{F-}
+label-open = %{T3}%{F#0e68ab}%{T-} CHLOE%{F-}
+label-close = %{T3}%{F#434343}%{F-}%{T-}
+label-separator = "  "
+; }}}
+; Module: battery {{{
+[module/battery]
+type = internal/battery
+full-at = 96
+battery = BAT0
+adapter = AC
+poll-interval = 5
+time-format = %H:%M
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = " 100%"
+label-foreground = ${colors.green}
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+ramp-capacity-foreground = ${colors.green}
+bar-capacity-width = 10
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
+animation-charging-framerate = 750
+; }}}
+; Module: backlight {{{
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <label>
+format-foreground = ${colors.blue}
+label = " %percentage%%"
+; }}}
+; Module: crypto {{{
+[module/crypto]
+type = custom/script
+interval = 60
+exec = /home/kyau/.config/polybar/crypto.py
+; }}}
+
+; vim: ft=dosini ts=2 sw=2 noet :

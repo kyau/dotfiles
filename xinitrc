@@ -1,4 +1,4 @@
-# $Arch: xinitrc,v 1.004 2018/12/24 01:03:17 kyau Exp $
+# $KYAULabs: xinitrc,v 1.005 2019/07/18 00:52:31 kyau Exp $
 
 # General {{{
 # Update xorg resources if needed
@@ -21,9 +21,6 @@ xset m 1/5 1
 xset r rate 250 60
 # Swap <caps> with <esc>
 #setxkbmap -option caps:swapescape
-# NVIDIA settings
-#nvidia-settings -a GlyphCache=1
-#nvidia-settings -a InitialPixmapPlacement=2
 # }}}
 # Auto-Start {{{
 # Wallpaper
@@ -37,9 +34,9 @@ unclutter --fork --timeout 2 --jitter 5 --ignore-scrolling --exclude-root &
 # Start pulseaudio session
 start-pulseaudio-x11
 # Corsair Keyboard
-#ckb -bc &
+ckb-next -bc &
 # Notifications
-#dunst &
+dunst &
 # Enable Compositing
 compton -bc &
 # Turn numlock on

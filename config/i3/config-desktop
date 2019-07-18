@@ -1,0 +1,185 @@
+# $KYAULabs: config-desktop,v 1.024 2019/07/18 00:58:13 kyau Exp $
+
+# Variables {{{
+set $mod Mod4
+set $workspace1 "1:kyau"
+set $workspace2 "2:top"
+set $workspace3 "3:games"
+set $workspace4 "4:discord"
+set $workspace5 "5:ssh"
+set $workspace6 "6:six"
+set $workspace7 "7:seven"
+set $workspace8 "8:eight"
+set $workspace9 "9:win10"
+set $workspace10 "10:irc"
+# }}}
+# General Options {{{
+# Font for window titles.
+font pango:M+ 2c Medium 10
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# Focus no longer follows mouse
+focus_follows_mouse no
+# borders
+hide_edge_borders vertical
+new_window pixel 2
+new_float pixel 2
+# gaps
+gaps inner 8
+gaps outer 0
+smart_borders on
+smart_gaps on
+# }}}
+# Colors {{{
+# class									border	backgr. text		indicator child_border
+client.focused					#258f8f #090c19 #e6e6e6 #258f8f		#258f8f
+client.focused_inactive #434343 #d0cecd #090c19 #141021		#434343
+client.unfocused				#222222 #d0cecd #090c19 #141021		#222222
+client.urgent						#be1919 #d0cecd #090c19 #141021		#be1919
+client.placeholder			#312842 #000000 #090c19 #000000		#d0cecd
+client.background				#090c19
+# }}}
+# Keybindings {{{
+# start a terminal
+bindsym $mod+Return exec st
+# kill focused window
+bindsym $mod+Shift+q kill
+# start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id exec rofi -show run -font "agave 12" -lines 6 -i -separator-style solid -opacity "90"
+# alt-tab functionality from rofi
+bindsym Mod1+Tab exec --no-startup-id exec rofi -show window -font "agave 12" -lines 6 -i -separator-style solid -opacity "90"
+bindsym $mod+l exec betterlockscreen -l pixel -t "chloe.wa.kyaulabs.com"
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# split in horizontal orientation
+bindsym $mod+h split h
+# split in vertical orientation
+bindsym $mod+v split v
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+# scratchpad
+bindsym $mod+KP_Subtract move scratchpad
+bindsym $mod+KP_Add scratchpad show
+# keyboard media keys
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '1%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPlayPause exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# i3 lock screen
+bindsym $mod+shift+x exec i3lock -i ~/.i3/safe_lock_50.png -b -c 000000
+# resize window (you can also use the mouse for that)
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym semicolon resize grow width 10 px or 10 ppt
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 1 px or 1 ppt
+	bindsym Down resize shrink height 1 px or 1 ppt
+	bindsym Up resize grow height 1 px or 1 ppt
+	bindsym Right resize grow width 1 px or 1 ppt
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+# }}}
+# Workspace Assignment {{{
+# use ~/bin/i3-get-window-criteria
+assign [class="Subl3"] $workspace2
+assign [class="Firefox"] $workspace1
+assign [class="VirtualBox Machine"] $workspace9
+assign [class="discord"] $workspace4
+for_window [class="^.*"] border pixel 2
+for_window [class="ckb"] floating enable
+for_window [class="discord"] floating enable
+for_window [class="discord"] resize set 1900 1050
+for_window [class="discord"] move position center
+for_window [class="Lxappearance"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Nitrogen"] floating enable
+for_window [class="Nitrogen"] move position center
+for_window [class="Nvidia-settings"] floating enable
+for_window [class="Qrazercfg"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Xfd"] floating enable
+for_window [class="Vinagre"] floating enable
+for_window [class="Virt-manager"] floating enable
+for_window [class="Virt-manager"] move position center
+for_window [title="^.* on QEMU/KVM: natasha"] floating enable
+for_window [title="^.* on QEMU/KVM: natasha"] border pixel 0
+for_window [title="^.* on QEMU/KVM: natasha"] resize set 1900 1000
+for_window [title="voidbbs.* on QEMU/KVM: natasha"] resize set 1366 712
+for_window [title="^.* on QEMU/KVM: natasha"] move position center
+for_window [class="keepassxc"] floating enable
+for_window [class="keepassxc"] move position center
+for_window [class="syncterm"] floating enable
+for_window [class="syncterm"] move position center
+for_window [class="Mirage"] floating enable
+for_window [class="Wine"] border pixel 0
+for_window [class="EVE"] floating enable
+for_window [class="EVEMon.exe"] floating enable
+for_window [class="EVEMon.exe"] border normal
+for_window [class="Pyfa.py"] floating enable
+for_window [title="Remmina Remote Desktop Client"] floating enable
+# }}}
+# Startup Applications {{{
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec xautolock -time 10 -locker 'betterlockscreen -l pixel -t "akira.wa.kyaulabs.com"; xset dpms force off'
+# }}}
+
+# vim: ft=conf ts=2 sw=2 noet :
