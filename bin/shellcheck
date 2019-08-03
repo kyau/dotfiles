@@ -1,0 +1,6 @@
+#!/bin/bash
+# $KYAULabs: shellcheck,v 1.000 2019/07/21 23:15:52 kyau Exp $
+
+/usr/sbin/shellcheck -Calways -f tty -s bash -S style -x $@ | less
+
+# vim: ft=sh sts=4 sw=4 ts=4 noet:

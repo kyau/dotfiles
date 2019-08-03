@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-vm,v 1.001 2019/07/18 00:32:51 kyau Exp $
+# $KYAULabs: pkg-vm,v 1.002 2019/07/21 12:46:17 kyau Exp $
 
 # General {{{
 bc
@@ -12,6 +12,7 @@ iotop
 openssh
 nfs-utils
 reflector
+shellcheck-static
 tmux
 unrar
 unzip

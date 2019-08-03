@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-laptop,v 1.004 2019/07/18 00:53:03 kyau Exp $
+# $KYAULabs: pkg-laptop,v 1.006 2019/07/21 12:45:46 kyau Exp $
 
 # General {{{
 bc
@@ -13,6 +13,7 @@ openssh
 nfs-utils
 rclone
 reflector
+shellcheck-static
 tmux
 unrar
 unzip
@@ -50,6 +51,9 @@ betterlockscreen
 compton-git
 dosbox
 dunst
+eog
+eog-plugins
+ffmpeg-git
 firefox
 firefox-sync
 firefox-hardening
@@ -58,7 +62,6 @@ imagemagick
 keepassxc
 lxappearance
 mediainfo
-mirage
 mpv-git
 nitrogen
 numlockx

@@ -1,4 +1,4 @@
-# $KYAULabs: config-laptop,v 1.022 2019/07/18 00:58:25 kyau Exp $
+# $KYAULabs: config-laptop,v 1.025 2019/07/21 20:05:27 kyau Exp $
 
 # Variables {{{
 set $mod Mod4
@@ -139,21 +139,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # }}}
 # Workspace Assignment {{{
-# applications start on specific workspaces
+# use ~/bin/i3-get-window-criteria
 assign [class="Subl3"] $workspace2
 assign [class="Firefox"] $workspace2
 assign [class="VirtualBox Machine"] $workspace9
 for_window [class="^.*"] border pixel 2
-for_window [class="ckb"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Nitrogen"] move position center
-for_window [class="Nvidia-settings"] floating enable
-for_window [class="Qrazercfg"] floating enable
-for_window [class="Steam"] floating enable
 for_window [class="Xfd"] floating enable
-for_window [class="Vinagre"] floating enable
 for_window [class="Virt-manager"] floating enable
 for_window [class="Virt-manager"] move position center
 for_window [title="^.* on QEMU/KVM: natasha"] floating enable
@@ -164,13 +159,10 @@ for_window [class="keepassxc"] floating enable
 for_window [class="keepassxc"] move position center
 for_window [class="syncterm"] floating enable
 for_window [class="syncterm"] move position center
-for_window [class="Mirage"] floating enable
+for_window [class="Eog"] floating enable
 for_window [class="Wine"] border pixel 0
-for_window [class="EVE"] floating enable
-for_window [class="EVEMon.exe"] floating enable
-for_window [class="EVEMon.exe"] border normal
-for_window [class="Pyfa.py"] floating enable
-for_window [title="Remmina Remote Desktop Client"] floating enable
+for_window [class="Xarchiver"] floating enable
+for_window [class="Xarchiver"] move position center
 # }}}
 # Startup Applications {{{
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

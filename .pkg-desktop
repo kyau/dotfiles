@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-desktop,v 1.003 2019/07/18 00:54:59 kyau Exp $
+# $KYAULabs: pkg-desktop,v 1.005 2019/07/21 12:45:23 kyau Exp $
 
 # General {{{
 bc
@@ -13,6 +13,7 @@ nfs-utils
 openssh
 rclone
 reflector
+shellcheck-static
 tmux
 unrar
 unzip
@@ -49,6 +50,8 @@ betterlockscreen
 compton-git
 dosbox
 dunst
+eog
+eog-plugins
 ffmpeg-git
 firefox
 firefox-sync
@@ -58,7 +61,6 @@ imagemagick
 keepassxc
 lxappearance
 mediainfo
-mirage
 mpv-git
 nautilus
 nautilus-wipe

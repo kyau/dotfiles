@@ -1,4 +1,4 @@
-" $KYAULabs: vimrc,v 1.019 2019/06/27 07:56:00 kyau Exp $
+" $KYAULabs: vimrc,v 1.1.1 2019/07/29 19:09:41 kyau Exp $
 
 " General {{{
 " ------------------------------------------------------------------------------
@@ -251,7 +251,7 @@ map <leader>e :e ~/buffer<cr>
 map <leader>dt :r !date +"\%Y-\%m-\%dT\%H:\%M:\%S\%z"<cr>i<bs><esc>
 
 " Insert document header
-map <leader>tt i $KYAULabs: <esc>:put =expand('%:t')<cr>i<bs><esc>A,v 1.000 <esc>:r !date +"\%Y/\%m/\%d \%H:\%M:\%S "<cr>i<bs><esc>A<esc>:r !echo $USER<cr>i<bs><esc>A Exp $<esc><home>i
+map <leader>tt i $KYAULabs: <esc>:put =expand('%:t')<cr>i<bs><esc>A,v 1.0.0 <esc>:r !date +"\%Y/\%m/\%d \%H:\%M:\%S "<cr>i<bs><esc>A<esc>:r !echo $USER<cr>i<bs><esc>A Exp $<esc><home>i
 
 " Remove the Windows ^M (for when encodings get messed up)
 map <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm

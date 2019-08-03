@@ -1,4 +1,4 @@
-# $Arch: aliases.fish,v 1.004 2019/02/25 11:25:12 kyau Exp $
+# $KYAULabs: aliases.fish,v 1.0.7 2019/08/03 16:36:51 kyau Exp $
 
 # Abbreviations {{{
 abbr -a -- - 'cd -'
@@ -21,9 +21,11 @@ alias g="grep"
 alias grep="grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.hg"
 alias h="history"
 alias installtpm="git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+alias thelounge="env THELOUNGE_HOME=~/.thelounge thelounge"
 alias motd="source $HOME/.config/fish/motd.fish"
 alias nssh="ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
 alias scp="scp -q"
+alias nscp="scp -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no"
 alias tmux="tmux -2 -u"
 alias vi="$EDITOR"
 alias wget="wget -c"
@@ -48,6 +50,7 @@ alias ln="ln -i"
 alias mkdir="mkdir -pv"
 alias mv="mv -i"
 alias rm="rm -I --preserve-root"
+alias sshlogs="journalctl _COMM=sshd -n 20000 | g 'Invalid user' | awk '{ print $10 }' | uniq -dc | sort -nr"
 # }}}
 # Aliases: Git {{{
 alias commit="git commit -a"
