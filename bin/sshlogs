@@ -1,6 +1,6 @@
 #!/bin/bash
 # $KYAULabs: sshlogs,v 1.0.0 2019/08/03 16:45:11 kyau Exp $
 
-journalctl _COMM=sshd -n 20000 | g 'Invalid user' | awk '{ print $10 }' | uniq -dc | sort -nr
+journalctl _COMM=sshd -n 20000 | grep 'Invalid user' | awk '{ print $10 }' | uniq -dc | sort -nr
 
 # vim: ft=sh sts=4 sw=4 ts=4 noet:
