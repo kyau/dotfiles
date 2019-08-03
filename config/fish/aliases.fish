@@ -50,7 +50,6 @@ alias ln="ln -i"
 alias mkdir="mkdir -pv"
 alias mv="mv -i"
 alias rm="rm -I --preserve-root"
-alias sshlogs="journalctl _COMM=sshd -n 20000 | g 'Invalid user' | awk '{ print $10 }' | uniq -dc | sort -nr"
 # }}}
 # Aliases: Git {{{
 alias commit="git commit -a"
