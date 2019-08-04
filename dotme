@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# $Arch: dotme,v 2.028 2019/06/14 23:44:01 kyau Exp $
+# $KYAULabs: dotme,v 2.1.0 2019/08/03 20:41:35 kyau Exp $
 
 # Configuration {{{
 # location of dotfiles repository
-repo=git@github.com:kyau/dotfiles.git
+#repo=git@github.com:kyau/dotfiles.git
+repo=https://github.com/kyau/dotfiles.git
 # folder the repo will be stored in (~/$repofolder)
 repo_folder="dot"
 # package installer
@@ -376,4 +377,4 @@ symlink "${xorg}"
 if [ "$doinstall" == "1" ]; then install "${profile}"; fish; fi
 # }}}
 
-# vim: ts=2 sw=2 noet :
+# vim: sts=4 sw=4 ts=4 noet:
