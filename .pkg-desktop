@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-desktop,v 1.005 2019/07/21 12:45:23 kyau Exp $
+# $KYAULabs: pkg-desktop,v 1.0.6 2019/08/05 20:00:56 kyau Exp $
 
 # General {{{
 bc
@@ -36,6 +36,7 @@ vdpauinfo
 # }}}
 # CLI {{{
 cli-visualizer
+ffmpeg-git
 irssi
 mpc
 mpd
@@ -52,7 +53,6 @@ dosbox
 dunst
 eog
 eog-plugins
-ffmpeg-git
 firefox
 firefox-sync
 firefox-hardening

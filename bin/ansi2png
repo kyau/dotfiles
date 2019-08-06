@@ -1,0 +1,23 @@
+#!/bin/bash
+
+EXT=0
+if [ -z "$1" ]; then
+	echo "Arguments not supplied."
+	exit 1
+fi
+
+_PNG=$(basename ${1,,})
+PNG=${_PNG%.*}
+
+ansilove -c 80 -f 80x25 -m transparent -o ${PNG}.png $1
+convert ${PNG}.png -trim +repage ${PNG}-trim.png
+SCALE=$(identify -format '%wx%h' ${PNG}-trim.png)
+EXTENT=$(identify -format '%[fx:w+120]x%[fx:h+60]' ${PNG}-trim.png)
+if [ ! -z "$2" ]; then
+	EXTENT="$2"
+fi
+rm ${PNG}.png
+convert ${PNG}-trim.png -background black -gravity center -scale ${SCALE} -extent ${EXTENT} ${PNG}.png
+rm ${PNG}-trim.png
+
+# vim: ft=bash sts=4 sw=4 ts=4 noet:

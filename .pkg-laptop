@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-laptop,v 1.006 2019/07/21 12:45:46 kyau Exp $
+# $KYAULabs: pkg-laptop,v 1.0.7 2019/08/05 20:00:34 kyau Exp $
 
 # General {{{
 bc
@@ -37,6 +37,7 @@ xf86-video-intel
 # }}}
 # CLI {{{
 cli-visualizer
+ffmpeg-git
 irssi
 mpc
 mpd
@@ -53,7 +54,6 @@ dosbox
 dunst
 eog
 eog-plugins
-ffmpeg-git
 firefox
 firefox-sync
 firefox-hardening
