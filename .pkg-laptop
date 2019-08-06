@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-laptop,v 1.0.7 2019/08/05 20:00:34 kyau Exp $
+# $KYAULabs: pkg-laptop,v 1.0.8 2019/08/06 00:31:48 kyau Exp $
 
 # General {{{
 bc
@@ -63,6 +63,9 @@ keepassxc
 lxappearance
 mediainfo
 mpv-git
+nautilus
+vala
+nautilus-wipe
 nitrogen
 numlockx
 #obs-studio

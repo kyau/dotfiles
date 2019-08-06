@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-desktop,v 1.0.6 2019/08/05 20:00:56 kyau Exp $
+# $KYAULabs: pkg-desktop,v 1.0.7 2019/08/06 00:32:05 kyau Exp $
 
 # General {{{
 bc
@@ -63,6 +63,7 @@ lxappearance
 mediainfo
 mpv-git
 nautilus
+vala
 nautilus-wipe
 nitrogen
 numlockx

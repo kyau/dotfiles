@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $KYAULabs: dotme,v 2.1.0 2019/08/03 20:41:35 kyau Exp $
+# $KYAULabs: dotme,v 2.1.1 2019/08/06 01:18:37 kyau Exp $
 
 # Configuration {{{
 # location of dotfiles repository
@@ -24,7 +24,7 @@ config_files_xorg=( "compton.conf" )
 # directories inside ~/.config/
 config_dir=( "fish" "htop" "ranger" )
 # xorg directories inside ~/.config/
-config_dir_xorg=( "ckb" "i3" "mpd" "mpv" "polybar" "vis" )
+config_dir_xorg=( "ckb-next" "i3" "mpd" "mpv" "polybar" "vis" )
 # }}}
 # CONFIG DONE ~ DO NOT EDIT BELOW THIS LINE!
 # here_be_dragons() {{{
@@ -314,7 +314,11 @@ function install() {
 # }}}
 # fish() {{{
 function fish() {
-	printf "  Finish installing \\x1b[0;36mfish\\x1b[0m:\\n    * chsh -s /usr/bin/fish\\n    * fish\\n    * curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish\\n    * fisher\\n\\n"
+	printf "  Finish installing \\x1b[0;36mfish\\x1b[0m:\\n"
+	printf "	* chsh -s /usr/bin/fish\\n"
+	printf "	* fish\\n"
+	printf "	* curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish\\n"
+	printf "	* fisher\\n"
 	printf "    * git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm\\n"
 	printf "    * git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\\n\\n"
 }
