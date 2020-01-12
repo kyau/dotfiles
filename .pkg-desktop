@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-desktop,v 1.0.7 2019/08/06 00:32:05 kyau Exp $
+# $KYAULabs: pkg-desktop,v 1.0.8 2020/01/11 23:11:56 kyau Exp $
 
 # General {{{
 bc
@@ -31,24 +31,23 @@ ntfs-3g
 nvidia
 nvidia-settings
 pulseaudio-alsa
-#sshuttle-git
+sshuttle
 vdpauinfo
 # }}}
 # CLI {{{
 cli-visualizer
-ffmpeg-git
+ffmpeg
 irssi
 mpc
 mpd
-ncmpcpp-git
+ncmpcpp
 pigz
-ranger-git
+ranger
 syncterm
 # }}}
 # Xorg {{{
 autocutsel
 betterlockscreen
-compton-git
 dosbox
 dunst
 eog
@@ -61,15 +60,16 @@ imagemagick
 keepassxc
 lxappearance
 mediainfo
-mpv-git
+mpv
 nautilus
+picom-git
 vala
 nautilus-wipe
 nitrogen
 numlockx
 #obs-studio
 perl-image-exiftool
-polybar-git
+polybar
 rofi
 screenkey
 slop
@@ -85,5 +85,6 @@ xorg-xfd
 # Xorg Themes {{{
 flat-remix-git
 flat-remix-gtk
+ttf-agave
 ttf-dejavu
 ttf-mplus
