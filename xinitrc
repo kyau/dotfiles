@@ -1,4 +1,4 @@
-# $KYAULabs: xinitrc,v 1.005 2019/07/18 00:52:31 kyau Exp $
+# $KYAULabs: xinitrc,v 1.0.6 2020/01/11 23:43:23 kyau Exp $
 
 # General {{{
 # Update xorg resources if needed
@@ -38,7 +38,7 @@ ckb-next -bc &
 # Notifications
 dunst &
 # Enable Compositing
-compton -bc &
+picom -bc &
 # Turn numlock on
 numlockx on &
 # }}}
