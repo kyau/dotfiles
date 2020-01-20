@@ -1,4 +1,4 @@
-# $KYAULabs: config.fish,v 1.1.8 2020/01/20 04:05:37 kyau Exp $
+# $KYAULabs: config.fish,v 1.1.9 2020/01/20 10:39:18 kyau Exp $
 
 # General {{{
 # Set a proper umask
@@ -28,7 +28,7 @@ if status --is-interactive
 	# }}}
 	# User variables {{{
 	set -x EMAIL "kyau@kyau.net"
-	set -x HOSTNAME (hostname)
+	set -x HOSTNAME (cat /proc/sys/kernel/hostname)
 	# Editor
 	set -x EDITOR "vim"
 	set -x GIT_EDITOR "$EDITOR"
