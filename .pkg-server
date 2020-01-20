@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-server,v 1.005 2019/07/21 12:46:00 kyau Exp $
+# $KYAULabs: pkg-server,v 1.0.6 2020/01/20 04:10:32 kyau Exp $
 
 # General {{{
 bc
@@ -9,13 +9,12 @@ fish
 gptfdisk
 htop
 iotop
-openssh
 nfs-utils
+openssh
+p7zip
 reflector
 shellcheck-static
 tmux
-unrar
-unzip
 vim
 # }}}
 # Hardware {{{

@@ -1,4 +1,4 @@
-# $Arch: config.fish,v 1.017 2018/11/15 14:57:13 kyau Exp $
+# $KYAULabs: config.fish,v 1.1.8 2020/01/20 04:05:37 kyau Exp $
 
 # General {{{
 # Set a proper umask
@@ -9,7 +9,7 @@ set fish_greeting
 set -x FISH_PLATFORM (uname -s)
 # Set window title
 function fish_title
-	set -l _fish_hostname (hostname -s)
+	set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
 	echo "$_fish_hostname:" $_ ' '
 	dirs
 end

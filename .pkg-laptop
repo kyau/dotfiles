@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-laptop,v 1.0.9 2020/01/11 23:09:40 kyau Exp $
+# $KYAULabs: pkg-laptop,v 1.1.0 2020/01/20 04:10:02 kyau Exp $
 
 # General {{{
 bc
@@ -9,14 +9,13 @@ fish
 gptfdisk
 htop
 iotop
-openssh
 nfs-utils
+openssh
+p7zip
 rclone
 reflector
 shellcheck-static
 tmux
-unrar
-unzip
 vim
 # }}}
 # Hardware {{{
