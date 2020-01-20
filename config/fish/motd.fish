@@ -57,7 +57,7 @@ end
 # Hostname & IPs {{{
 function _motd_network
 	if test $FISH_PLATFORM = "Linux"
-		set -l iplist (ip -4 -o addr show scope global | awk '{gsub(/\/.*/,"",$4); print $4}' | tr '\r\n' ' ')
+		set -l iplist (string trim (ip -4 -o addr show scope global | awk '{gsub(/\/.*/,"",$4); print $4}' | tr '\r\n' ' '))
 		set -l fullhost (cat /proc/sys/kernel/hostname)
 		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m%-24s\\x1b[0m \\x1b[38;5;240m%-27s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "$fullhost" "($iplist)"
 	else
