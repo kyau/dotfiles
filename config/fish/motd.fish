@@ -1,4 +1,4 @@
-# $KYAULabs: motd.fish,v 1.3.6 2020/01/20 10:24:14 kyau Exp $
+# $KYAULabs: motd.fish,v 1.3.7 2020/01/20 10:37:33 kyau Exp $
 
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
@@ -57,12 +57,12 @@ end
 # Hostname & IPs {{{
 function _motd_network
 	if test $FISH_PLATFORM = "Linux"
-		set -l iplist (string trim (hostname -i))
-		set -l fullhost (hostname -f)
+		set -l iplist (ip -4 -o addr show scope global | awk '{gsub(/\/.*/,"",$4); print $4}' | tr '\r\n' ' ')
+		set -l fullhost (cat /proc/sys/kernel/hostname)
 		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m%-24s\\x1b[0m \\x1b[38;5;240m%-27s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "$fullhost" "($iplist)"
 	else
 		set -l iplist (cat /etc/systemip)
-		set -l fullhost (hostname)
+		set -l fullhost (cat /proc/sys/kernel/hostname)
 		printf " \\x1b[38;5;242m│\\x1b[38;5;237m░\\x1b[0m   \\x1b[38;5;242m$fullhost\\x1b[0m \\x1b[38;5;240m%-33s \\x1b[38;5;237m░\\x1b[38;5;242m:\\x1b[0m\\n" "($iplist)"
 	end
 end
