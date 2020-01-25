@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# $KYAULabs: cdf,v 1.0.2 2020/01/25 03:55:35 kyau Exp $
+# $KYAULabs: cdf,v 1.0.3 2020/01/25 04:31:46 kyau Exp $
 # ▄▄▄▄ ▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 # █ ▄▄ ▄ ▄▄ ▄ ▄▄▄▄ ▄▄ ▄    ▄▄   ▄▄▄▄ ▄▄▄▄  ▄▄▄ ▀
 # █ ██ █ ██ █ ██ █ ██ █    ██   ██ █ ██ █ ██▀  █
@@ -28,13 +28,13 @@
 set -u
 IFS=$'\n\t'
 
-_OUT=$(df -Th --sync --total -x devtmpfs -x overlaid | grep -e 'cgroup' -e '% /sys' -e '% /dev' -e '% /proc' -e '% /run' -v | tail -n +2 | sort -k 7,7 | sed 's/  */ /g')
+_OUT=$(df -Th --sync --total -x devtmpfs -x tmpfs -x overlaid | grep -e 'cgroup' -e '% /sys' -e '% /dev' -e '% /proc' -e '% /run' -v | tail -n +2 | sort -k 7,7 | sed 's/  */ /g')
 SIZE=$(echo "$_OUT" | cut -f3 -d ' ')
 USED=$(echo "$_OUT" | cut -f4 -d ' ')
 AVAIL=$(echo "$_OUT" | cut -f5 -d ' ')
 USEDPERC=$(echo "$_OUT" | cut -f6 -d ' ')
 
-_OUT=$(mount | grep -e 'cgroup' -e 'on /sys' -e 'on /dev' -e 'on /proc' -e 'on /run' -v | sort -k 3,3 | cut -f1,3,5,6 -d ' ')
+_OUT=$(mount | grep -e 'cgroup' -e 'on /sys' -e 'on /dev' -e 'on /proc' -e 'on /run' -e 'type tmpfs' -v | sort -k 3,3 | cut -f1,3,5,6 -d ' ')
 DEVICES=$(echo "$_OUT" | cut -f1 -d ' ')
 MOUNTS=$(echo "$_OUT" | cut -f2 -d ' ')
 TYPES=$(echo "$_OUT" | cut -f3 -d ' ')
