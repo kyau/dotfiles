@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# $KYAULabs: cdf,v 1.0.2 2020/01/25 03:55:35 kyau Exp $
+# ▄▄▄▄ ▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+# █ ▄▄ ▄ ▄▄ ▄ ▄▄▄▄ ▄▄ ▄    ▄▄   ▄▄▄▄ ▄▄▄▄  ▄▄▄ ▀
+# █ ██ █ ██ █ ██ █ ██ █    ██   ██ █ ██ █ ██▀  █
+# ■ ██▄▀ ██▄█ ██▄█ ██ █ ▀▀ ██   ██▄█ ██▄▀ ▀██▄ ■
+# █ ██ █ ▄▄ █ ██ █ ██ █    ██▄▄ ██ █ ██ █  ▄██ █
+# ▄ ▀▀ ▀ ▀▀▀▀ ▀▀ ▀ ▀▀▀▀    ▀▀▀▀ ▀▀ ▀ ▀▀▀▀ ▀▀▀  █
+# ▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀▀▀▀
+#
+# Automated Arch Linux (KYAU Labs Edition)
+# Copyright (C) 2020 KYAU Labs (https://kyaulabs.com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+set -u
+IFS=$'\n\t'
+
+_OUT=$(df -Th --sync --total -x devtmpfs -x overlaid | grep -e 'cgroup' -e '% /sys' -e '% /dev' -e '% /proc' -e '% /run' -v | tail -n +2 | sort -k 7,7 | sed 's/  */ /g')
+SIZE=$(echo "$_OUT" | cut -f3 -d ' ')
+USED=$(echo "$_OUT" | cut -f4 -d ' ')
+AVAIL=$(echo "$_OUT" | cut -f5 -d ' ')
+USEDPERC=$(echo "$_OUT" | cut -f6 -d ' ')
+
+_OUT=$(mount | grep -e 'cgroup' -e 'on /sys' -e 'on /dev' -e 'on /proc' -e 'on /run' -v | sort -k 3,3 | cut -f1,3,5,6 -d ' ')
+DEVICES=$(echo "$_OUT" | cut -f1 -d ' ')
+MOUNTS=$(echo "$_OUT" | cut -f2 -d ' ')
+TYPES=$(echo "$_OUT" | cut -f3 -d ' ')
+_longa=0
+_longb=0
+for _device in $DEVICES; do
+	_len=${#_device}
+	if [[ $_len -gt $_longa ]]; then
+		_longa=$_len
+	fi
+done
+for _mount in $MOUNTS; do
+	_len=${#_mount}
+	if [[ $_len -gt $_longb ]]; then
+		_longb=$_len
+	fi
+done
+
+#printf "Longest: %s at %d characters.\n" "$_longdev" "$_long"
+PATTERN=$(printf "\x1b[38;5;255m%%-%ds\x1b[0m | \x1b[38;5;255m%%-%ds\x1b[0m | \x1b[38;5;255m%%-6s\x1b[0m | \x1b[38;5;255m%%5s\x1b[0m | \x1b[38;5;255m%%5s\x1b[0m | \x1b[38;5;255m%%-5s\x1b[0m | \x1b[38;5;255m%%-5s\x1b[0m\n" "${_longa}" "${_longb}")
+PATTERN2=$(printf "\x1b[38;5;238m%%-%ds \x1b[0m| \x1b[38;5;85m%%-%ds\x1b[0m | \x1b[38;5;130m%%-6s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
+PATTERN3=$(printf "\x1b[38;5;250m%%-%ds \x1b[0m| \x1b[38;5;85m%%-%ds\x1b[0m | \x1b[38;5;130m%%-6s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
+# shellcheck disable=SC2059
+printf "${PATTERN}\n" "Filesystem" "Mount" "Type" "Size" "Used" "Avail" "Used%"
+_mountnum=1
+
+for _mount in ${MOUNTS}; do
+	_size=$(echo "$SIZE" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+	_used=$(echo "$USED" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+	_avail=$(echo "$AVAIL" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+	_usedperc=$(echo "$USEDPERC" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+	if [[ ! "${_mountnum}" -eq "1" ]]; then
+		_device=$(echo "$DEVICES" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+		_type=$(echo "$TYPES" | tr "\n" " " | cut -f${_mountnum} -d ' ')
+
+		# shellcheck disable=SC2059
+		printf "${PATTERN2}\n" "$_device" "$_mount" "$_type" "$_size" "$_used" "$_avail" "$_usedperc"
+	else
+		_tsize=$_size
+		_tused=$_used
+		_tavail=$_avail
+		_tusedperc=$_usedperc
+	fi
+	((_mountnum++))
+done
+printf "${PATTERN3}\n" "total" "-" "-" "${_tsize}" "${_tused}" "${_tavail}" "${_tusedperc}"
+
+# vim: ft=sh sts=4 sw=4 ts=4 noet:
