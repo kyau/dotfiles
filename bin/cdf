@@ -54,9 +54,9 @@ for _mount in $MOUNTS; do
 done
 
 #printf "Longest: %s at %d characters.\n" "$_longdev" "$_long"
-PATTERN=$(printf "\x1b[38;5;255m%%-%ds\x1b[0m | \x1b[38;5;255m%%-%ds\x1b[0m | \x1b[38;5;255m%%-6s\x1b[0m | \x1b[38;5;255m%%5s\x1b[0m | \x1b[38;5;255m%%5s\x1b[0m | \x1b[38;5;255m%%-5s\x1b[0m | \x1b[38;5;255m%%-5s\x1b[0m\n" "${_longa}" "${_longb}")
-PATTERN2=$(printf "\x1b[38;5;238m%%-%ds \x1b[0m| \x1b[38;5;85m%%-%ds\x1b[0m | \x1b[38;5;130m%%-6s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
-PATTERN3=$(printf "\x1b[38;5;250m%%-%ds \x1b[0m| \x1b[38;5;85m%%-%ds\x1b[0m | \x1b[38;5;130m%%-6s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;244m%%5s\x1b[0m | \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
+PATTERN=$(printf "\x1b[38;5;255m%%-%ds\x1b[0m  \x1b[38;5;255m%%-%ds\x1b[0m  \x1b[38;5;255m%%-6s\x1b[0m  \x1b[38;5;255m%%5s\x1b[0m  \x1b[38;5;255m%%5s\x1b[0m  \x1b[38;5;255m%%-5s\x1b[0m  \x1b[38;5;255m%%-5s\x1b[0m\n" "${_longa}" "${_longb}")
+PATTERN2=$(printf "\x1b[38;5;238m%%-%ds\x1b[0m  \x1b[38;5;85m%%-%ds\x1b[0m  \x1b[38;5;130m%%-6s\x1b[0m  \x1b[38;5;244m%%5s\x1b[0m  \x1b[38;5;244m%%5s\x1b[0m  \x1b[38;5;244m%%5s\x1b[0m  \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
+PATTERN3=$(printf "\x1b[38;5;250m%%-%ds\x1b[0m  \x1b[38;5;85m%%-%ds\x1b[0m  \x1b[38;5;130m%%-6s\x1b[0m  \x1b[38;5;250m%%5s\x1b[0m  \x1b[38;5;250m%%5s\x1b[0m  \x1b[38;5;250m%%5s\x1b[0m  \x1b[38;5;32m%%5s\x1b[0m\n" "${_longa}" "${_longb}")
 # shellcheck disable=SC2059
 printf "${PATTERN}\n" "Filesystem" "Mount" "Type" "Size" "Used" "Avail" "Used%"
 _mountnum=1
