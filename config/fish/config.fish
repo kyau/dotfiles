@@ -1,4 +1,4 @@
-# $KYAULabs: config.fish,v 1.1.9 2020/01/20 10:39:18 kyau Exp $
+# $KYAULabs: config.fish,v 1.2.0 2020/01/26 00:50:25 kyau Exp $
 
 # General {{{
 # Set a proper umask
@@ -19,12 +19,13 @@ if status --is-interactive
 	# Always fix the delete key
 	tput smkx
 	# System variables {{{
-	ulimit -c unlimited
+	#ulimit -c unlimited
 	set -x PATH "$HOME/bin" "/usr/sbin" "/usr/local/sbin" $PATH
 	set -x CLICOLOR "1"
 	set -x LC_ALL "en_US.UTF-8"
 	set -x LC_CTYPE "en_US.UTF-8"
 	set -x LC_COLLATE "C"
+	set -x LIBVIRT_DEFAULT_URI "qemu:///system"
 	# }}}
 	# User variables {{{
 	set -x EMAIL "kyau@kyau.net"
