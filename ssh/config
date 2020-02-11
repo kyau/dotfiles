@@ -1,45 +1,47 @@
-# $KYAULabs: config,v 1.010 2019/07/18 01:02:02 kyau Exp $
+# $KYAULabs: config,v 1.1.1 2020/02/09 22:40:06 kyau Exp $
 
 # KYAU Labs: Local {{{
-Host chloe
-	HostName 10.0.42.2
+Host nova
+	HostName 10.0.10.10
 	User kyau
 
 Host akira
-	HostName 10.0.42.3
+	HostName 10.0.10.11
+	User kyau
+
+Host akira-wired
+	HostName 10.0.10.12
 	User kyau
 
 Host skye
-	HostName 10.0.42.10
+	HostName 10.0.10.18
 	User kyau
 
 Host natasha
-	HostName 10.0.42.15
+	HostName 10.0.10.15
 	User kyau
 
 Host web
-	HostName 10.0.42.30
+	HostName 10.0.20.10
 	User kyau
 
 Host torrent
-	HostName 10.0.42.31
+	HostName 10.0.10.17
 	User kyau
 
 Host void
-	HostName 10.0.42.32
-	User kyau
-
-Host ah42
-	HostName 10.0.42.34
-	User kyau
-
-Host neutron
-	HostName 10.0.42.36
+	HostName 10.0.20.20
 	User kyau
 
 Host xu4
-	HostName 10.0.42.42
+	HostName 10.0.0.2
 	User kyau
+
+Host swi-6224
+	HostName 10.0.0.254
+	User kyau
+	KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+	MACs hmac-md5,hmac-sha1,hmac-sha1-96,hmac-md5-96
 # }}}
 
 Host *
