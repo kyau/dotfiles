@@ -1,4 +1,4 @@
-# $KYAULabs: config.fish,v 1.2.1 2020/02/10 19:58:57 kyau Exp $
+# $KYAULabs: config.fish,v 1.2.2 2020/02/29 22:50:01 kyau Exp $
 
 # General {{{
 # Set a proper umask
@@ -20,7 +20,9 @@ if status --is-interactive
 	tput smkx
 	# System variables {{{
 	#ulimit -c unlimited
-	set -l _RUBY_PATH (ruby -e 'puts Gem.user_dir')
+	if test -e /usr/bin/ruby
+		set -l _RUBY_PATH (ruby -e 'puts Gem.user_dir')
+	end
 	set -x PATH "$HOME/bin" "$_RUBY_PATH/bin" "/usr/sbin" "/usr/local/sbin" $PATH
 	set -x CLICOLOR "1"
 	set -x LC_ALL "en_US.UTF-8"

@@ -1,4 +1,4 @@
-# $Arch: fish_prompt.fish,v 1.028 2017/08/14 05:10:12 kyau Exp $
+# $KYAULabs: fish_prompt.fish,v 1.2.9 2020/02/29 22:43:48 kyau Exp $
 
 function fish_prompt
 	set -l status_copy $status
@@ -18,10 +18,11 @@ function fish_prompt
 		if test 0 -eq (id -u "$USER")
 			echo -sn "$color_error\$ $color_normal"
 		end
+		set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
 		if test 0 -eq (id -u "$USER")
-			printf "%s%s%s " "$color_error" (hostname -s) "$color_normal"
+			printf "%s%s%s " "$color_error" "$_fish_hostname" "$color_normal"
 		else
-			printf "\\x1b[38;5;242m%s%s " (hostname -s) "$color_normal"
+			printf "\\x1b[38;5;242m%s%s " "$_fish_hostname" "$color_normal"
 		end
 	else
 		if test 0 -eq (id -u "$USER")
