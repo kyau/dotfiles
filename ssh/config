@@ -1,40 +1,44 @@
-# $KYAULabs: config,v 1.1.1 2020/02/09 22:40:06 kyau Exp $
+# $KYAULabs: config,v 1.1.2 2020/07/28 01:25:46 kyau Exp $
 
 # KYAU Labs: Local {{{
 Host nova
 	HostName 10.0.10.10
+	Port 4222
 	User kyau
 
 Host akira
 	HostName 10.0.10.11
+	Port 4222
 	User kyau
 
 Host akira-wired
 	HostName 10.0.10.12
+	Port 4222
 	User kyau
 
-Host skye
-	HostName 10.0.10.18
-	User kyau
-
-Host natasha
-	HostName 10.0.10.15
+Host neutron
+	HostName 10.0.10.20
+	Port 4222
 	User kyau
 
 Host web
-	HostName 10.0.20.10
+	HostName 10.0.10.30
+	Port 4222
 	User kyau
 
 Host torrent
-	HostName 10.0.10.17
+	HostName 10.0.10.28
+	Port 4222
 	User kyau
 
 Host void
-	HostName 10.0.20.20
+	HostName 10.0.20.27
+	Port 4222
 	User kyau
 
 Host xu4
 	HostName 10.0.0.2
+	Port 4222
 	User kyau
 
 Host swi-6224
