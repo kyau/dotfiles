@@ -14,7 +14,7 @@ openssh
 p7zip
 rclone
 reflector
-shellcheck
+shellcheck-git-static
 tmux
 vim
 # }}}

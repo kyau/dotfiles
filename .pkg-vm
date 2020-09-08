@@ -13,7 +13,7 @@ nfs-utils
 openssh
 p7zip
 reflector
-shellcheck
+shellcheck-git-static
 tmux
 unrar
 vim
