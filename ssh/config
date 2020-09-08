@@ -1,4 +1,4 @@
-# $KYAULabs: config,v 1.1.2 2020/07/28 01:25:46 kyau Exp $
+# $KYAULabs: config,v 1.1.3 2020/08/14 01:15:38 kyau Exp $
 
 # KYAU Labs: Local {{{
 Host nova
@@ -32,7 +32,12 @@ Host torrent
 	User kyau
 
 Host void
-	HostName 10.0.20.27
+	HostName 10.0.10.26
+	Port 4222
+	User kyau
+
+Host vpn
+	HostName 10.0.10.27
 	Port 4222
 	User kyau
 

@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-vm,v 1.0.3 2020/01/20 04:08:12 kyau Exp $
+# $KYAULabs: pkg-vm,v 1.0.4 2020/09/08 04:48:16 kyau Exp $
 
 # General {{{
 bc
@@ -13,7 +13,7 @@ nfs-utils
 openssh
 p7zip
 reflector
-shellcheck-static
+shellcheck
 tmux
 unrar
 vim
