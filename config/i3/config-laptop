@@ -1,4 +1,4 @@
-# $KYAULabs: config-laptop,v 1.025 2019/07/21 20:05:27 kyau Exp $
+# $KYAULabs: config-laptop,v 1.2.6 2020/11/08 22:50:40 kyau Exp $
 
 # Variables {{{
 set $mod Mod4
@@ -151,10 +151,10 @@ for_window [class="Nitrogen"] move position center
 for_window [class="Xfd"] floating enable
 for_window [class="Virt-manager"] floating enable
 for_window [class="Virt-manager"] move position center
-for_window [title="^.* on QEMU/KVM: natasha"] floating enable
-for_window [title="^.* on QEMU/KVM: natasha"] border pixel 0
-for_window [title="^.* on QEMU/KVM: natasha"] resize set 1366 712
-for_window [title="^.* on QEMU/KVM: natasha"] move position center
+for_window [title="^.* on QEMU/KVM: .*"] floating enable
+for_window [title="^.* on QEMU/KVM: .*"] border pixel 0
+for_window [title="^.* on QEMU/KVM: .*"] resize set 1366 712
+for_window [title="^.* on QEMU/KVM: .*"] move position center
 for_window [class="keepassxc"] floating enable
 for_window [class="keepassxc"] move position center
 for_window [class="syncterm"] floating enable

@@ -1,4 +1,4 @@
-; $KYAULabs: config-akira,v 1.018 2019/07/01 02:56:59 kyau Exp $
+; $KYAULabs: config-laptop,v 1.1.9 2020/11/08 22:51:38 kyau Exp $
 
 ; Color {{{
 [colors]
@@ -31,7 +31,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 underline-size = 0
 overline-size = 0
-font-0 = "M+ 1p Medium:size=8:antialias=true:hinting=true;3"
+font-0 = "M+ 1p Medium:size=10:antialias=true:hinting=true;3"
 font-1 = "FantasqueSansMono Nerd Font:style=Regular:size=12:antialias=true:hinting=true;4"
 font-2 = "mana:style=Regular;4"
 font-3 = "Keyrune:style=Regular;4"
