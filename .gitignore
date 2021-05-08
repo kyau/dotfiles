@@ -4,26 +4,7 @@ bin/arkmanager
 config/ckb/ckb.conf
 ## fish (use fisher to manage these)
 config/fish/fish_variables
-config/fish/functions/getopts.fish
 config/fish/functions/fisher.fish
-config/fish/functions/getopts.fish
-config/fish/functions/git_ahead.fish
-config/fish/functions/git_branch_name.fish
-config/fish/functions/git_is_detached_head.fish
-config/fish/functions/git_is_dirty.fish
-config/fish/functions/git_is_empty.fish
-config/fish/functions/git_is_repo.fish
-config/fish/functions/git_is_staged.fish
-config/fish/functions/git_is_stashed.fish
-config/fish/functions/git_is_tag.fish
-config/fish/functions/git_is_touched.fish
-config/fish/functions/git_repository_root.fish
-config/fish/functions/git_untracked_files.fish
-config/fish/functions/host_info.fish
-config/fish/functions/humanize_duration.fish
-config/fish/functions/last_job_id.fish
-config/fish/functions/pwd_info.fish
-config/fish/functions/pwd_is_home.fish
 config/fish/completions/fisher.fish
 config/fish/fishd.*
 ## i3
