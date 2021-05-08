@@ -1,4 +1,4 @@
-fisherman/git_util
+fishpkg/fish-git-util
 fishpkg/fish-last-job-id
 fishpkg/fish-humanize-duration
 fishpkg/fish-pwd-info
