@@ -46,11 +46,13 @@ for _device in $DEVICES; do
 		_longa=$_len
 	fi
 done
+_mountmax=1
 for _mount in $MOUNTS; do
 	_len=${#_mount}
 	if [[ $_len -gt $_longb ]]; then
 		_longb=$_len
 	fi
+	((_mountmax++))
 done
 
 #printf "Longest: %s at %d characters.\n" "$_longdev" "$_long"
@@ -66,7 +68,7 @@ for _mount in ${MOUNTS}; do
 	_used=$(echo "$USED" | tr "\n" " " | cut -f${_mountnum} -d ' ')
 	_avail=$(echo "$AVAIL" | tr "\n" " " | cut -f${_mountnum} -d ' ')
 	_usedperc=$(echo "$USEDPERC" | tr "\n" " " | cut -f${_mountnum} -d ' ')
-	if [[ ! "${_mountnum}" -eq "1" ]]; then
+	if [[ ! "${_mountnum}" -eq "${_mountmax}" ]]; then
 		_device=$(echo "$DEVICES" | tr "\n" " " | cut -f${_mountnum} -d ' ')
 		_type=$(echo "$TYPES" | tr "\n" " " | cut -f${_mountnum} -d ' ')
 
