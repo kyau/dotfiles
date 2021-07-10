@@ -75,6 +75,9 @@ if status --is-interactive
 	# }}}
 end
 # }}}
+# Starship (https://starship.rs) {{{
+starship init fish | source
+# }}}
 # Login Shell {{{
 if status --is-login
 	# Xorg login if applicable

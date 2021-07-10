@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $KYAULabs: dotme,v 2.1.1 2019/08/06 01:18:37 kyau Exp $
+# $KYAULabs: dotme,v 2.1.2 2021/07/10 11:14:39 kyau Exp $
 
 # Configuration {{{
 # location of dotfiles repository
@@ -18,7 +18,7 @@ root_dir=( "bash.d" "irssi" "tmux" "vim" )
 # xorg directories in the root directory
 root_dir_xorg=( "ncmpcpp" )
 # configs inside ~/.config/
-config_files=()
+config_files=( "starship.toml" )
 # xorg configs inside ~/.config/
 config_files_xorg=( "compton.conf" )
 # directories inside ~/.config/
@@ -317,10 +317,11 @@ function fish() {
 	printf "  Finish installing \\x1b[0;36mfish\\x1b[0m:\\n"
 	printf "	* chsh -s /usr/bin/fish\\n"
 	printf "	* fish\\n"
-	printf "	* curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish\\n"
+	printf "	* curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher\\n"
 	printf "	* fisher\\n"
 	printf "    * git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm\\n"
 	printf "    * git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\\n\\n"
+	printf "	* sh -c \"\$(curl -fsSL https://starship.rs/install.sh)\"\\n\\n"
 }
 # }}}
 # show_help() {{{
@@ -381,4 +382,4 @@ symlink "${xorg}"
 if [ "$doinstall" == "1" ]; then install "${profile}"; fish; fi
 # }}}
 
-# vim: sts=4 sw=4 ts=4 noet:
+# vim: ft=bash sts=4 sw=4 ts=4 noet:

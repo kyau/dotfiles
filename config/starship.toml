@@ -1,0 +1,24 @@
+# $KYAULabs: starship.toml,v 1.0.0 2021/07/10 00:37:02 kyau Exp $
+#
+
+[character]
+success_symbol = "[✓](bold green)"
+error_symbol = "[✕](bold red)"
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+
+[hostname]
+format = "[$hostname]($style)∶"
+ssh_only = false
+style = "242"
+
+[line_break]
+disabled = true
+
+[username]
+format = "[$user]($style)[ ┅ ](247)"
+style_user = "27"
+style_root = "52"
+
+# vim: ft=toml sts=4 sw=4 ts=4 noet:
