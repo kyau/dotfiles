@@ -1,9 +1,9 @@
-# $KYAULabs: config,v 1.1.8 2021/07/11 03:28:36 kyau Exp $
+# $KYAULabs: config,v 1.1.9 2021/07/11 15:21:13 kyau Exp $
 
 # Global
 Host *
 	User kyau
-	Port 4222
+	Port 22
 	KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 	#PasswordAuthentication no
 	ChallengeResponseAuthentication no
@@ -13,5 +13,9 @@ Host *
 	Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 	MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 	ServerAliveInterval 120
+
+# KYAU Labs
+Host *.kyaulabs, *.kyaulabs.com
+	Port 4222
 
 # vim: ft=sshconfig ts=4 sw=4 noet :
