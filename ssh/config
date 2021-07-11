@@ -1,64 +1,9 @@
-# $KYAULabs: config,v 1.1.7 2021/06/07 21:05:20 kyau Exp $
-
-# KYAU Labs: Local
-Host nova
-	HostName 10.0.10.10
-	Port 4222
-	User kyau
-
-Host akira
-	HostName 10.0.10.12
-	Port 4222
-	User kyau
-
-Host akira-wifi
-	HostName 10.0.10.13
-	Port 4222
-	User kyau
-
-Host archkvm
-	HostName 10.0.10.40
-	Port 4222
-	User kyau
-
-Host neutron
-	HostName 10.0.10.20
-	Port 4222
-	User kyau
-
-Host skye
-	HostName 10.0.10.22
-	Port 4222
-	User kyau
-
-Host web
-	HostName 10.0.10.23
-	Port 4222
-	User kyau
-
-Host torrent
-	HostName 10.0.10.28
-	Port 4222
-	User kyau
-
-Host unifi
-	HostName 10.0.10.29
-	Port 4222
-	User kyau
-
-Host xu4
-	HostName 10.0.10.2
-	Port 4222
-	User kyau
-
-Host swi-6224
-	HostName 10.0.10.254
-	User kyau
-	KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-	MACs hmac-md5,hmac-sha1,hmac-sha1-96,hmac-md5-96
+# $KYAULabs: config,v 1.1.8 2021/07/11 03:28:36 kyau Exp $
 
 # Global
 Host *
+	User kyau
+	Port 4222
 	KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 	#PasswordAuthentication no
 	ChallengeResponseAuthentication no
