@@ -1,6 +1,10 @@
 # $KYAULabs: config,v 1.1.9 2021/07/11 15:21:13 kyau Exp $
 
-# Global
+# KYAU Labs
+Host *.kyaulabs *.kyaulabs.com
+	Port 4222
+	
+	# Global
 Host *
 	User kyau
 	Port 22
@@ -13,9 +17,5 @@ Host *
 	Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 	MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 	ServerAliveInterval 120
-
-# KYAU Labs
-Host *.kyaulabs, *.kyaulabs.com
-	Port 4222
 
 # vim: ft=sshconfig ts=4 sw=4 noet :
