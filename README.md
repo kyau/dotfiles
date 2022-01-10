@@ -1,4 +1,4 @@
-    $KYAULabs: README.md,v 1.0.9 2022/01/10 01:33:06 kyau Exp $
+    $KYAULabs: README.md,v 1.1.0 2022/01/10 01:42:29 kyau Exp $
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -23,8 +23,7 @@ Initiate the user environment. Does nothing with no OPTION.
 
 ### attribution
 * [Agave](https://github.com/blobject/agave) - Agave, current font
-* [PxPlus Amstrad](https://int10h.org/oldschool-pc-fonts/) - New old-school font used in terminal
-* [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
+* [Starship](https://starship.rs/) - customizable cross-shell prompt
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
 * [nvie/vimrc](https://github.com/nvie/vimrc) - inspiration, documentation & some config portions
 * [The ultimate Vim configuration](https://web.archive.org/web/20170222115910/http://amix.dk/vim/vimrc.html) - inspiration and some config parts
