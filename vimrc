@@ -1,4 +1,4 @@
-" $KYAULabs: vimrc,v 1.1.1 2019/07/29 19:09:41 kyau Exp $
+" $KYAULabs: vimrc,v 1.1.2 2021/11/06 23:52:54 kyau Exp $
 
 " General {{{
 " ------------------------------------------------------------------------------
@@ -8,6 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'       " let Vundle manage itself
 Plugin 'gorodinskiy/vim-coloresque' " css/less/sass/html color preview
+Plugin 'preservim/nerdtree'         " tree explorer
 Plugin 'tpope/vim-surround'         " quoting/parenthesizing made simple
 Plugin 'mattn/emmet-vim'            " emmet for vim
 call vundle#end()

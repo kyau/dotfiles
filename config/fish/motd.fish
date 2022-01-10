@@ -1,10 +1,10 @@
-# $KYAULabs: motd.fish,v 1.3.9 2021/05/23 14:40:51 kyau Exp $
+# $KYAULabs: motd.fish,v 1.4.0 2021/11/05 13:26:30 kyau Exp $
 
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
 set -g ANSI $HOME/dot/ansi/$_fish_hostname.ans
 set -g _SSL_DOMAINS "kyau.net" "kyau.org" "kyaulabs.com" "voidbbs.com"
-set -g _SERVICES "docker" "nginx" "nftables" "php-fpm" "sshd"
+set -g _SERVICES "docker" "libvirtd" "mariadb" "nginx" "nftables" "php-fpm" "sshd"
 
 # Padding/Remove Color {{{
 function get_padding
@@ -233,7 +233,8 @@ end
 #set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
 _motd_services
-if test $HOSTNAME = "web.wa.kyaulabs.com"
+if test $HOSTNAME = "web.kyaulabs"
+	or test $HOSTNAME = "baal.kyaulabs"
 	_motd_ssl
 end
 
