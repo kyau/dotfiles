@@ -22,6 +22,7 @@ Initiate the user environment. Does nothing with no OPTION.
 ![vim](https://raw.githubusercontent.com/kyau/dotfiles/master/ss2.png "vim")
 
 ### attribution
+* [Agave](https://github.com/blobject/agave) - Agave, current font
 * [PxPlus Amstrad](https://int10h.org/oldschool-pc-fonts/) - New old-school font used in terminal
 * [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans) - Patched with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patcher
 * [http://bohoomil.deviantart.com/](http://bohoomil.deviantart.com/) - Xresources color scheme modified from Euphrasia (link broken)
