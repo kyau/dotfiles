@@ -1,4 +1,4 @@
-	$Arch: README.md,v 1.008 2019/02/10 02:25:20 kyau Exp $
+    $KYAULabs: README.md,v 1.0.9 2022/01/10 01:33:06 kyau Exp $
 
 *"Simplicity is the ultimate sophistication." - Leonardo da Vinci*
 
@@ -18,6 +18,7 @@ Initiate the user environment. Does nothing with no OPTION.
 
 ### screenshots
 ![Login MOTD](https://raw.githubusercontent.com/kyau/dotfiles/master/ss1.png "Login MOTD")
+
 ![vim](https://raw.githubusercontent.com/kyau/dotfiles/master/ss2.png "vim")
 
 ### attribution
