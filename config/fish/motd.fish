@@ -1,4 +1,4 @@
-# $KYAULabs: motd.fish,v 1.4.0 2021/11/05 13:26:30 kyau Exp $
+# $KYAULabs: motd.fish,v 1.4.1 2022/01/10 01:20:47 kyau Exp $
 
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
@@ -120,14 +120,14 @@ function _motd_services
 	set -l _services_all
 	for index in (seq (count $_SERVICES))
 		set -l service $_SERVICES[$index]
-		set -l serviceStatus (systemctl show -p ActiveState $service | sed 's/ActiveState=//g')
+		set -l serviceStatus (systemctl show -p ActiveState $service.service | sed 's/ActiveState=//g')
 		if test $serviceStatus = "active"
 			set -a _services_all $service
 		end
-		set -l serviceStatus (systemctl show -p ActiveState $service.socket | sed 's/ActiveState=//g')
-		if test $serviceStatus = "active"
-			set -a _services_all $service
-		end
+		#set -l serviceStatus (systemctl show -p ActiveState $service.socket | sed 's/ActiveState=//g')
+		#if test $serviceStatus = "active"
+		#	set -a _services_all $service
+		#end
 	end
 	set _sysinfo_count_end 0
 	if test $_sysinfo_count -gt (math (count $_services_count) + 2)
