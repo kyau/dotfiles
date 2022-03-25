@@ -1,4 +1,4 @@
-# $KYAULabs: aliases.fish,v 1.0.7 2019/08/03 16:36:51 kyau Exp $
+# $KYAULabs: aliases.fish,v 1.0.8 2022/03/24 22:39:05 kyau Exp $
 
 # Abbreviations {{{
 abbr -a -- - 'cd -'
@@ -52,7 +52,7 @@ alias mv="mv -i"
 alias rm="rm -I --preserve-root"
 # }}}
 # Aliases: Git {{{
-alias commit="git commit -a"
+alias commit="git commit -S -a"
 alias gitad="git add -A -n ."
 alias gitadd="git add -A ."
 alias gitlog="git log --graph --all --format=format:'%C(bold red)%h%C(reset) %C(white)-%C(reset) %C(reset)%s %C(bold green)(%ar)%C(reset) %C(bold cyan)[%an]%C(reset)%C(bold yellow)%d%C(reset)%n''''    %C(white)%b%C(reset)' --no-abbrev-commit"
