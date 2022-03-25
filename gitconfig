@@ -1,4 +1,4 @@
-# $Arch: gitconfig,v 1.002 2017/08/07 18:59:10 kyau Exp $
+# $KYAULabs: gitconfig,v 1.0.3 2022/03/24 22:35:51 kyau Exp $
 
 [core]
     editor = vim
@@ -6,6 +6,7 @@
 [user]
     email = kyau@kyau.net
     name = Sean Bruen
+    signingkey = 1F125B5425110CCE
 
 [alias]
     ls = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)' --graph

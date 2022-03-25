@@ -61,13 +61,13 @@ if status --is-interactive
 	end
 	# }}}
 	# SSH Agent {{{
-	source "$HOME/.config/fish/ssh-agent.fish"
-	if test -z "$SSH_ENV"
-		set -xg SSH_ENV $HOME/.ssh/environment
-	end
-	if not __ssh_agent_is_started
-		__ssh_agent_start
-	end
+	#source "$HOME/.config/fish/ssh-agent.fish"
+	#if test -z "$SSH_ENV"
+	#	set -xg SSH_ENV $HOME/.ssh/environment
+	#end
+	#if not __ssh_agent_is_started
+	#	__ssh_agent_start
+	#end
 	# }}}
 	# MOTD {{{
 	source "$HOME/.config/fish/motd.fish"
