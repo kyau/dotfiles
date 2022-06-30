@@ -1,10 +1,10 @@
-# $KYAULabs: motd.fish,v 1.4.1 2022/01/10 01:20:47 kyau Exp $
+# $KYAULabs: motd.fish,v 1.4.2 2022/06/30 03:23:38 kyau Exp $
 
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
 set -g ANSI $HOME/dot/ansi/$_fish_hostname.ans
 set -g _SSL_DOMAINS "kyau.net" "kyau.org" "kyaulabs.com" "voidbbs.com"
-set -g _SERVICES "docker" "libvirtd" "mariadb" "nginx" "nftables" "php-fpm" "sshd"
+set -g _SERVICES "docker" "libvirtd" "mariadb" "nginx" "nftables" "php-fpm" "sshd" "unbound"
 
 # Padding/Remove Color {{{
 function get_padding
