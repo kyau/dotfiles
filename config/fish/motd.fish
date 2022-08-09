@@ -1,4 +1,4 @@
-# $KYAULabs: motd.fish,v 1.4.3 2022/07/04 01:15:05 kyau Exp $
+# $KYAULabs: motd.fish,v 1.4.4 2022/07/26 11:23:23 kyau Exp $
 
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
@@ -77,6 +77,7 @@ function _motd_sysinfo
 	set -l _sysinfo_cpu_speed
   switch (uname -m)
 		case x86_64 x86
+			set _sysinfo_cpu_sockets (lscpu | awk '/Socket\(s\)/ {print $2}')
 			set -l _sysinfo_cpu (cat /proc/cpuinfo | grep 'model name' | head -1 | cut -f3- -d ' ' |  tr -s ' ' | sed -e 's/(R)//g' -e 's/(TM)//g' -e 's/ CPU / /g' -e 's/Intel/Intel®/g' -e 's/AMD/AMD®/g')
 			set _sysinfo_cpus (string split " @ " $_sysinfo_cpu)
 			set _sysinfo_cpu_cache (math (awk '/cache size/ {print $4}' /proc/cpuinfo | head -n 1) / 1024)
@@ -88,8 +89,11 @@ function _motd_sysinfo
 				set _sysinfo_ram (math $_sysinfo_ram + $_sysinfo_ram2)
 			end
 			set _sysinfo_ram (math -s0 $_sysinfo_ram / 1024 + 1)
-			printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
-		case armv7l
+			set _sysinfo_ram (math "round($_sysinfo_ram / 8) * 8")
+			for i in (seq 1 $_sysinfo_cpu_sockets)
+				printf "      \\x1b[38;5;244mcpu\\x1b[0m\\x1b[38;5;240m/%s (%sM Cache, %sGHz)\\x1b[0m\\n" $_sysinfo_cpus[1] "$_sysinfo_cpu_cache" "$_sysinfo_cpu_speed"
+			end
+		case armv6l armv7l
 			switch (cat /proc/cpuinfo | awk '/^Hardware/{print $3}')
 				case ODROID-XU4
 					printf "      \\x1b[38;5;244mcpu0\\x1b[0m\\x1b[38;5;240m/ARM® Cortex-A15 (32K Cache, 2.0GHz)\\x1b[0m\\n"

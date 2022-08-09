@@ -1,4 +1,4 @@
-# $KYAULabs: pkg-laptop,v 1.1.1 2020/09/08 04:47:30 kyau Exp $
+# $KYAULabs: pkg-laptop,v 1.1.2 2022/08/09 11:16:24 kyau Exp $
 
 # General {{{
 bc
@@ -14,7 +14,7 @@ openssh
 p7zip
 rclone
 reflector
-shellcheck-git-static
+shellcheck-bin
 tmux
 vim
 # }}}
