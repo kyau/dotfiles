@@ -17,4 +17,4 @@ jobs:
       uses: ludeeus/action-shellcheck@master
       with:
         additional_files: 'dotme'
-        ignore_paths: bin/** config/** tmux/**
+        ignore_paths: /* /**
