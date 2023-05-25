@@ -1,3 +1,4 @@
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDgeH/+JmxqyQbAy9doMtDKWCgPGFfXG7VXd47GOLg0Q kyau@kyau.net
 verify-required sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINmigKDuW+JA/A90meXfGMCxkp3d92hoeYMmUCYFwsL+AAAABHNzaDo= kyau@kyau.net-20211220
 verify-required sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIDY8H4G/rEIN7wtdCcIZ78isii8C7ms6n+elk7yL8fCaAAAABHNzaDo= kyau@kyau.net-20211220
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOKEySUyW+b6efK3PS+BLyHEo6YCu7jePxHW6f0fXm9h kyau@yubikey

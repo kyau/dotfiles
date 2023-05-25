@@ -5,7 +5,7 @@
 
 # Get information from cores temp thanks to sensors
 rawData=$( sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' )
-tempCore=($rawData)
+tempCore=( "$rawData" )
 
 # Define constants :
 degree="°C"
@@ -27,7 +27,7 @@ do
     total=$(( ${tempCore[$iCore]} + total ));
 done
 
-sum=$(( $total/${#tempCore[*]} ))
+sum=$(( total/${#tempCore[*]} ))
 
 for iTemp in ${!temperaturesValues[*]}
 do
@@ -40,4 +40,4 @@ do
     fi
 done
 
-echo $finalEcho
+echo "$finalEcho"
