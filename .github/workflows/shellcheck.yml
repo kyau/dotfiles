@@ -19,7 +19,8 @@ jobs:
         additional_files: 'dotme'
         ignore_paths: >-
             bin
-            bash_profile
-            bashrc
             polybar
             tmux
+        ignore_names: >-
+            bash_profile
+            bashrc
