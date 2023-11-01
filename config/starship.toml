@@ -1,9 +1,16 @@
-# $KYAULabs: starship.toml,v 1.0.0 2021/07/10 00:37:02 kyau Exp $
+# $KYAULabs: starship.toml,v 1.0.1 2023/05/25 04:34:22 kyau Exp $
 #
+
+format = '$shell$all'
 
 [character]
 success_symbol = "[✓](bold green)"
 error_symbol = "[✕](bold red)"
+
+[dotnet]
+format = 'via [$symbol($version )(🎯 $tfm )]($style)'
+symbol = '󰘐'
+style = 'purple bold'
 
 [git_branch]
 format = "on [$symbol$branch]($style) "
@@ -15,6 +22,19 @@ style = "242"
 
 [line_break]
 disabled = true
+
+[nodejs]
+disabled = true
+
+[shell]
+bash_indicator = ''
+cmd_indicator = ''
+fish_indicator = ''
+powershell_indicator = ''
+unknown_indicator = ''
+format = '[$indicator]($style)'
+style = 'white bold'
+disabled = false
 
 [username]
 format = "[$user]($style)[ ┅ ](247)"

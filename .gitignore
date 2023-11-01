@@ -1,3 +1,6 @@
+## Visual Studio
+*/.vs/
+.vs/
 ## ark
 bin/arkmanager
 ## ckb
