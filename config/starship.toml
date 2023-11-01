@@ -1,7 +1,7 @@
-# $KYAULabs: starship.toml,v 1.0.1 2023/05/25 04:34:22 kyau Exp $
+# $KYAULabs: starship.toml,v 1.0.2 2023/10/31 22:43:30 kyau Exp $
 #
 
-format = '$shell$all'
+format='$shell $all'
 
 [character]
 success_symbol = "[✓](bold green)"
@@ -33,7 +33,7 @@ fish_indicator = ''
 powershell_indicator = ''
 unknown_indicator = ''
 format = '[$indicator]($style)'
-style = 'white bold'
+style = '172'
 disabled = false
 
 [username]
