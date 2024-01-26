@@ -1,24 +1,45 @@
-# $KYAULabs: starship.toml,v 1.0.2 2023/10/31 22:43:30 kyau Exp $
+﻿# $KYAULabs: starship.toml,v 1.0.3 2024/01/22 06:20:03 kyau Exp $
 #
 
-format='$shell $all'
+#format='$shell $all'
+format='$os$username${custom.arrakis}${custom.blackbox}${custom.chloe}${custom.eternal}$hostname$directory$status'
+right_format='$cmd_duration$all'
 
 [character]
-success_symbol = "[✓](bold green)"
-error_symbol = "[✕](bold red)"
+disabled = true
+#success_symbol = "[✓](bold green)"
+#error_symbol = "[✕](bold red)"
+
+[cmd_duration]
+format = '([$duration](bold yellow) )'
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
 
 [dotnet]
-format = 'via [$symbol($version )(🎯 $tfm )]($style)'
-symbol = '󰘐'
+format = '( [$symbol$version]($style))'
+symbol = ' '
 style = 'purple bold'
 
 [git_branch]
-format = "on [$symbol$branch]($style) "
+format = '( [$symbol$branch]($style))'
+symbol = ' '
+
+[git_commit]
+format = '(:[$tag]($style))'
+only_detached = false
+tag_disabled = false
+tag_symbol = ''
+
+[git_status]
+format = '( [\[$all_status$ahead_behind\]]($style))'
 
 [hostname]
-format = "[$hostname]($style)∶"
+format = '([$hostname]($style)[ ┅ ](247))'
+detect_env_vars = ['!TMUX']
 ssh_only = false
-style = "242"
+trim_at = '.kyaulabs.com'
+style = '242'
 
 [line_break]
 disabled = true
@@ -26,19 +47,51 @@ disabled = true
 [nodejs]
 disabled = true
 
+[os]
+format = '$symbol'
+style = ''
+disabled = false
+
+[os.symbols]
+Arch = '[󰼂 ](126 bold)'
+Windows = '[ ](27 bold)'
+
 [shell]
 bash_indicator = ''
-cmd_indicator = ''
-fish_indicator = ''
-powershell_indicator = ''
+cmd_indicator = '󰼂'
+fish_indicator = '󰼂'
+powershell_indicator = ''
 unknown_indicator = ''
-format = '[$indicator]($style)'
-style = '172'
+format = '[$indicator ]($style)'
+style = '126 bold'
+disabled = true
+
+[status]
+symbol = ':[$status ✕](bold red)'
+success_symbol = ' [✓](bold green)'
+format = '$symbol '
 disabled = false
 
 [username]
-format = "[$user]($style)[ ┅ ](247)"
-style_user = "27"
-style_root = "52"
+format = '[$user]($style)[ ┅ ](247)'
+show_always = false
+style_user = '7'
+style_root = '52'
+
+[custom.arrakis]
+when = ''' test "$HOSTNAME" = "arrakis.kyaulabs.com" && test -z "$TMUX" '''
+format = '[󰒍 ](bold 27)[NYCB030](246)[ ┅ ](247)'
+
+[custom.blackbox]
+when = ''' test "$HOSTNAME" = "blackbox.kyaulabs.com" && test -z "$TMUX" '''
+format = '[󰒍 ](bold 27)[NYCB006R](246)[ ┅ ](247)'
+
+[custom.chloe]
+when = ''' test "$HOSTNAME" = "chloe.kyaulabs.com" && test -z "$TMUX" '''
+format = '[󰒍 ](bold 27)[CHI2Z026](246)[ ┅ ](247)'
+
+[custom.eternal]
+when = ''' test "$HOSTNAME" = "eternal.kyaulabs.com" && test -z "$TMUX" '''
+format = '[󰒍 ](bold 27)[AMSD027](246)[ ┅ ](247)'
 
 # vim: ft=toml sts=4 sw=4 ts=4 noet:
