@@ -3,7 +3,7 @@
 # ANSI
 set -l _fish_hostname (cat /proc/sys/kernel/hostname | cut -d '.' -f 1)
 set -g ANSI $HOME/dot/ansi/$_fish_hostname.ans
-set -g _SSL_DOMAINS "kyau.net" "kyau.org" "kyaulabs.com" "voidbbs.com"
+set -g _SSL_DOMAINS "hexforged.com" "kyau.net" "kyau.org" "kyaulabs.com" "voidbbs.com"
 set -g _SERVICES "docker" "libvirtd" "mariadb" "nginx" "nftables" "php-fpm" "sshd" "unbound" "unrealircd"
 
 # Padding/Remove Color {{{
@@ -228,16 +228,11 @@ printf " \\x1b[38;5;235m│\\x1b[38;5;237m░░░ \\x1b[38;5;242muptime\\x1b[3
 printf " \\x1b[38;5;235m└─────────────────────────────────────────────·─\\x1b[38;5;242m─\\x1b[1;39m·─\\x1b[38;5;242m─\\x1b[1;39m─\\x1b[38;5;242m──────\\x1b[38;5;255m┘\\x1b[0m\\n"
 _motd_sysinfo
 set -l _lastlog_ip
-set -l _lastlog (string split " " (lastlog -u $USER | sed -n 's/  */ /gp' | sed -n 2p))
-if test (count $_lastlog) = 8
-	set _lastlog_ip "localhost"
-else
-	set _lastlog_ip $_lastlog[3]
-end
-#set -l _lastlog (lastlog -u $USER | sed -n 2p | tr -s ' ' | cut -d ' ' -f4-)
+set -l _lastlog (string split " " (last -1 -w | sed -n 's/  */ /gp' | sed -n 1p))
+set _lastlog_ip $_lastlog[3]
 printf "      \\x1b[38;5;244mlast\\x1b[0m\\x1b[38;5;240m/%s\\x1b[0m\\n\\n" "$_lastlog_ip"
 _motd_services
-if test $HOSTNAME = "web.kyaulabs"
+if test $HOSTNAME = "orbit.kyaulabs"
 	or test $HOSTNAME = "baal.kyaulabs"
 	_motd_ssl
 end
