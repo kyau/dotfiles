@@ -1,4 +1,4 @@
-# $KYAULabs: gitconfig,v 1.0.3 2022/03/24 22:35:51 kyau Exp $
+# $KYAULabs: gitconfig,v 1.0.4 2023/06/07 11:36:41 kyau Exp $
 
 [core]
     editor = vim
@@ -11,3 +11,14 @@
 [alias]
     ls = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)' --graph
     ll = log --all --format=format:'%C(red)%h%C(reset)%C(bold) -%C(yellow)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(cyan)[%an]%C(reset)%n%b%C(reset)' --graph --numstat
+
+[init]
+    defaultBranch = main
+
+[commit]
+    gpgsign = true
+
+[push]
+    followTags = true
+
+# vim: ft=gitconfig sts=4 sw=4 ts=4 et :
