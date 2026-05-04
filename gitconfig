@@ -1,4 +1,4 @@
-# $KYAULabs: gitconfig,v 1.0.4 2023/06/07 11:36:41 kyau Exp $
+# $KYAULabs: gitconfig,v 1.0.5 2026/05/03 17:56:58 kyau Exp $
 
 [core]
     editor = vim
@@ -20,5 +20,13 @@
 
 [push]
     followTags = true
+
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
 
 # vim: ft=gitconfig sts=4 sw=4 ts=4 et :

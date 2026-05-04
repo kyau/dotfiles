@@ -1,8 +1,11 @@
-# $KYAULabs: config,v 1.2.0 2022/08/08 14:03:45 kyau Exp $
+# $KYAULabs: config,v 1.2.1 2026/05/03 18:17:43 kyau Exp $
 
 # KYAU Labs
 Host *.kyaulabs *.kyaulabs.com
 	Port 4222
+	ForwardAgent yes
+	StreamLocalBindUnlink yes
+	RemoteForward /home/kyau/.gnupg/S.gpg-agent.extra /home/kyau/.gnupg/S.gpg-agent
 	
 	# Global
 Host *
